@@ -8,6 +8,46 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Content View Controller-->
+        <scene sceneID="mjf-XH-OgR">
+            <objects>
+                <viewController storyboardIdentifier="fpc_content" id="Oou-oH-vSf" customClass="ContentViewController" customModule="mapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cfj-bd-Xel" customClass="detail">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1At-0s-YOL">
+                                <rect key="frame" x="178" y="49" width="58" height="42"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGn-y6-aIU">
+                                <rect key="frame" x="117" y="120" width="180" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <state key="normal" title="Kayyar!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KZe-Uv-QRX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1At-0s-YOL" firstAttribute="centerX" secondItem="cfj-bd-Xel" secondAttribute="centerX" id="6WT-wJ-Y2o"/>
+                            <constraint firstItem="1At-0s-YOL" firstAttribute="top" secondItem="KZe-Uv-QRX" secondAttribute="top" constant="5" id="PZz-eL-giT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="adressLabel" destination="1At-0s-YOL" id="jon-TX-IZC"/>
+                        <outlet property="kayyarButton" destination="CGn-y6-aIU" id="hZM-y6-xSP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zpn-x8-1ng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892.75362318840587" y="87.723214285714278"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -17,31 +57,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bj9-lG-zpL">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="646"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MfG-V7-Grr">
-                                <rect key="frame" x="0.0" y="646" width="414" height="206"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1At-0s-YOL">
-                                        <rect key="frame" x="168" y="0.0" width="78.5" height="63.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEH-uz-P7O">
-                                        <rect key="frame" x="168" y="71.5" width="78" height="63"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISW-Ky-CjW">
-                                        <rect key="frame" x="159" y="142.5" width="96" height="63.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin" translatesAutoresizingMaskIntoConstraints="NO" id="cER-tT-wY5">
                                 <rect key="frame" x="187" y="303" width="40" height="40"/>
                                 <constraints>
@@ -54,21 +71,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cER-tT-wY5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-125" id="8Oy-ye-XK4"/>
-                            <constraint firstItem="MfG-V7-Grr" firstAttribute="top" secondItem="Bj9-lG-zpL" secondAttribute="bottom" id="B7O-UO-QAd"/>
                             <constraint firstItem="cER-tT-wY5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ke3-Dc-9Wo"/>
-                            <constraint firstItem="MfG-V7-Grr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Pnf-nF-jXJ"/>
-                            <constraint firstAttribute="trailing" secondItem="MfG-V7-Grr" secondAttribute="trailing" id="VGc-BR-qbn"/>
-                            <constraint firstAttribute="bottom" secondItem="Bj9-lG-zpL" secondAttribute="bottom" constant="250" id="d45-qW-hIq"/>
+                            <constraint firstAttribute="bottom" secondItem="Bj9-lG-zpL" secondAttribute="bottom" id="d45-qW-hIq"/>
                             <constraint firstItem="Bj9-lG-zpL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ouh-iG-eKP"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MfG-V7-Grr" secondAttribute="bottom" constant="10" id="pok-Fr-uu3"/>
                             <constraint firstAttribute="trailing" secondItem="Bj9-lG-zpL" secondAttribute="trailing" id="uOE-vo-oCw"/>
                             <constraint firstItem="Bj9-lG-zpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yQ4-nT-RYy"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="adressLabel" destination="1At-0s-YOL" id="j0N-5l-9P6"/>
-                        <outlet property="latitudeLabel" destination="zEH-uz-P7O" id="1qI-qN-7tz"/>
-                        <outlet property="longtudeLabel" destination="ISW-Ky-CjW" id="WRH-PD-9aU"/>
                         <outlet property="myMapView" destination="Bj9-lG-zpL" id="C6E-bM-lUH"/>
                     </connections>
                 </viewController>

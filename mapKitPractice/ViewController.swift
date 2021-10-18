@@ -7,26 +7,36 @@
 
 import UIKit
 import MapKit
+import FloatingPanel
+
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var myMapView: MKMapView!
-    @IBOutlet weak var adressLabel: UILabel!
-    @IBOutlet weak var latitudeLabel: UILabel!
-    @IBOutlet weak var longtudeLabel: UILabel!
+  
+    var myAdress:String = ""
+    
+    
+  
     
     let locationManager = CLLocationManager()
     let regionInMeter: Double = 5000
     var previousLocation: CLLocation?
  
+ 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         myMapView.delegate = self
         checkLocationServices()
-       
+        setupFloatingPanel()
     }
+    
+  
+    
 
-    
-    
+
     func checkLocationServices(){
         
         if CLLocationManager.locationServicesEnabled() {
@@ -39,11 +49,15 @@ class ViewController: UIViewController {
         }
     }
     
+ 
+    
     func setupLocationManager () {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         
     }
+    
+ 
     
     func centerViewOnUserLocaion() {
         
@@ -77,6 +91,7 @@ class ViewController: UIViewController {
         }
     }
     
+  
     func startTrackingUserLocation() {
         myMapView.showsUserLocation = true
         centerViewOnUserLocaion()
@@ -92,9 +107,6 @@ class ViewController: UIViewController {
         let longitude = myMapView.centerCoordinate.longitude
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-    
-    
-    
     
     
     
@@ -155,16 +167,62 @@ extension ViewController: MKMapViewDelegate {
             let streetNumber = placemark.subThoroughfare ?? ""
             let streetName = placemark.thoroughfare ?? ""
             DispatchQueue.main.async {
-                self.adressLabel.text = "\(streetNumber)-\(streetName)"
-                self.latitudeLabel.text =  String(self.myMapView.centerCoordinate.latitude)
-                self.longtudeLabel.text = String (self.myMapView.centerCoordinate.longitude)
+                
+                self.myAdress = "\(streetNumber) \(streetName)"
+                NotificationCenter.default.post(name: NSNotification.Name("Helloz"), object: self.myAdress)
+                
+//                AddressSingelton.shared.address = "\(streetNumber)-\(streetName)"
+                
+               
+                
+                
             }
             
         }
         
     }
     
+}
+
+//MARK: - Floating Panel integration
+
+extension ViewController: FloatingPanelControllerDelegate {
+    
+    func setupFloatingPanel (){
+        
+        // initialize a fp object
+        let fpc = FloatingPanelController(delegate: self)
+
+        fpc.layout = MyFloatingPanelLayout()
+        fpc.delegate = self
+        
+        // inistantiate the content VC
+        guard let contentVC = storyboard?.instantiateViewController(identifier: "fpc_content") as? ContentViewController else {return}
+       
+    //        contentVC.adressLabel.text = myAdress
+        
+        // add the content VC to the fp VC
+        fpc.set(contentViewController: contentVC)
+        
+        
+        // set fpc as a child to the viewcontroller (self)
+        fpc.addPanel(toParent: self)
+        
+        
+        
+        let apperarance = SurfaceAppearance()
+        apperarance.cornerRadius = 40
+        apperarance.borderColor = .blue
+        apperarance.backgroundColor = .black
+        
+        fpc.surfaceView.appearance = apperarance
+
+               
+    }
     
     
 }
+
+
+
 

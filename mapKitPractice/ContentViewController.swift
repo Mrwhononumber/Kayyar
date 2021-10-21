@@ -10,6 +10,7 @@ import UIKit
 class ContentViewController: UIViewController {
     @IBOutlet weak var adressLabel: UILabel!
     @IBOutlet weak var kayyarButton: UIButton!
+    @IBOutlet weak var messageLabel: UITextField!
     
  
     
@@ -24,6 +25,27 @@ class ContentViewController: UIViewController {
 //            self.adressLabel.text = AddressSingelton.shared.address!
     
     }
+    
+    @IBAction func kayyarButtonPressed(_ sender: UIButton) {
+       
+        // Create a spot object
+        
+        var spot = Spot()
+        spot.address = adressLabel.text!
+        spot.kayyarMessage = messageLabel.text!
+        spot.saveData { success in
+            if success { print("saved the spotto firestore successfuly!")
+        } else {
+            print { ("something happened while sabing the spot to firestore")}
+        }
+        
+        
+        
+    }
+    
+    }
+    
+    
     
     @objc func updateAdressLabel(_ notification:Notification){
         if let myAddressLabel = notification.object as? String {

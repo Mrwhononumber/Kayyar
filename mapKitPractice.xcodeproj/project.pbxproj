@@ -21,6 +21,14 @@
 		6683CC6F271CB2580056ED55 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6683CC6E271CB2580056ED55 /* FirebaseAuth */; };
 		6683CC71271CB2580056ED55 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6683CC70271CB2580056ED55 /* FirebaseFirestore */; };
 		6683CC73271CB2580056ED55 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 6683CC72271CB2580056ED55 /* FirebaseDatabase */; };
+		6683CC79271D646A0056ED55 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6683CC76271D64690056ED55 /* HomeViewController.swift */; };
+		6683CC7A271D646A0056ED55 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6683CC77271D64690056ED55 /* SignUpViewController.swift */; };
+		6683CC7B271D646A0056ED55 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6683CC78271D64690056ED55 /* LoginViewController.swift */; };
+		6683CC7D271D64F20056ED55 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6683CC7C271D64F20056ED55 /* CustomUI.swift */; };
+		6683CC81271D66F30056ED55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6683CC80271D66F20056ED55 /* GoogleService-Info.plist */; };
+		6683CC84271D68CA0056ED55 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6683CC83271D68CA0056ED55 /* Spot.swift */; };
+		66C9FB8427217E3A00A05FAA /* KayyarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9FB8327217E3A00A05FAA /* KayyarTableViewController.swift */; };
+		66C9FB862721814700A05FAA /* myTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9FB852721814700A05FAA /* myTableViewCell.swift */; };
 		E27C3F7FC76F596F427AF302 /* Pods_mapKitPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89D40F80B8D79315A56A473 /* Pods_mapKitPractice.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +44,14 @@
 		6683CC63271994870056ED55 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		6683CC652719B76F0056ED55 /* AddressSingelton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSingelton.swift; sourceTree = "<group>"; };
 		6683CC67271C19200056ED55 /* MyFloatingPanelLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFloatingPanelLayout.swift; sourceTree = "<group>"; };
+		6683CC76271D64690056ED55 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		6683CC77271D64690056ED55 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		6683CC78271D64690056ED55 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6683CC7C271D64F20056ED55 /* CustomUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
+		6683CC80271D66F20056ED55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		6683CC83271D68CA0056ED55 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		66C9FB8327217E3A00A05FAA /* KayyarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayyarTableViewController.swift; sourceTree = "<group>"; };
+		66C9FB852721814700A05FAA /* myTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTableViewCell.swift; sourceTree = "<group>"; };
 		CCD87FDA92EBA27D5AF08E70 /* Pods-mapKitPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapKitPractice.debug.xcconfig"; path = "Target Support Files/Pods-mapKitPractice/Pods-mapKitPractice.debug.xcconfig"; sourceTree = "<group>"; };
 		E217CC148FE33CBC6ADD7B2C /* Pods-mapKitPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapKitPractice.release.xcconfig"; path = "Target Support Files/Pods-mapKitPractice/Pods-mapKitPractice.release.xcconfig"; sourceTree = "<group>"; };
 		F89D40F80B8D79315A56A473 /* Pods_mapKitPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mapKitPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,18 +95,42 @@
 		66597819271822E000385F71 /* mapKitPractice */ = {
 			isa = PBXGroup;
 			children = (
+				6683CC82271D68B60056ED55 /* Spot */,
+				6683CC75271D63920056ED55 /* Authentication */,
 				6659781A271822E000385F71 /* AppDelegate.swift */,
 				6659781C271822E000385F71 /* SceneDelegate.swift */,
 				6659781E271822E000385F71 /* ViewController.swift */,
+				6683CC80271D66F20056ED55 /* GoogleService-Info.plist */,
 				6683CC67271C19200056ED55 /* MyFloatingPanelLayout.swift */,
+				66C9FB8327217E3A00A05FAA /* KayyarTableViewController.swift */,
 				6683CC63271994870056ED55 /* ContentViewController.swift */,
 				66597820271822E000385F71 /* Main.storyboard */,
+				66C9FB852721814700A05FAA /* myTableViewCell.swift */,
 				66597823271822E400385F71 /* Assets.xcassets */,
 				66597825271822E400385F71 /* LaunchScreen.storyboard */,
 				66597828271822E400385F71 /* Info.plist */,
 				6683CC652719B76F0056ED55 /* AddressSingelton.swift */,
 			);
 			path = mapKitPractice;
+			sourceTree = "<group>";
+		};
+		6683CC75271D63920056ED55 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				6683CC76271D64690056ED55 /* HomeViewController.swift */,
+				6683CC78271D64690056ED55 /* LoginViewController.swift */,
+				6683CC77271D64690056ED55 /* SignUpViewController.swift */,
+				6683CC7C271D64F20056ED55 /* CustomUI.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		6683CC82271D68B60056ED55 /* Spot */ = {
+			isa = PBXGroup;
+			children = (
+				6683CC83271D68CA0056ED55 /* Spot.swift */,
+			);
+			path = Spot;
 			sourceTree = "<group>";
 		};
 		A9B7D19B879AA5B3A635460B /* Frameworks */ = {
@@ -180,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66597827271822E400385F71 /* LaunchScreen.storyboard in Resources */,
+				6683CC81271D66F30056ED55 /* GoogleService-Info.plist in Resources */,
 				66597824271822E400385F71 /* Assets.xcassets in Resources */,
 				66597822271822E000385F71 /* Main.storyboard in Resources */,
 			);
@@ -234,11 +275,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6683CC7B271D646A0056ED55 /* LoginViewController.swift in Sources */,
 				6683CC68271C19200056ED55 /* MyFloatingPanelLayout.swift in Sources */,
+				66C9FB862721814700A05FAA /* myTableViewCell.swift in Sources */,
+				6683CC7D271D64F20056ED55 /* CustomUI.swift in Sources */,
 				6683CC662719B76F0056ED55 /* AddressSingelton.swift in Sources */,
+				6683CC7A271D646A0056ED55 /* SignUpViewController.swift in Sources */,
 				6659781F271822E000385F71 /* ViewController.swift in Sources */,
+				66C9FB8427217E3A00A05FAA /* KayyarTableViewController.swift in Sources */,
 				6659781B271822E000385F71 /* AppDelegate.swift in Sources */,
 				6659781D271822E000385F71 /* SceneDelegate.swift in Sources */,
+				6683CC84271D68CA0056ED55 /* Spot.swift in Sources */,
+				6683CC79271D646A0056ED55 /* HomeViewController.swift in Sources */,
 				6683CC64271994870056ED55 /* ContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

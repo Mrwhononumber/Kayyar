@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var myMapView: MKMapView!
   
     var myAdress:String = ""
+    var spots = Spots()
+    var myPlacemark: CLPlacemark?
     
     
   
@@ -31,9 +33,16 @@ class ViewController: UIViewController {
         myMapView.delegate = self
         checkLocationServices()
         setupFloatingPanel()
+        
     }
     
   
+//    @IBAction func loadspotsTest(_ sender: UIButton) {
+//        spots.loadData {
+//            print(spots.spotArray.count)
+//        }
+//        
+//    }
     
 
 
@@ -166,9 +175,11 @@ extension ViewController: MKMapViewDelegate {
             }
             let streetNumber = placemark.subThoroughfare ?? ""
             let streetName = placemark.thoroughfare ?? ""
+//
             DispatchQueue.main.async {
                 
                 self.myAdress = "\(streetNumber) \(streetName)"
+                self.myPlacemark = placemark
                 NotificationCenter.default.post(name: NSNotification.Name("Helloz"), object: self.myAdress)
                 
 //                AddressSingelton.shared.address = "\(streetNumber)-\(streetName)"

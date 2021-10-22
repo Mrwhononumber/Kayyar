@@ -60,7 +60,7 @@ class SignUpViewController: UIViewController {
                         }
                     }
                     // Transition to the home screen
-                    self.performSegue(withIdentifier: "signUpToHome", sender: self)
+                    self.performSegue(withIdentifier: "signupToHome", sender: self)
                     
                 }
             }
@@ -70,13 +70,17 @@ class SignUpViewController: UIViewController {
     }
     
     
-    @IBAction func BackButtonPressed(_ sender: UIButton) {
+//    @IBAction func BackButtonPressed(_ sender: UIButton) {
+//
+//
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! HomeViewController
+//        nextViewController.modalPresentationStyle = .fullScreen
+//        nextViewController.modalTransitionStyle = .flipHorizontal
+//        self.present(nextViewController, animated:true, completion:nil)
+//    }
+    @IBAction func unwindsegue(_ sender: UIStoryboardSegue) {
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! HomeViewController
-        nextViewController.modalPresentationStyle = .fullScreen
-        nextViewController.modalTransitionStyle = .flipHorizontal
-        self.present(nextViewController, animated:true, completion:nil)
     }
     
  

@@ -12,7 +12,8 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var kayyarButton: UIButton!
     @IBOutlet weak var messageLabel: UITextField!
     
- 
+ var spots = Spots()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +22,7 @@ class ContentViewController: UIViewController {
         kayyarButton.layer.cornerRadius = kayyarButton.bounds.height*0.5
             
             NotificationCenter.default.addObserver(self, selector: #selector(self.updateAdressLabel(_:)), name: NSNotification.Name("Helloz"), object: nil)
-            
-//            self.adressLabel.text = AddressSingelton.shared.address!
+
     
     }
     
@@ -33,8 +33,13 @@ class ContentViewController: UIViewController {
         var spot = Spot()
         spot.address = adressLabel.text!
         spot.kayyarMessage = messageLabel.text!
+        
+        // Save the data
         spot.saveData { success in
-            if success { print("saved the spotto firestore successfuly!")
+            if success { print("saved the spot to firestore successfuly!")
+                self.performSegue(withIdentifier: "detailToTable", sender: self)
+              
+                print(self.spots.spotArray.count)
         } else {
             print { ("something happened while sabing the spot to firestore")}
         }
@@ -44,6 +49,10 @@ class ContentViewController: UIViewController {
     }
     
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let destination = segue.destination
+//    }
     
     
     

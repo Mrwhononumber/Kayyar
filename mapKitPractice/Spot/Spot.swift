@@ -17,14 +17,14 @@ class Spot {
     var dangerLevel: Double
     var numberOfReviews: Int
     var postingUserID: String
-    var postingUsername: String
+    
     var documentID: String
     
     var dictionary: [String: Any] {
         return ["address":address, "latitude": latitude, "longitude": longitude, "kayyarMessage": kayyarMessage, "dangerLevel":dangerLevel, "numberOfReviews":numberOfReviews, "postingUserID": postingUserID, "documentID":documentID]
     }
     
-    init(address: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, kayyarMessage: String, dangerLevel: Double, numberOfReviews: Int, postingUserID: String, postingUsername: String, documentID: String) {
+    init(address: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, kayyarMessage: String, dangerLevel: Double, numberOfReviews: Int, postingUserID: String, documentID: String) {
         
         self.address = address
         self.latitude = latitude
@@ -33,13 +33,30 @@ class Spot {
         self.dangerLevel = dangerLevel
         self.numberOfReviews = numberOfReviews
         self.postingUserID = postingUserID
-        self.postingUsername = postingUsername
+        
         self.documentID = documentID
     }
     
     convenience init() {
-        self.init(address: "", latitude: 0.0, longitude: 0.0, kayyarMessage: "", dangerLevel: 0.0, numberOfReviews: 0, postingUserID: "", postingUsername: "", documentID: "")
+        self.init(address: "", latitude: 0.0, longitude: 0.0, kayyarMessage: "", dangerLevel: 0.0, numberOfReviews: 0, postingUserID: "", documentID: "")
     }
+    
+    convenience init(dictionary: [String: Any]) {
+        let address = dictionary["address"] as! String? ?? ""
+        let latitude = dictionary["latitude"] as! CLLocationDegrees? ?? 0.0
+        let longitude = dictionary["longitude"] as! CLLocationDegrees? ?? 0.0
+        let kayyarMessage = dictionary["kayyarMessage"] as! String? ?? ""
+        let dangerLevel = dictionary["dangerLevel"] as! Double? ?? 0.0
+        let numberOfReviews = dictionary["numberOfReviews"] as! Int? ?? 0
+        let postingUserID = dictionary["postingUserID"] as! String? ?? ""
+        
+//        let documentID = dictionary["documentID"] as! String
+       
+        self.init(address: address, latitude: latitude, longitude: longitude, kayyarMessage: kayyarMessage, dangerLevel: dangerLevel, numberOfReviews: numberOfReviews, postingUserID: postingUserID, documentID: "")
+    }
+    
+    
+    
     
     
     func saveData(complition: @escaping (Bool) -> ()) {
@@ -54,6 +71,7 @@ class Spot {
             
         }
         self.postingUserID = postingUserID
+        
         // Create the dictionary representing the data we want to save
         let dataToSave: [String:Any] = self.dictionary
         // check if the document is new or it has been saved before

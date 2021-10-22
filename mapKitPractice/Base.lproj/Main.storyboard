@@ -56,24 +56,25 @@
                         <outlet property="adressLabel" destination="1At-0s-YOL" id="jon-TX-IZC"/>
                         <outlet property="kayyarButton" destination="CGn-y6-aIU" id="hZM-y6-xSP"/>
                         <outlet property="messageLabel" destination="nHw-ge-PyJ" id="dDw-k9-AsW"/>
+                        <segue destination="Vsp-y2-XXa" kind="show" identifier="detailToTable" id="xaF-su-H9W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zpn-x8-1ng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892.75362318840587" y="87.723214285714278"/>
+            <point key="canvasLocation" x="865" y="-310"/>
         </scene>
         <!--Kayyar Table View Controller-->
         <scene sceneID="5me-yu-JEZ">
             <objects>
                 <viewController id="Vsp-y2-XXa" customClass="KayyarTableViewController" customModule="mapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6AD-kZ-iZD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kKS-E7-SZe">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="59S-qS-RY1" customClass="myTableViewCell" customModule="mapKitPractice" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="59S-qS-RY1" customClass="myTableViewCell" customModule="mapKitPractice" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="59S-qS-RY1" id="d1K-Ke-r19">
@@ -89,9 +90,9 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-Vu-zAG">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-Vu-zAG">
                                                             <rect key="frame" x="158.5" y="0.0" width="77" height="63"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -129,6 +130,10 @@
                             <constraint firstItem="kKS-E7-SZe" firstAttribute="leading" secondItem="vET-3o-5di" secondAttribute="leading" id="x08-dI-Cyg"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="DpE-kF-Mxo"/>
+                    <connections>
+                        <outlet property="myTableView" destination="kKS-E7-SZe" id="ee8-ZH-jLa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cee-a0-6bR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -152,6 +157,14 @@
                                     <constraint firstAttribute="height" constant="40" id="Kuv-4r-L8H"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yub-2O-1Pl">
+                                <rect key="frame" x="282" y="159" width="46" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="loadspotsTest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DVb-Qw-82h"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -349,7 +362,6 @@
                                         <state key="normal" title="SignUp"/>
                                         <connections>
                                             <action selector="signUpButtonPressed:" destination="Yka-rP-c86" eventType="touchUpInside" id="aIg-6U-Mrd"/>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="signUpToHome" modalPresentationStyle="fullScreen" id="pL0-7F-Ugc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEf-1O-sy6">
@@ -361,6 +373,7 @@
                                         <connections>
                                             <action selector="BackButtonPressed:" destination="Yka-rP-c86" eventType="touchUpInside" id="aGa-RY-swU"/>
                                             <action selector="backButtonPressed:" destination="Yka-rP-c86" eventType="touchUpInside" id="6A2-2J-Pu0"/>
+                                            <segue destination="n5V-tj-JDs" kind="unwind" unwindAction="unwindsegue:" id="QNZ-Kv-e5k"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an9-dc-ANJ">
@@ -391,15 +404,17 @@
                         <outlet property="passwordTextLabel" destination="c02-Aw-wIS" id="0ji-TB-Ee4"/>
                         <outlet property="sigUpButton" destination="maF-nF-4wq" id="Kes-vQ-tX6"/>
                         <outlet property="usenameTextLabel" destination="qax-XT-bId" id="aml-5e-hxD"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="signupToHome" modalPresentationStyle="fullScreen" id="0M9-HZ-QIB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6J5-d8-RXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="n5V-tj-JDs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1019" y="-104"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pL0-7F-Ugc"/>
+        <segue reference="0M9-HZ-QIB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="pin" width="512" height="512"/>

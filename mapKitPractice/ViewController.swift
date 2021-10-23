@@ -36,14 +36,14 @@ class ViewController: UIViewController {
         
     }
     
-  
-//    @IBAction func loadspotsTest(_ sender: UIButton) {
-//        spots.loadData {
-//            print(spots.spotArray.count)
-//        }
-//        
-//    }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        showMySpinner()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        removeMySpenner()
+    }
 
 
     func checkLocationServices(){
@@ -180,6 +180,7 @@ extension ViewController: MKMapViewDelegate {
                 
                 self.myAdress = "\(streetNumber) \(streetName)"
                 self.myPlacemark = placemark
+                
                 NotificationCenter.default.post(name: NSNotification.Name("Helloz"), object: self.myAdress)
                 
 //                AddressSingelton.shared.address = "\(streetNumber)-\(streetName)"

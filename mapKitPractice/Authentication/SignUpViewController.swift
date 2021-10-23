@@ -70,18 +70,18 @@ class SignUpViewController: UIViewController {
     }
     
     
-//    @IBAction func BackButtonPressed(_ sender: UIButton) {
-//
-//
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! HomeViewController
-//        nextViewController.modalPresentationStyle = .fullScreen
-//        nextViewController.modalTransitionStyle = .flipHorizontal
-//        self.present(nextViewController, animated:true, completion:nil)
-//    }
-    @IBAction func unwindsegue(_ sender: UIStoryboardSegue) {
-        
+    @IBAction func BackButtonPressed(_ sender: UIButton) {
+
+
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! HomeViewController
+        nextViewController.modalPresentationStyle = .fullScreen
+        nextViewController.modalTransitionStyle = .flipHorizontal
+        self.present(nextViewController, animated:true, completion:nil)
     }
+//    @IBAction func unwindsegue(_ sender: UIStoryboardSegue) {
+//
+//    }
     
  
     //MARK: - Fields validation

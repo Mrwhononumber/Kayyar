@@ -33,14 +33,15 @@ class ContentViewController: UIViewController {
         var spot = Spot()
         spot.address = adressLabel.text!
         spot.kayyarMessage = messageLabel.text!
-        
+        showMySpinner()
         // Save the data
         spot.saveData { success in
             if success { print("saved the spot to firestore successfuly!")
                 self.performSegue(withIdentifier: "detailToTable", sender: self)
-              
+               
                 print(self.spots.spotArray.count)
         } else {
+           
             print { ("something happened while sabing the spot to firestore")}
         }
         

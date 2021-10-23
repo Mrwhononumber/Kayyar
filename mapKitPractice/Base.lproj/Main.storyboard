@@ -16,14 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1At-0s-YOL">
-                                <rect key="frame" x="178" y="49" width="58" height="42"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Location 😈" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1At-0s-YOL">
+                                <rect key="frame" x="96.5" y="49" width="221.5" height="32.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGn-y6-aIU">
-                                <rect key="frame" x="117" y="116" width="180" height="39"/>
+                                <rect key="frame" x="117" y="106.5" width="180" height="39"/>
                                 <color key="backgroundColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="Kayyar!">
@@ -34,7 +34,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your message here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nHw-ge-PyJ">
-                                <rect key="frame" x="20" y="195" width="374" height="34"/>
+                                <rect key="frame" x="20" y="185.5" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -157,14 +157,6 @@
                                     <constraint firstAttribute="height" constant="40" id="Kuv-4r-L8H"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yub-2O-1Pl">
-                                <rect key="frame" x="282" y="159" width="46" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="loadspotsTest:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DVb-Qw-82h"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -273,7 +265,6 @@
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <action selector="loginButtonPressed:" destination="h1f-px-lca" eventType="touchUpInside" id="Uu9-ZN-kfq"/>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginToHome" modalPresentationStyle="fullScreen" id="GUN-UM-Awh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqg-qy-2XN">
@@ -313,6 +304,7 @@
                         <outlet property="errorTextLabel" destination="z94-wv-nna" id="RFh-y1-Uul"/>
                         <outlet property="loginButton" destination="2vw-ZU-Gzs" id="7JN-vV-4fu"/>
                         <outlet property="passwordTextLabel" destination="Dom-Za-gir" id="EBP-hd-jMO"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginToHome" modalPresentationStyle="fullScreen" id="tR8-fe-WGI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C0J-Ws-j2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -373,7 +365,6 @@
                                         <connections>
                                             <action selector="BackButtonPressed:" destination="Yka-rP-c86" eventType="touchUpInside" id="aGa-RY-swU"/>
                                             <action selector="backButtonPressed:" destination="Yka-rP-c86" eventType="touchUpInside" id="6A2-2J-Pu0"/>
-                                            <segue destination="n5V-tj-JDs" kind="unwind" unwindAction="unwindsegue:" id="QNZ-Kv-e5k"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an9-dc-ANJ">
@@ -408,13 +399,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6J5-d8-RXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="n5V-tj-JDs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1019" y="-104"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0M9-HZ-QIB"/>
+        <segue reference="tR8-fe-WGI"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="pin" width="512" height="512"/>

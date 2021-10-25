@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class ContentViewController: UIViewController {
     @IBOutlet weak var adressLabel: UILabel!
@@ -13,7 +14,7 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var messageLabel: UITextField!
     
  var spots = Spots()
-
+var  myPlacemarks: CLPlacemark?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class ContentViewController: UIViewController {
         kayyarButton.layer.cornerRadius = kayyarButton.bounds.height*0.5
             
             NotificationCenter.default.addObserver(self, selector: #selector(self.updateAdressLabel(_:)), name: NSNotification.Name("Helloz"), object: nil)
-
+        
     
     }
     
@@ -33,15 +34,19 @@ class ContentViewController: UIViewController {
         var spot = Spot()
         spot.address = adressLabel.text!
         spot.kayyarMessage = messageLabel.text!
-        showMySpinner()
+        spot.city = myPlacemarks!.locality!
+        spot.latitude = (myPlacemarks?.location?.coordinate.latitude)!
+        spot.longitude = (myPlacemarks?.location?.coordinate.longitude)!
+        
+        
+        
         // Save the data
         spot.saveData { success in
             if success { print("saved the spot to firestore successfuly!")
                 self.performSegue(withIdentifier: "detailToTable", sender: self)
-               
+              
                 print(self.spots.spotArray.count)
         } else {
-           
             print { ("something happened while sabing the spot to firestore")}
         }
         
@@ -58,10 +63,13 @@ class ContentViewController: UIViewController {
     
     
     @objc func updateAdressLabel(_ notification:Notification){
-        if let myAddressLabel = notification.object as? String {
+        if let myPlacemark = notification.object as? CLPlacemark  {
             DispatchQueue.main.async {
-                self.adressLabel.text = myAddressLabel
-                print(myAddressLabel)
+                self.myPlacemarks = myPlacemark
+                let streetNumber = myPlacemark.subThoroughfare ?? ""
+                let streetName = myPlacemark.thoroughfare ?? ""
+                self.adressLabel.text = "\(streetNumber) \(streetName)"
+                print(self.adressLabel.text)
             }
             
            

@@ -13,10 +13,11 @@ extension UIViewController {
      
     func showMySpinner() {
         aView = UIView(frame: self.view.bounds)
-        aView?.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        aView?.backgroundColor = UIColor.init(red: 0.25, green: 0.5, blue: 0.5, alpha: 0.5)
         
         let myActivityIndicator = UIActivityIndicatorView(style: .large)
         myActivityIndicator.center = aView!.center
+        myActivityIndicator.color = .black
         myActivityIndicator.startAnimating()
         aView?.addSubview(myActivityIndicator)
         self.view.addSubview(aView!)

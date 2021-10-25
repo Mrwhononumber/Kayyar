@@ -10,6 +10,7 @@ import Firebase
 import MapKit
 
 class Spot {
+    var city: String
     var address: String
     var latitude: CLLocationDegrees
     var longitude: CLLocationDegrees
@@ -21,11 +22,11 @@ class Spot {
     var documentID: String
     
     var dictionary: [String: Any] {
-        return ["address":address, "latitude": latitude, "longitude": longitude, "kayyarMessage": kayyarMessage, "dangerLevel":dangerLevel, "numberOfReviews":numberOfReviews, "postingUserID": postingUserID, "documentID":documentID]
+        return ["city": city, "address":address, "latitude": latitude, "longitude": longitude, "kayyarMessage": kayyarMessage, "dangerLevel":dangerLevel, "numberOfReviews":numberOfReviews, "postingUserID": postingUserID, "documentID":documentID]
     }
     
-    init(address: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, kayyarMessage: String, dangerLevel: Double, numberOfReviews: Int, postingUserID: String, documentID: String) {
-        
+    init(city: String, address: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, kayyarMessage: String, dangerLevel: Double, numberOfReviews: Int, postingUserID: String, documentID: String) {
+        self.city = city
         self.address = address
         self.latitude = latitude
         self.longitude = longitude
@@ -38,10 +39,11 @@ class Spot {
     }
     
     convenience init() {
-        self.init(address: "", latitude: 0.0, longitude: 0.0, kayyarMessage: "", dangerLevel: 0.0, numberOfReviews: 0, postingUserID: "", documentID: "")
+        self.init(city: "", address: "", latitude: 0.0, longitude: 0.0, kayyarMessage: "", dangerLevel: 0.0, numberOfReviews: 0, postingUserID: "", documentID: "")
     }
     
     convenience init(dictionary: [String: Any]) {
+        let city = dictionary["city"] as! String? ?? ""
         let address = dictionary["address"] as! String? ?? ""
         let latitude = dictionary["latitude"] as! CLLocationDegrees? ?? 0.0
         let longitude = dictionary["longitude"] as! CLLocationDegrees? ?? 0.0
@@ -52,7 +54,7 @@ class Spot {
         
 //        let documentID = dictionary["documentID"] as! String
        
-        self.init(address: address, latitude: latitude, longitude: longitude, kayyarMessage: kayyarMessage, dangerLevel: dangerLevel, numberOfReviews: numberOfReviews, postingUserID: postingUserID, documentID: "")
+        self.init(city: city, address: address, latitude: latitude, longitude: longitude, kayyarMessage: kayyarMessage, dangerLevel: dangerLevel, numberOfReviews: numberOfReviews, postingUserID: postingUserID, documentID: "")
     }
     
     

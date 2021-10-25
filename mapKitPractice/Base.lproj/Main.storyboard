@@ -157,11 +157,25 @@
                                     <constraint firstAttribute="height" constant="40" id="Kuv-4r-L8H"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubs-oh-kXH">
+                                <rect key="frame" x="314" y="607" width="50" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
+                                <state key="normal" title="|K|">
+                                    <color key="titleColor" red="0.99916261429999997" green="0.17425110939999999" blue="0.3347000182" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Vsp-y2-XXa" kind="show" id="Uff-Ja-yyW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ubs-oh-kXH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="314" id="3Ei-l8-elj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ubs-oh-kXH" secondAttribute="trailing" constant="50" id="7fZ-UC-xWR"/>
+                            <constraint firstItem="ubs-oh-kXH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="563" id="7r8-HY-rZf"/>
                             <constraint firstItem="cER-tT-wY5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-125" id="8Oy-ye-XK4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ubs-oh-kXH" secondAttribute="bottom" constant="225" id="Aqf-TR-ity"/>
                             <constraint firstItem="cER-tT-wY5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ke3-Dc-9Wo"/>
                             <constraint firstAttribute="bottom" secondItem="Bj9-lG-zpL" secondAttribute="bottom" id="d45-qW-hIq"/>
                             <constraint firstItem="Bj9-lG-zpL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ouh-iG-eKP"/>
@@ -405,6 +419,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="tR8-fe-WGI"/>
+        <segue reference="Uff-Ja-yyW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="pin" width="512" height="512"/>

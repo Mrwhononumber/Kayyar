@@ -22,7 +22,7 @@ class ViewController: UIViewController {
   
     
     let locationManager = CLLocationManager()
-    let regionInMeter: Double = 5000
+    let regionInMeter: Double = 650
     var previousLocation: CLLocation?
  
  
@@ -181,7 +181,7 @@ extension ViewController: MKMapViewDelegate {
                 self.myAdress = "\(streetNumber) \(streetName)"
                 self.myPlacemark = placemark
                 
-                NotificationCenter.default.post(name: NSNotification.Name("Helloz"), object: self.myAdress)
+                NotificationCenter.default.post(name: NSNotification.Name("Helloz"), object: self.myPlacemark)
                 
 //                AddressSingelton.shared.address = "\(streetNumber)-\(streetName)"
                 

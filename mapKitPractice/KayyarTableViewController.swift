@@ -9,6 +9,7 @@ import UIKit
 
 class KayyarTableViewController: UIViewController {
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var mySegmentedControl: UISegmentedControl!
     
     var spots: Spots!
     
@@ -20,26 +21,58 @@ class KayyarTableViewController: UIViewController {
         myTableView.delegate = self
         myTableView.dataSource = self
         
-//         Do any additional setup after loading the view.
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        showMySpinner()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+      
+        self.showMySpinner()
         spots.loadData {
+            self.sortBasedOnSegmentPressed()
             self.myTableView.reloadData()
             print("😅\(self.spots.spotArray.count)")
         }
+        
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         removeMySpenner()
+       
+    }
+    
+    //MARK: - Segmented Control Implementation
+    
+    func sortBasedOnSegmentPressed(){
+
+        switch mySegmentedControl.selectedSegmentIndex {
+        case 0: // Recent
+            let df = DateFormatter()
+            spots.spotArray.sort{df.date(from: $0.submitionDate) ?? Date() > df.date(from: $1.submitionDate) ?? Date()}
+            
+        case 1: // Distance
+        print("TODO")
+        case 2: // Kayyar Level
+        print ("TODO")
+        default:
+            print ("error occured, check segmented control for an error")
+        }
+        myTableView.reloadData()
+        
+
+    }
+
+    @IBAction func mySegmentedControlPressed(_ sender: UISegmentedControl) {
+        sortBasedOnSegmentPressed()
+
     }
     
 
-
-
 }
+
+//MARK: - TableView Delegate and Datasource Methods
+
 extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
 
 

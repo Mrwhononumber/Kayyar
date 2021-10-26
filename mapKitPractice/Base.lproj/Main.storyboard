@@ -130,10 +130,13 @@
                                             <rect key="frame" x="20" y="5.5" width="374" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
-                                                <segment title="A-Z"/>
+                                                <segment title="Recent"/>
                                                 <segment title="Distance"/>
-                                                <segment title="Danger Level"/>
+                                                <segment title="Kayyar Level"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="mySegmentedControlPressed:" destination="Vsp-y2-XXa" eventType="valueChanged" id="NOs-Sl-z5K"/>
+                                            </connections>
                                         </segmentedControl>
                                     </barButtonItem>
                                 </items>
@@ -150,6 +153,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="DpE-kF-Mxo"/>
                     <connections>
+                        <outlet property="mySegmentedControl" destination="jv6-S4-hau" id="Vb9-n2-9tE"/>
                         <outlet property="myTableView" destination="kKS-E7-SZe" id="ee8-ZH-jLa"/>
                         <segue destination="hJH-5S-I3P" kind="show" identifier="toDetail" id="eq1-FD-bUp"/>
                     </connections>
@@ -166,7 +170,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8ir-2u-MPu">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ir-2u-MPu">
                                 <rect key="frame" x="0.0" y="319.5" width="414" height="257"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="257" id="5Ga-cY-qqn"/>

@@ -34,7 +34,7 @@ func loadData(completed: @escaping () -> ()) {
         // clear all the data inside spotArray
         self.spotArray = []
         
-        
+        //
         for document in querySnapshot!.documents {
             
             let spot = Spot(dictionary: document.data())

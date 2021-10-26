@@ -18,14 +18,15 @@ class Spot {
     var dangerLevel: Double
     var numberOfReviews: Int
     var postingUserID: String
+    var submitionDate: String
     
     var documentID: String
     
     var dictionary: [String: Any] {
-        return ["city": city, "address":address, "latitude": latitude, "longitude": longitude, "kayyarMessage": kayyarMessage, "dangerLevel":dangerLevel, "numberOfReviews":numberOfReviews, "postingUserID": postingUserID, "documentID":documentID]
+        return ["city": city, "address":address, "latitude": latitude, "longitude": longitude, "kayyarMessage": kayyarMessage, "dangerLevel":dangerLevel, "numberOfReviews":numberOfReviews, "postingUserID": postingUserID, "submitionDate": submitionDate, "documentID":documentID]
     }
     
-    init(city: String, address: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, kayyarMessage: String, dangerLevel: Double, numberOfReviews: Int, postingUserID: String, documentID: String) {
+    init(city: String, address: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, kayyarMessage: String, dangerLevel: Double, numberOfReviews: Int, postingUserID: String, submitionDate: String, documentID: String) {
         self.city = city
         self.address = address
         self.latitude = latitude
@@ -33,13 +34,14 @@ class Spot {
         self.kayyarMessage = kayyarMessage
         self.dangerLevel = dangerLevel
         self.numberOfReviews = numberOfReviews
+        self.submitionDate = submitionDate
         self.postingUserID = postingUserID
         
         self.documentID = documentID
     }
     
     convenience init() {
-        self.init(city: "", address: "", latitude: 0.0, longitude: 0.0, kayyarMessage: "", dangerLevel: 0.0, numberOfReviews: 0, postingUserID: "", documentID: "")
+        self.init(city: "", address: "", latitude: 0.0, longitude: 0.0, kayyarMessage: "", dangerLevel: 0.0, numberOfReviews: 0, postingUserID: "", submitionDate: "", documentID: "")
     }
     
     convenience init(dictionary: [String: Any]) {
@@ -51,10 +53,10 @@ class Spot {
         let dangerLevel = dictionary["dangerLevel"] as! Double? ?? 0.0
         let numberOfReviews = dictionary["numberOfReviews"] as! Int? ?? 0
         let postingUserID = dictionary["postingUserID"] as! String? ?? ""
-        
+        let submitionDate = dictionary["submitionDate"] as! String? ?? ""
 //        let documentID = dictionary["documentID"] as! String
        
-        self.init(city: city, address: address, latitude: latitude, longitude: longitude, kayyarMessage: kayyarMessage, dangerLevel: dangerLevel, numberOfReviews: numberOfReviews, postingUserID: postingUserID, documentID: "")
+        self.init(city: city, address: address, latitude: latitude, longitude: longitude, kayyarMessage: kayyarMessage, dangerLevel: dangerLevel, numberOfReviews: numberOfReviews, postingUserID: postingUserID, submitionDate: submitionDate, documentID: "")
     }
     
     
@@ -101,7 +103,7 @@ class Spot {
             }
         }
         
-        
+    
         
         
         

@@ -30,6 +30,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
         myMapView.delegate = self
         checkLocationServices()
         setupFloatingPanel()
@@ -38,6 +39,8 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        
         showMySpinner()
     }
     override func viewDidAppear(_ animated: Bool) {

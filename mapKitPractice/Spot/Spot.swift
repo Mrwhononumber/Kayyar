@@ -85,7 +85,7 @@ class Spot {
                     return complition(false)
                 }
                 self.documentID = ref!.documentID
-                print(" Added document\(self.documentID)")
+                print(" 🤣 🤣 🤣 Added document\(self.documentID)")
                 complition(true)
             }
             // in this case the documet has been saved before so we need to update it

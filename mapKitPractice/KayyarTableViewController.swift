@@ -15,6 +15,7 @@ class KayyarTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = false
         spots = Spots()
         myTableView.delegate = self
         myTableView.dataSource = self
@@ -54,8 +55,20 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
             
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetail", sender: self)
+    }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail" {
+            let destination = segue.destination as! detailViewController
+            let selectedIndexPath = myTableView.indexPathForSelectedRow!
+            destination.detailSpot = spots.spotArray[selectedIndexPath.row]
+        }
+       
+        
+    }
 
 
 }

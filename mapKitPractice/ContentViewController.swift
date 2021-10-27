@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 class ContentViewController: UIViewController {
     @IBOutlet weak var adressLabel: UILabel!
@@ -38,7 +39,6 @@ var  myPlacemarks: CLPlacemark?
         spot.latitude = (myPlacemarks?.location?.coordinate.latitude)!
         spot.longitude = (myPlacemarks?.location?.coordinate.longitude)!
         spot.submitionDate = getCurrentDateTime()
-        
         
         
         // Save the data

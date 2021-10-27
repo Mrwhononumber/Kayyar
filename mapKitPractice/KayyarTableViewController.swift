@@ -29,7 +29,7 @@ class KayyarTableViewController: UIViewController {
       
         self.showMySpinner()
         spots.loadData {
-            self.sortBasedOnSegmentPressed()
+//            self.sortBasedOnSegmentPressed()
             self.myTableView.reloadData()
             print("😅\(self.spots.spotArray.count)")
         }
@@ -48,8 +48,10 @@ class KayyarTableViewController: UIViewController {
 
         switch mySegmentedControl.selectedSegmentIndex {
         case 0: // Recent
-            let df = DateFormatter()
-            spots.spotArray.sort{df.date(from: $0.submitionDate) ?? Date() > df.date(from: $1.submitionDate) ?? Date()}
+            let formatter = DateFormatter()
+           
+            spots.spotArray.sort{$0.submitionDate.compare($1.submitionDate, options: .numeric) == .orderedDescending}
+            print("sort func got triggered")
             
         case 1: // Distance
         print("TODO")

@@ -110,7 +110,7 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
             let distanceInMeters = (spots.spotArray[indexPath.row].spotLocation.distance(from: currentUserLocation))
             let distanceInKiloMetre =  String(format:"%.1f",(distanceInMeters / 1000))
             
-            cell.distanceLabel.text = "Distance:\(distanceInKiloMetre) Km away" // distance in km
+            cell.distanceLabel.text = "\(distanceInKiloMetre) Km away" // distance in km
         } else {
             cell.distanceLabel.text = "N/a"
         }

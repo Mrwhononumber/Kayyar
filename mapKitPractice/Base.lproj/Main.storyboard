@@ -73,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kKS-E7-SZe">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="741"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="59S-qS-RY1" customClass="myTableViewCell" customModule="mapKitPractice" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="83"/>
@@ -82,35 +82,44 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="82" translatesAutoresizingMaskIntoConstraints="NO" id="uaU-su-31L">
-                                                    <rect key="frame" x="10" y="10" width="394" height="63"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXo-Bz-2Ai">
-                                                            <rect key="frame" x="0.0" y="0.0" width="76.5" height="63"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-Vu-zAG">
-                                                            <rect key="frame" x="158.5" y="0.0" width="77" height="63"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amd-sc-LTE">
-                                                            <rect key="frame" x="317.5" y="0.0" width="76.5" height="63"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-Vu-zAG">
+                                                    <rect key="frame" x="152" y="0.0" width="242" height="63"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="63" id="IAE-wg-4xR"/>
+                                                        <constraint firstAttribute="width" constant="242" id="jq4-ZD-fCa"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Amd-sc-LTE">
+                                                    <rect key="frame" x="20" y="63" width="189" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="epH-y8-cpR"/>
+                                                        <constraint firstAttribute="width" constant="189" id="uBF-c3-ZtC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXo-Bz-2Ai">
+                                                    <rect key="frame" x="20" y="11" width="86" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="uaU-su-31L" firstAttribute="top" secondItem="d1K-Ke-r19" secondAttribute="top" constant="10" id="2nt-A5-in3"/>
-                                                <constraint firstAttribute="trailing" secondItem="uaU-su-31L" secondAttribute="trailing" constant="10" id="3Nx-f6-ecI"/>
-                                                <constraint firstAttribute="bottom" secondItem="uaU-su-31L" secondAttribute="bottom" constant="10" id="TuV-T5-Yi2"/>
-                                                <constraint firstItem="uaU-su-31L" firstAttribute="leading" secondItem="d1K-Ke-r19" secondAttribute="leading" constant="10" id="wD7-KT-b75"/>
+                                                <constraint firstItem="TO7-Vu-zAG" firstAttribute="top" secondItem="d1K-Ke-r19" secondAttribute="top" id="0Nm-mT-ePR"/>
+                                                <constraint firstItem="lXo-Bz-2Ai" firstAttribute="top" secondItem="d1K-Ke-r19" secondAttribute="top" constant="11" id="4Ax-eH-Lhi"/>
+                                                <constraint firstAttribute="trailing" secondItem="Amd-sc-LTE" secondAttribute="trailing" constant="205" id="GFl-0m-wbT"/>
+                                                <constraint firstItem="Amd-sc-LTE" firstAttribute="leading" secondItem="d1K-Ke-r19" secondAttribute="leading" constant="20" symbolic="YES" id="LGB-Rd-13A"/>
+                                                <constraint firstItem="Amd-sc-LTE" firstAttribute="top" secondItem="TO7-Vu-zAG" secondAttribute="bottom" id="Xfc-vT-hIn"/>
+                                                <constraint firstAttribute="trailing" secondItem="TO7-Vu-zAG" secondAttribute="trailing" constant="20" symbolic="YES" id="YGN-do-qbr"/>
+                                                <constraint firstItem="lXo-Bz-2Ai" firstAttribute="leading" secondItem="d1K-Ke-r19" secondAttribute="leading" constant="20" id="hyp-9m-pST"/>
+                                                <constraint firstItem="Amd-sc-LTE" firstAttribute="top" secondItem="lXo-Bz-2Ai" secondAttribute="bottom" constant="8" id="jin-Nh-8oi"/>
+                                                <constraint firstItem="TO7-Vu-zAG" firstAttribute="leading" secondItem="lXo-Bz-2Ai" secondAttribute="trailing" constant="46" id="mkJ-Zb-49f"/>
+                                                <constraint firstAttribute="bottom" secondItem="Amd-sc-LTE" secondAttribute="bottom" id="txS-JS-Ugp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -146,7 +155,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kKS-E7-SZe" firstAttribute="top" secondItem="vET-3o-5di" secondAttribute="top" id="25L-GT-YAw"/>
-                            <constraint firstItem="vET-3o-5di" firstAttribute="bottom" secondItem="kKS-E7-SZe" secondAttribute="bottom" id="WPf-wP-uBU"/>
+                            <constraint firstItem="vET-3o-5di" firstAttribute="bottom" secondItem="kKS-E7-SZe" secondAttribute="bottom" constant="33" id="WPf-wP-uBU"/>
                             <constraint firstItem="vET-3o-5di" firstAttribute="trailing" secondItem="kKS-E7-SZe" secondAttribute="trailing" id="jX1-kR-SSr"/>
                             <constraint firstItem="kKS-E7-SZe" firstAttribute="leading" secondItem="vET-3o-5di" secondAttribute="leading" id="x08-dI-Cyg"/>
                         </constraints>

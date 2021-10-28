@@ -64,7 +64,7 @@
             </objects>
             <point key="canvasLocation" x="2118.840579710145" y="-286.60714285714283"/>
         </scene>
-        <!--Kayyar Table View Controller-->
+        <!--Kayyar Spots-->
         <scene sceneID="5me-yu-JEZ">
             <objects>
                 <viewController id="Vsp-y2-XXa" customClass="KayyarTableViewController" customModule="mapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kKS-E7-SZe">
-                                <rect key="frame" x="0.0" y="88" width="414" height="741"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="689"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="59S-qS-RY1" customClass="myTableViewCell" customModule="mapKitPractice" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="83"/>
@@ -103,8 +103,8 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXo-Bz-2Ai">
-                                                    <rect key="frame" x="20" y="11" width="86" height="44"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                    <rect key="frame" x="20" y="11" width="122" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -118,7 +118,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="TO7-Vu-zAG" secondAttribute="trailing" constant="20" symbolic="YES" id="YGN-do-qbr"/>
                                                 <constraint firstItem="lXo-Bz-2Ai" firstAttribute="leading" secondItem="d1K-Ke-r19" secondAttribute="leading" constant="20" id="hyp-9m-pST"/>
                                                 <constraint firstItem="Amd-sc-LTE" firstAttribute="top" secondItem="lXo-Bz-2Ai" secondAttribute="bottom" constant="8" id="jin-Nh-8oi"/>
-                                                <constraint firstItem="TO7-Vu-zAG" firstAttribute="leading" secondItem="lXo-Bz-2Ai" secondAttribute="trailing" constant="46" id="mkJ-Zb-49f"/>
+                                                <constraint firstItem="TO7-Vu-zAG" firstAttribute="leading" secondItem="lXo-Bz-2Ai" secondAttribute="trailing" constant="10" id="mkJ-Zb-49f"/>
                                                 <constraint firstAttribute="bottom" secondItem="Amd-sc-LTE" secondAttribute="bottom" id="txS-JS-Ugp"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -160,7 +160,9 @@
                             <constraint firstItem="kKS-E7-SZe" firstAttribute="leading" secondItem="vET-3o-5di" secondAttribute="leading" id="x08-dI-Cyg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="DpE-kF-Mxo"/>
+                    <navigationItem key="navigationItem" title="Kayyar Spots" id="DpE-kF-Mxo">
+                        <barButtonItem key="backBarButtonItem" title=" " id="1f4-88-wA6"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="mySegmentedControl" destination="jv6-S4-hau" id="Vb9-n2-9tE"/>
                         <outlet property="myTableView" destination="kKS-E7-SZe" id="ee8-ZH-jLa"/>
@@ -194,7 +196,9 @@
                             <constraint firstItem="8ir-2u-MPu" firstAttribute="centerX" secondItem="jXx-Qa-U1i" secondAttribute="centerX" id="WAL-Zk-kV6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="RqD-a6-OLd"/>
+                    <navigationItem key="navigationItem" id="RqD-a6-OLd">
+                        <barButtonItem key="backBarButtonItem" title=" " id="gDa-Ef-qCS"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="detailMapView" destination="8ir-2u-MPu" id="Jcs-MY-Ur2"/>
                     </connections>
@@ -222,7 +226,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubs-oh-kXH">
-                                <rect key="frame" x="314" y="651" width="50" height="69"/>
+                                <rect key="frame" x="314" y="593" width="50" height="69"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                 <state key="normal" title="|K|">
                                     <color key="titleColor" red="0.99916261429999997" green="0.17425110939999999" blue="0.3347000182" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -237,12 +241,11 @@
                         <constraints>
                             <constraint firstItem="ubs-oh-kXH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="314" id="3Ei-l8-elj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ubs-oh-kXH" secondAttribute="trailing" constant="50" id="7fZ-UC-xWR"/>
-                            <constraint firstItem="ubs-oh-kXH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="563" id="7r8-HY-rZf"/>
                             <constraint firstItem="cER-tT-wY5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-125" id="8Oy-ye-XK4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ubs-oh-kXH" secondAttribute="bottom" constant="225" id="Aqf-TR-ity"/>
                             <constraint firstItem="cER-tT-wY5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ke3-Dc-9Wo"/>
                             <constraint firstAttribute="bottom" secondItem="Bj9-lG-zpL" secondAttribute="bottom" id="d45-qW-hIq"/>
                             <constraint firstItem="Bj9-lG-zpL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ouh-iG-eKP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ubs-oh-kXH" secondAttribute="bottom" constant="200" id="tN1-eT-C5f"/>
                             <constraint firstAttribute="trailing" secondItem="Bj9-lG-zpL" secondAttribute="trailing" id="uOE-vo-oCw"/>
                             <constraint firstItem="Bj9-lG-zpL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yQ4-nT-RYy"/>
                         </constraints>
@@ -485,9 +488,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pwN-O1-wTB" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aYg-bp-5a6">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="aYg-bp-5a6">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="4e8-mw-evY">

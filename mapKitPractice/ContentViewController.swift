@@ -23,10 +23,19 @@ var  myPlacemarks: CLPlacemark?
        
         kayyarButton.layer.cornerRadius = kayyarButton.bounds.height*0.5
             
-            NotificationCenter.default.addObserver(self, selector: #selector(self.updateAdressLabel(_:)), name: NSNotification.Name("Helloz"), object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.updateAdressLabel(_:)), name: NSNotification.Name("userPlacemarkNotification"), object: nil)
         
     
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+      
+      
+           
+        
+    }
+    
     
     @IBAction func kayyarButtonPressed(_ sender: UIButton) {
        
@@ -71,6 +80,8 @@ var  myPlacemarks: CLPlacemark?
                 let streetName = myPlacemark.thoroughfare ?? ""
                 self.adressLabel.text = "\(streetNumber) \(streetName)"
                 print(self.adressLabel.text)
+                print("first notification got triggered")
+                
             }
             
            

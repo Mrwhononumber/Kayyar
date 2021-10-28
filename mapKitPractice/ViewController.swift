@@ -9,11 +9,17 @@ import UIKit
 import MapKit
 import FloatingPanel
 
+protocol currentUserLocationDelegate {
+    func didUpdateCurrentUserLocation(location: CLLocation)
+}
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var myMapView: MKMapView!
   
+    var userLocation: CLLocation?
+    
+    
     var myAdress:String = ""
     var spots = Spots()
     var myPlacemark: CLPlacemark?
@@ -37,6 +43,7 @@ class ViewController: UIViewController {
         
     }
     
+  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
@@ -66,6 +73,7 @@ class ViewController: UIViewController {
     func setupLocationManager () {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//        locationManager.distanceFilter = 1
         
     }
     
@@ -76,6 +84,7 @@ class ViewController: UIViewController {
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeter, longitudinalMeters: regionInMeter)
             myMapView.setRegion(region, animated: true)
+            
         }
         
     }
@@ -133,7 +142,18 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-//        guard let location = locations.last else {return}
+//          userLocation = locations.last
+//
+//        print ("current location in view controller is \(userLocation)")
+      
+//            NotificationCenter.default.post(name: Notification.Name("userCurrentLocationNotification"), object: userLocation)
+        
+       
+        // share the users current location
+     
+        
+        
+        
 //        // Get current (last) coordinates of the user
 //        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 //        // Create the region surrounding the user
@@ -162,7 +182,7 @@ extension ViewController: MKMapViewDelegate {
         
         
         // check if the map has been moved more than 50 meters to proceed with the geoCoder request
-        guard centre.distance(from: previousLocation) > 50 else {return}
+        guard centre.distance(from: previousLocation) > 15 else {return}
         // update previous location to the current centre location
         self.previousLocation = centre
         
@@ -184,9 +204,9 @@ extension ViewController: MKMapViewDelegate {
                 self.myAdress = "\(streetNumber) \(streetName)"
                 self.myPlacemark = placemark
                 
-                NotificationCenter.default.post(name: NSNotification.Name("Helloz"), object: self.myPlacemark)
+                NotificationCenter.default.post(name: NSNotification.Name("userPlacemarkNotification"), object: self.myPlacemark)
                 
-//                AddressSingelton.shared.address = "\(streetNumber)-\(streetName)"
+
                 
                
                 

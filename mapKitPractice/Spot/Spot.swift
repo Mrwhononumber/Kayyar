@@ -19,7 +19,7 @@ class Spot {
     var numberOfReviews: Int
     var postingUserID: String
     var submitionDate: String
-    
+    var spotLocation: CLLocation { return CLLocation(latitude: latitude, longitude: longitude)}
     var documentID: String
     
     var dictionary: [String: Any] {

@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import CoreLocation
+
 class AddressSingelton {
     
     static let shared = AddressSingelton()
     
-    var address : String? = ""
+    var singeltonLocation : CLLocation?
 }

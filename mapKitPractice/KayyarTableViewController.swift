@@ -88,7 +88,7 @@ class KayyarTableViewController: UIViewController {
     
 }
 
-//MARK: - TableView Delegate and Datasource Methods
+//MARK: - TableView Datasource and Delegate Methods
 
 extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
     
@@ -100,18 +100,10 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! myTableViewCell
-        cell.streetLabel.text = spots.spotArray[indexPath.row].address
-        cell.cityLabel.text = spots.spotArray[indexPath.row].city
-        
-        if currentUserLocation != nil {
-            let distanceInMeters = (spots.spotArray[indexPath.row].spotLocation.distance(from: currentUserLocation))
-            let distanceInKiloMetre =  String(format:"%.1f",(distanceInMeters / 1000))
-            
-            cell.distanceLabel.text = "\(distanceInKiloMetre) Km away" // distance in km
-        } else {
-            cell.distanceLabel.text = "N/a"
+        if let currentUserLocation = currentUserLocation {
+            cell.userCurrentLocation = currentUserLocation
         }
-        
+        cell.cellSpot = spots.spotArray[indexPath.row]
         
         return cell
     }

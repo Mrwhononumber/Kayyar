@@ -9,16 +9,17 @@ import UIKit
 
 extension UIViewController {
     
-    func getCurrentDateTime() -> String{
+    func getCurrentDateTime() -> String {
         
         // Get the current date and time
         let currentDateTime = Date()
         
         // Initialize the date formatter and set the style
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM,yyyy"
-        formatter.timeStyle = .short
-        formatter.dateStyle = .short
+        formatter.dateFormat = "MM-dd-yyyy h:mm a"
+        
+//        formatter.timeStyle = .short
+//        formatter.dateStyle = .short
         
         // Get the date and time String from the date object
         let dateTimeString = formatter.string(from: currentDateTime)

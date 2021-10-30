@@ -18,12 +18,19 @@ class Spot {
     var dangerLevel: Double
     var numberOfReviews: Int
     var postingUserID: String
-    var submitionDate: String
+    var submitionDateString: String
+    var submitionDateObject: Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy h:mm a"
+        return formatter.date(from: submitionDateString)!
+        
+       
+    }
     var spotLocation: CLLocation { return CLLocation(latitude: latitude, longitude: longitude)}
     var documentID: String
     
     var dictionary: [String: Any] {
-        return ["city": city, "address":address, "latitude": latitude, "longitude": longitude, "kayyarMessage": kayyarMessage, "dangerLevel":dangerLevel, "numberOfReviews":numberOfReviews, "postingUserID": postingUserID, "submitionDate": submitionDate, "documentID":documentID]
+        return ["city": city, "address":address, "latitude": latitude, "longitude": longitude, "kayyarMessage": kayyarMessage, "dangerLevel":dangerLevel, "numberOfReviews":numberOfReviews, "postingUserID": postingUserID, "submitionDate": submitionDateString, "documentID":documentID]
     }
     
     init(city: String, address: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees, kayyarMessage: String, dangerLevel: Double, numberOfReviews: Int, postingUserID: String, submitionDate: String, documentID: String) {
@@ -34,7 +41,7 @@ class Spot {
         self.kayyarMessage = kayyarMessage
         self.dangerLevel = dangerLevel
         self.numberOfReviews = numberOfReviews
-        self.submitionDate = submitionDate
+        self.submitionDateString = submitionDate
         self.postingUserID = postingUserID
         
         self.documentID = documentID

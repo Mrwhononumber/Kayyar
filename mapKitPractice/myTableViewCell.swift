@@ -12,6 +12,7 @@ class myTableViewCell: UITableViewCell {
     @IBOutlet weak var streetLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
+    
    
     
     

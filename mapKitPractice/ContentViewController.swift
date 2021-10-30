@@ -44,10 +44,10 @@ var  myPlacemarks: CLPlacemark?
         var spot = Spot()
         spot.address = adressLabel.text!
         spot.kayyarMessage = messageLabel.text!
-        spot.city = myPlacemarks!.locality!
+        spot.city = myPlacemarks!.locality ?? ""
         spot.latitude = (myPlacemarks?.location?.coordinate.latitude)!
         spot.longitude = (myPlacemarks?.location?.coordinate.longitude)!
-        spot.submitionDate = getCurrentDateTime()
+        spot.submitionDateString = getCurrentDateTime()
         
         
         // Save the data

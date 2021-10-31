@@ -105,6 +105,7 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
         }
         cell.cellSpot = spots.spotArray[indexPath.row]
         
+        
         return cell
     }
     

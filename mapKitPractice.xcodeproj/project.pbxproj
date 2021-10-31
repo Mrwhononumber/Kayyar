@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6611900E272DF8FB006B94FA /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6611900D272DF8FA006B94FA /* Nunito-Regular.ttf */; };
 		6659781B271822E000385F71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659781A271822E000385F71 /* AppDelegate.swift */; };
 		6659781D271822E000385F71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659781C271822E000385F71 /* SceneDelegate.swift */; };
 		6659781F271822E000385F71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659781E271822E000385F71 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6611900D272DF8FA006B94FA /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		66597817271822E000385F71 /* mapKitPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapKitPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6659781A271822E000385F71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6659781C271822E000385F71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,12 +86,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6611900F272DF907006B94FA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6611900D272DF8FA006B94FA /* Nunito-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		6659780E271822E000385F71 = {
 			isa = PBXGroup;
 			children = (
 				66C9FB8D2728190B00A05FAA /* UIViewController+alert.swift */,
 				6663884527286340008AE2D3 /* UIViewController+currentDate.swift */,
 				66C9FB892724862B00A05FAA /* UIViewController+avtivityIndicator.swift */,
+				6611900F272DF907006B94FA /* Fonts */,
 				66597819271822E000385F71 /* mapKitPractice */,
 				66597818271822E000385F71 /* Products */,
 				E1864614A828DF94F9056156 /* Pods */,
@@ -234,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6611900E272DF8FB006B94FA /* Nunito-Regular.ttf in Resources */,
 				66597827271822E400385F71 /* LaunchScreen.storyboard in Resources */,
 				6683CC81271D66F30056ED55 /* GoogleService-Info.plist in Resources */,
 				66597824271822E400385F71 /* Assets.xcassets in Resources */,

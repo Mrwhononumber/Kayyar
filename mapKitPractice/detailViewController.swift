@@ -24,6 +24,7 @@ class detailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showMySpinner()
+        self.title = detailSpot.city
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

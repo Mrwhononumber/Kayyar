@@ -186,25 +186,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ir-2u-MPu">
-                                <rect key="frame" x="0.0" y="319.5" width="414" height="257"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hf-xi-z7F">
+                                <rect key="frame" x="27" y="140" width="360" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="257" id="5Ga-cY-qqn"/>
-                                    <constraint firstAttribute="width" constant="414" id="eCf-yL-ftY"/>
+                                    <constraint firstAttribute="height" constant="60" id="hQf-Wo-ByB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ir-2u-MPu">
+                                <rect key="frame" x="0.0" y="207" width="414" height="257"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="257" id="X9L-fE-7c6"/>
+                                    <constraint firstAttribute="width" constant="414" id="s7l-Dd-dK3"/>
                                 </constraints>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nCf-Ig-7va"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8ir-2u-MPu" firstAttribute="centerY" secondItem="jXx-Qa-U1i" secondAttribute="centerY" id="HEt-K7-xsK"/>
-                            <constraint firstItem="8ir-2u-MPu" firstAttribute="centerX" secondItem="jXx-Qa-U1i" secondAttribute="centerX" id="WAL-Zk-kV6"/>
+                            <constraint firstAttribute="trailing" secondItem="8ir-2u-MPu" secondAttribute="trailing" id="7mI-sb-ybD"/>
+                            <constraint firstItem="6Hf-xi-z7F" firstAttribute="top" secondItem="nCf-Ig-7va" secondAttribute="top" id="9J0-Z0-OhK"/>
+                            <constraint firstItem="8ir-2u-MPu" firstAttribute="leading" secondItem="jXx-Qa-U1i" secondAttribute="leading" id="IxF-Gx-2pZ"/>
+                            <constraint firstItem="8ir-2u-MPu" firstAttribute="top" secondItem="6Hf-xi-z7F" secondAttribute="bottom" constant="7" id="KN1-IR-B65"/>
+                            <constraint firstItem="nCf-Ig-7va" firstAttribute="trailing" secondItem="6Hf-xi-z7F" secondAttribute="trailing" constant="27" id="RBq-N5-gHS"/>
+                            <constraint firstItem="6Hf-xi-z7F" firstAttribute="leading" secondItem="nCf-Ig-7va" secondAttribute="leading" constant="27" id="n34-te-CQw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RqD-a6-OLd">
                         <barButtonItem key="backBarButtonItem" title=" " id="gDa-Ef-qCS"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addressLabel" destination="6Hf-xi-z7F" id="2HQ-HT-Exe"/>
                         <outlet property="detailMapView" destination="8ir-2u-MPu" id="Jcs-MY-Ur2"/>
                     </connections>
                 </viewController>

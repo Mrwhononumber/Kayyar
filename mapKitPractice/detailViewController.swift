@@ -12,13 +12,15 @@ class detailViewController: UIViewController {
 
     @IBOutlet weak var detailMapView: MKMapView!
     
+    @IBOutlet weak var addressLabel: UILabel!
+   
     var detailSpot: Spot!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(detailSpot.address)
-        setupDetailMaViewMap()
-        // Do any additional setup after loading the view.
+        
+        updateUI()
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +32,18 @@ class detailViewController: UIViewController {
         super.viewDidAppear(animated)
         removeMySpenner()
     }
+    
+ 
+    
+    func updateUI(){
+        addressLabel.text = detailSpot.address
+        setupDetailMaViewMap()
+    }
+    
+    
+    
+    
+    //MARK: - DetailView Map setup
     
     func setupDetailMaViewMap(){
         

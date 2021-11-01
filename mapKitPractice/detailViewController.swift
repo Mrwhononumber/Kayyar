@@ -13,6 +13,9 @@ class detailViewController: UIViewController {
     @IBOutlet weak var detailMapView: MKMapView!
     
     @IBOutlet weak var addressLabel: UILabel!
+    
+  
+    
    
     var detailSpot: Spot!
     
@@ -26,7 +29,7 @@ class detailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showMySpinner()
-        self.title = detailSpot.city
+      
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -37,7 +40,9 @@ class detailViewController: UIViewController {
     
     func updateUI(){
         addressLabel.text = detailSpot.address
+        
         setupDetailMaViewMap()
+        self.title = detailSpot.city
     }
     
     

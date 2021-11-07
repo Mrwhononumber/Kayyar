@@ -278,7 +278,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" id="Ze6-RF-hRy">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" id="Ze6-RF-hRy" customClass="ReviewTableViewCell" customModule="mapKitPractice" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="524.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ze6-RF-hRy" id="svP-Qy-PmS">
@@ -307,6 +307,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="MEf-K0-ldG" secondAttribute="trailing" constant="10" id="zNI-ep-Nbq"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="reviewBodyLabel" destination="CHW-PT-3II" id="4Ia-YW-IGv"/>
+                                            <outlet property="reviewTitleLabel" destination="MEf-K0-ldG" id="CBn-c1-Gva"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -115,7 +115,7 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetail" {
-            let destination = segue.destination as! detailViewController
+            let destination = segue.destination as! DetailViewController
             let selectedIndexPath = myTableView.indexPathForSelectedRow!
             destination.detailSpot = spots.spotArray[selectedIndexPath.row]
         }

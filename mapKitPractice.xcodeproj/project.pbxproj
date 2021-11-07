@@ -29,11 +29,14 @@
 		6683CC7D271D64F20056ED55 /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6683CC7C271D64F20056ED55 /* CustomUI.swift */; };
 		6683CC81271D66F30056ED55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6683CC80271D66F20056ED55 /* GoogleService-Info.plist */; };
 		6683CC84271D68CA0056ED55 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6683CC83271D68CA0056ED55 /* Spot.swift */; };
+		669DC2CD2733FED200F5999E /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC2CC2733FED200F5999E /* ReviewViewController.swift */; };
+		669DC2D0273407A900F5999E /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC2CF273407A900F5999E /* Review.swift */; };
+		669DC2D22734113800F5999E /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DC2D12734113800F5999E /* Reviews.swift */; };
 		66C9FB8427217E3A00A05FAA /* KayyarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9FB8327217E3A00A05FAA /* KayyarTableViewController.swift */; };
 		66C9FB862721814700A05FAA /* myTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9FB852721814700A05FAA /* myTableViewCell.swift */; };
 		66C9FB882721DAD000A05FAA /* Spots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9FB872721DAD000A05FAA /* Spots.swift */; };
 		66C9FB8A2724862B00A05FAA /* UIViewController+avtivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9FB892724862B00A05FAA /* UIViewController+avtivityIndicator.swift */; };
-		66C9FB8C2726E14C00A05FAA /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9FB8B2726E14B00A05FAA /* detailViewController.swift */; };
+		66C9FB8C2726E14C00A05FAA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9FB8B2726E14B00A05FAA /* DetailViewController.swift */; };
 		66C9FB8E2728190B00A05FAA /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C9FB8D2728190B00A05FAA /* UIViewController+alert.swift */; };
 		E27C3F7FC76F596F427AF302 /* Pods_mapKitPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F89D40F80B8D79315A56A473 /* Pods_mapKitPractice.framework */; };
 /* End PBXBuildFile section */
@@ -58,11 +61,14 @@
 		6683CC7C271D64F20056ED55 /* CustomUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
 		6683CC80271D66F20056ED55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		6683CC83271D68CA0056ED55 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		669DC2CC2733FED200F5999E /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		669DC2CF273407A900F5999E /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		669DC2D12734113800F5999E /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		66C9FB8327217E3A00A05FAA /* KayyarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KayyarTableViewController.swift; sourceTree = "<group>"; };
 		66C9FB852721814700A05FAA /* myTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myTableViewCell.swift; sourceTree = "<group>"; };
 		66C9FB872721DAD000A05FAA /* Spots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spots.swift; sourceTree = "<group>"; };
 		66C9FB892724862B00A05FAA /* UIViewController+avtivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+avtivityIndicator.swift"; sourceTree = "<group>"; };
-		66C9FB8B2726E14B00A05FAA /* detailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = detailViewController.swift; path = mapKitPractice/detailViewController.swift; sourceTree = SOURCE_ROOT; };
+		66C9FB8B2726E14B00A05FAA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = mapKitPractice/DetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		66C9FB8D2728190B00A05FAA /* UIViewController+alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		CCD87FDA92EBA27D5AF08E70 /* Pods-mapKitPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapKitPractice.debug.xcconfig"; path = "Target Support Files/Pods-mapKitPractice/Pods-mapKitPractice.debug.xcconfig"; sourceTree = "<group>"; };
 		E217CC148FE33CBC6ADD7B2C /* Pods-mapKitPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapKitPractice.release.xcconfig"; path = "Target Support Files/Pods-mapKitPractice/Pods-mapKitPractice.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,11 +126,13 @@
 			isa = PBXGroup;
 			children = (
 				6683CC82271D68B60056ED55 /* Spot */,
+				669DC2CE2734077500F5999E /* Review */,
 				6683CC75271D63920056ED55 /* Authentication */,
 				6659781E271822E000385F71 /* ViewController.swift */,
 				6683CC63271994870056ED55 /* ContentViewController.swift */,
 				66C9FB8327217E3A00A05FAA /* KayyarTableViewController.swift */,
-				66C9FB8B2726E14B00A05FAA /* detailViewController.swift */,
+				66C9FB8B2726E14B00A05FAA /* DetailViewController.swift */,
+				669DC2CC2733FED200F5999E /* ReviewViewController.swift */,
 				6683CC67271C19200056ED55 /* MyFloatingPanelLayout.swift */,
 				66597820271822E000385F71 /* Main.storyboard */,
 				66C9FB852721814700A05FAA /* myTableViewCell.swift */,
@@ -153,10 +161,19 @@
 		6683CC82271D68B60056ED55 /* Spot */ = {
 			isa = PBXGroup;
 			children = (
-				6683CC83271D68CA0056ED55 /* Spot.swift */,
 				66C9FB872721DAD000A05FAA /* Spots.swift */,
+				6683CC83271D68CA0056ED55 /* Spot.swift */,
 			);
 			path = Spot;
+			sourceTree = "<group>";
+		};
+		669DC2CE2734077500F5999E /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				669DC2CF273407A900F5999E /* Review.swift */,
+				669DC2D12734113800F5999E /* Reviews.swift */,
+			);
+			path = Review;
 			sourceTree = "<group>";
 		};
 		A9B7D19B879AA5B3A635460B /* Frameworks */ = {
@@ -307,15 +324,18 @@
 				6683CC68271C19200056ED55 /* MyFloatingPanelLayout.swift in Sources */,
 				66C9FB862721814700A05FAA /* myTableViewCell.swift in Sources */,
 				6663884627286340008AE2D3 /* UIViewController+currentDate.swift in Sources */,
+				669DC2D0273407A900F5999E /* Review.swift in Sources */,
+				669DC2D22734113800F5999E /* Reviews.swift in Sources */,
 				66C9FB8E2728190B00A05FAA /* UIViewController+alert.swift in Sources */,
 				6683CC7D271D64F20056ED55 /* CustomUI.swift in Sources */,
 				6683CC662719B76F0056ED55 /* AddressSingelton.swift in Sources */,
 				6683CC7A271D646A0056ED55 /* SignUpViewController.swift in Sources */,
-				66C9FB8C2726E14C00A05FAA /* detailViewController.swift in Sources */,
+				66C9FB8C2726E14C00A05FAA /* DetailViewController.swift in Sources */,
 				6659781F271822E000385F71 /* ViewController.swift in Sources */,
 				66C9FB8A2724862B00A05FAA /* UIViewController+avtivityIndicator.swift in Sources */,
 				66C9FB8427217E3A00A05FAA /* KayyarTableViewController.swift in Sources */,
 				6659781B271822E000385F71 /* AppDelegate.swift in Sources */,
+				669DC2CD2733FED200F5999E /* ReviewViewController.swift in Sources */,
 				6659781D271822E000385F71 /* SceneDelegate.swift in Sources */,
 				6683CC84271D68CA0056ED55 /* Spot.swift in Sources */,
 				6683CC79271D646A0056ED55 /* HomeViewController.swift in Sources */,

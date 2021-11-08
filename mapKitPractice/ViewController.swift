@@ -9,9 +9,7 @@ import UIKit
 import MapKit
 import FloatingPanel
 
-protocol currentUserLocationDelegate {
-    func didUpdateCurrentUserLocation(location: CLLocation)
-}
+
 
 class ViewController: UIViewController {
 
@@ -36,8 +34,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
-        myMapView.delegate = self
+        
+        setupMapView()
         checkLocationServices()
         setupFloatingPanel()
         
@@ -46,14 +44,25 @@ class ViewController: UIViewController {
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
-        
+       
+        customizeNavigationController()
         showMySpinner()
     }
+  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+     
         removeMySpenner()
     }
+    
+    func customizeNavigationController(){
+        navigationController?.navigationBar.isHidden = true
+    }
+   
+    func setupMapView(){
+        myMapView.delegate = self
+    }
+    
 
 
     func checkLocationServices(){
@@ -182,7 +191,7 @@ extension ViewController: MKMapViewDelegate {
         
         
         // check if the map has been moved more than 50 meters to proceed with the geoCoder request
-        guard centre.distance(from: previousLocation) > 15 else {return}
+        guard centre.distance(from: previousLocation) > 50 else {return}
         // update previous location to the current centre location
         self.previousLocation = centre
         
@@ -198,7 +207,7 @@ extension ViewController: MKMapViewDelegate {
             }
             let streetNumber = placemark.subThoroughfare ?? ""
             let streetName = placemark.thoroughfare ?? ""
-//
+
             DispatchQueue.main.async {
                 
                 self.myAdress = "\(streetNumber) \(streetName)"

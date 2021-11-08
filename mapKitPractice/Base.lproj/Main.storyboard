@@ -141,7 +141,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" id="ghQ-3Z-gqr">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="jv6-S4-hau">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="jv6-S4-hau">
                                             <rect key="frame" x="20" y="5.5" width="374" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
@@ -279,32 +279,35 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" id="Ze6-RF-hRy" customClass="ReviewTableViewCell" customModule="mapKitPractice" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="524.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="524.5" width="414" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ze6-RF-hRy" id="svP-Qy-PmS">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEf-K0-ldG">
-                                                    <rect key="frame" x="10" y="0.0" width="394" height="14.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the label of the  place whwere al the stuff goes to the ground because I'll never be sad again" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHW-PT-3II">
-                                                    <rect key="frame" x="7" y="8" width="400" height="33.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="6PO-IK-pVf">
+                                                    <rect key="frame" x="12" y="5" width="390" height="56.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEf-K0-ldG">
+                                                            <rect key="frame" x="0.0" y="0.0" width="390" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                            <color key="textColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the label of the  place whwere al the stuff goes to the ground because I'll never be sad again" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHW-PT-3II">
+                                                            <rect key="frame" x="0.0" y="23" width="390" height="33.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MEf-K0-ldG" firstAttribute="top" secondItem="svP-Qy-PmS" secondAttribute="top" id="aAc-WN-cLa"/>
-                                                <constraint firstItem="CHW-PT-3II" firstAttribute="leading" secondItem="svP-Qy-PmS" secondAttribute="leading" constant="7" id="hp2-Ld-TUb"/>
-                                                <constraint firstAttribute="bottom" secondItem="CHW-PT-3II" secondAttribute="bottom" constant="2.5" id="oei-vk-9kk"/>
-                                                <constraint firstAttribute="trailing" secondItem="CHW-PT-3II" secondAttribute="trailing" constant="7" id="tDh-ol-7QJ"/>
-                                                <constraint firstItem="MEf-K0-ldG" firstAttribute="leading" secondItem="svP-Qy-PmS" secondAttribute="leading" constant="10" id="usG-9w-4OX"/>
-                                                <constraint firstAttribute="trailing" secondItem="MEf-K0-ldG" secondAttribute="trailing" constant="10" id="zNI-ep-Nbq"/>
+                                                <constraint firstAttribute="bottom" secondItem="6PO-IK-pVf" secondAttribute="bottom" constant="5" id="Ti0-pt-jFl"/>
+                                                <constraint firstAttribute="trailing" secondItem="6PO-IK-pVf" secondAttribute="trailing" constant="12" id="oCb-UH-XZr"/>
+                                                <constraint firstItem="6PO-IK-pVf" firstAttribute="top" secondItem="svP-Qy-PmS" secondAttribute="top" constant="5" id="uhb-9V-AV1"/>
+                                                <constraint firstItem="6PO-IK-pVf" firstAttribute="leading" secondItem="svP-Qy-PmS" secondAttribute="leading" constant="12" id="wI1-bf-RgG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -329,7 +332,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addressLabel" destination="6Hf-xi-z7F" id="2HQ-HT-Exe"/>
+                        <outlet property="cameraButton" destination="wM6-qu-lGx" id="YZn-gb-J9L"/>
                         <outlet property="detailMapView" destination="8ir-2u-MPu" id="Jcs-MY-Ur2"/>
+                        <outlet property="reviewButton" destination="Aug-m0-fPk" id="ejG-v5-P7m"/>
                         <outlet property="reviewTableView" destination="b8W-e0-KBh" id="cnr-NZ-67z"/>
                     </connections>
                 </viewController>

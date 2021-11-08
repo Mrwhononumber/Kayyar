@@ -141,7 +141,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" id="ghQ-3Z-gqr">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="jv6-S4-hau">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="jv6-S4-hau">
                                             <rect key="frame" x="20" y="5.5" width="374" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
@@ -738,7 +738,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="reviewAdressLabel" destination="fsA-eu-lO6" id="H3W-Pl-FYw"/>
+                        <outlet property="reviewAdressLabel" destination="FTK-AE-zEq" id="FKF-v6-MXK"/>
                         <outlet property="reviewDateLabel" destination="3YK-1C-eHY" id="obP-26-qCY"/>
                         <outlet property="reviewKayyarLevelLabel" destination="3Jw-AN-V2i" id="ENK-t9-Nc6"/>
                         <outlet property="saveButton" destination="gWT-jl-D06" id="RUm-SK-rpg"/>

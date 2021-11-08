@@ -175,7 +175,7 @@ extension KayyarTableViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentUserLocation = locations.last
         
-        print ("current user location in tableview is \(currentUserLocation)")
+//        print ("current user location in tableview is \(currentUserLocation)")
         
     }
     

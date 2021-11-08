@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6611900E272DF8FB006B94FA /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6611900D272DF8FA006B94FA /* Nunito-Regular.ttf */; };
 		665185E22737D34A00899019 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665185E12737D34A00899019 /* ReviewTableViewCell.swift */; };
+		665185E427396F6800899019 /* UIViewController+getCurrentUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665185E327396F6800899019 /* UIViewController+getCurrentUsername.swift */; };
 		6659781B271822E000385F71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659781A271822E000385F71 /* AppDelegate.swift */; };
 		6659781D271822E000385F71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659781C271822E000385F71 /* SceneDelegate.swift */; };
 		6659781F271822E000385F71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659781E271822E000385F71 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		6611900D272DF8FA006B94FA /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		665185E12737D34A00899019 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		665185E327396F6800899019 /* UIViewController+getCurrentUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getCurrentUsername.swift"; sourceTree = "<group>"; };
 		66597817271822E000385F71 /* mapKitPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapKitPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6659781A271822E000385F71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6659781C271822E000385F71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		6659780E271822E000385F71 = {
 			isa = PBXGroup;
 			children = (
+				665185E327396F6800899019 /* UIViewController+getCurrentUsername.swift */,
 				66C9FB8D2728190B00A05FAA /* UIViewController+alert.swift */,
 				6663884527286340008AE2D3 /* UIViewController+currentDate.swift */,
 				66C9FB892724862B00A05FAA /* UIViewController+avtivityIndicator.swift */,
@@ -327,6 +330,7 @@
 				6683CC68271C19200056ED55 /* MyFloatingPanelLayout.swift in Sources */,
 				66C9FB862721814700A05FAA /* myTableViewCell.swift in Sources */,
 				6663884627286340008AE2D3 /* UIViewController+currentDate.swift in Sources */,
+				665185E427396F6800899019 /* UIViewController+getCurrentUsername.swift in Sources */,
 				669DC2D0273407A900F5999E /* Review.swift in Sources */,
 				669DC2D22734113800F5999E /* Reviews.swift in Sources */,
 				66C9FB8E2728190B00A05FAA /* UIViewController+alert.swift in Sources */,

@@ -17,6 +17,7 @@ class ReviewTableViewCell: UITableViewCell {
         didSet{
             // set the treviewtitle to the username
             reviewBodyLabel.text = review.userReview
+            reviewTitleLabel.text = review.reviewUsername
         }
         
         

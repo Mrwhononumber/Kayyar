@@ -31,7 +31,7 @@ class Reviews {
            // clear all the data inside spotArray
             self.reviewArray = []
             
-            //
+            //create dictionaries out of all the documents and appened it to the review array
             for document in querySnapshot!.documents {
                 
                 let review = Review(dictionary: document.data())

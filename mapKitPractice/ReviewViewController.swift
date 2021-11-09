@@ -22,13 +22,22 @@ class ReviewViewController: UIViewController {
   
     
     var spot: Spot!
+    var theUsername: String?
  
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+       
         // Do any additional setup after loading the view.
+    }
+   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // update the value of the current username
+        getCurrentUsername { username in
+            self.theUsername = username
+        }
     }
     
     func setupUI() {
@@ -40,18 +49,27 @@ class ReviewViewController: UIViewController {
     
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-        var review = Review()
-        review.reviewDate = getCurrentDateTime()
-        review.userReview = self.userReview.text
-      
-        review.saveReviewData(spot: spot) { (success) in
-            if success {
-                // Go back programatically
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                print ("Error saving the review")
+       
+       
+            var review = Review()
+          
+            review.reviewDate = self.getCurrentDateTime()
+            review.userReview = self.userReview.text
+            review.reviewUsername = theUsername ?? "No username"
+            
+            review.saveReviewData(spot: self.spot) { (success) in
+                if success {
+                    // Go back programatically
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    print ("Error saving the review")
+                }
             }
-        }
+           
+            
+       
+      
+        
         
     }
     

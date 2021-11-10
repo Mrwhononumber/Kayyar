@@ -10,6 +10,7 @@
 		6611900E272DF8FB006B94FA /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6611900D272DF8FA006B94FA /* Nunito-Regular.ttf */; };
 		665185E22737D34A00899019 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665185E12737D34A00899019 /* ReviewTableViewCell.swift */; };
 		665185E427396F6800899019 /* UIViewController+getCurrentUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665185E327396F6800899019 /* UIViewController+getCurrentUsername.swift */; };
+		665185E7273AC6AB00899019 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665185E6273AC6AB00899019 /* Photo.swift */; };
 		6659781B271822E000385F71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659781A271822E000385F71 /* AppDelegate.swift */; };
 		6659781D271822E000385F71 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659781C271822E000385F71 /* SceneDelegate.swift */; };
 		6659781F271822E000385F71 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6659781E271822E000385F71 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		6611900D272DF8FA006B94FA /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		665185E12737D34A00899019 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		665185E327396F6800899019 /* UIViewController+getCurrentUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getCurrentUsername.swift"; sourceTree = "<group>"; };
+		665185E6273AC6AB00899019 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		66597817271822E000385F71 /* mapKitPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapKitPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6659781A271822E000385F71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6659781C271822E000385F71 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		665185E5273AC68A00899019 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				665185E6273AC6AB00899019 /* Photo.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
 		6659780E271822E000385F71 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +140,7 @@
 		66597819271822E000385F71 /* mapKitPractice */ = {
 			isa = PBXGroup;
 			children = (
+				665185E5273AC68A00899019 /* Photo */,
 				6683CC82271D68B60056ED55 /* Spot */,
 				669DC2CE2734077500F5999E /* Review */,
 				6683CC75271D63920056ED55 /* Authentication */,
@@ -325,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				665185E7273AC6AB00899019 /* Photo.swift in Sources */,
 				6683CC7B271D646A0056ED55 /* LoginViewController.swift in Sources */,
 				66C9FB882721DAD000A05FAA /* Spots.swift in Sources */,
 				6683CC68271C19200056ED55 /* MyFloatingPanelLayout.swift in Sources */,

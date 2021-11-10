@@ -46,8 +46,8 @@ class Photo {
         let photoUsername = dictionary["photoUsername"] as! String? ?? ""
         let photoDate = dictionary["photoUsername"] as! String? ?? ""
         let photoURL = dictionary["photoURL"] as! String? ?? ""
-        let documentID = dictionary["documentID"] as! String? ?? ""
-        self.init(image: image, description: description, photoUserID: photoUserID, photoUsername: photoUsername, photoDate: photoDate, photoURL: photoURL, documentID: documentID)
+        
+        self.init(image: image, description: description, photoUserID: photoUserID, photoUsername: photoUsername, photoDate: photoDate, photoURL: photoURL, documentID: "")
         
     }
     

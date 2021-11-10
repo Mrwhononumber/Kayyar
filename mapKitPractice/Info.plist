@@ -68,5 +68,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Basem will need Access to your camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Basem will need Access to your Photo library</string>
 </dict>
 </plist>

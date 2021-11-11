@@ -48,10 +48,7 @@ class Review {
     
     func saveReviewData(spot: Spot, complition: @escaping (Bool) -> ()) {
         
-        
         let db = Firestore.firestore()
-        
-     
         
         // Create the dictionary representing the data we want to save
         let dataToSave: [String:Any] = self.dictionary
@@ -67,7 +64,7 @@ class Review {
                 print(" 🤣 🤣 🤣 Added review document\(self.documentID) to spot\(spot.address)")
                 complition(true)
             }
-            // in this case the documet has been saved before so we need to update it
+            // in this case the documet has been saved before so we need to update it using setData
         } else {
             let ref = db.collection("spots").document(spot.documentID).collection("reviews").document(self.documentID)
             ref.setData(dataToSave) { error in

@@ -8,6 +8,8 @@
 import UIKit
 import MapKit
 
+
+
 class SpotDetailViewController: UIViewController {
    
     @IBOutlet weak var reviewTableview: UITableView!
@@ -21,6 +23,7 @@ class SpotDetailViewController: UIViewController {
    
     var detailSpot: Spot!
     var reviews = Reviews()
+    var userName: String?
     
     
     
@@ -38,6 +41,10 @@ class SpotDetailViewController: UIViewController {
         showMySpinner()
         reviews.loadReviewData(spot: detailSpot) {
             self.reviewTableview.reloadData()
+        }
+        getCurrentUsername{name in
+            self.userName = name
+            
         }
       
     }
@@ -156,6 +163,8 @@ extension SpotDetailViewController: UIImagePickerControllerDelegate, UINavigatio
         }
         // save the myImage to FireStore
         var photo = Photo()
+        photo.photoUsername = userName ?? ""
+        photo.photoDate = getCurrentDateTime()
         photo.image = myImage ?? UIImage()
         photo.savePhotoData(spot: detailSpot) { success in
             if success {

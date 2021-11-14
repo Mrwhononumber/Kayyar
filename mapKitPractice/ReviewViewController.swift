@@ -43,6 +43,7 @@ class ReviewViewController: UIViewController {
     func setupUI() {
         reviewAdressLabel.text = spot.address
         reviewDateLabel.text = getCurrentDateTime()
+        
     }
     
     

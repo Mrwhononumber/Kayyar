@@ -13,16 +13,15 @@ import MapKit
 class SpotDetailViewController: UIViewController {
    
     @IBOutlet weak var reviewTableview: UITableView!
-    
-    
+    @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var detailMapView: MKMapView!
-    
     @IBOutlet weak var addressLabel: UILabel!
     
     
    
     var detailSpot: Spot!
     var reviews = Reviews()
+    var photos = Photos()
     var userName: String?
     
     
@@ -39,9 +38,14 @@ class SpotDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showMySpinner()
+        setupMyCollectionView()
         reviews.loadReviewData(spot: detailSpot) {
             self.reviewTableview.reloadData()
         }
+        photos.loadPhotoData(spot: detailSpot) {
+            self.myCollectionView.reloadData()
+        }
+        
         getCurrentUsername{name in
             self.userName = name
             
@@ -184,6 +188,46 @@ extension SpotDetailViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
+    
+}
+
+//MARK: - CollectionView
+
+
+
+
+extension SpotDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func setupMyCollectionView(){
+        myCollectionView.delegate = self
+        myCollectionView.dataSource = self
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if photos.photoArray.count > 0 {
+            return photos.photoArray.count
+        } else {
+            return 0
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = myCollectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath) as! MyCollectionViewCell
+        cell.spot = detailSpot
+        if photos.photoArray.count > 0 {
+            cell.photo = photos.photoArray[indexPath.row]
+        }
+       
+        
+        return cell
+    }
+    
+    
+    
+    
     
     
     

@@ -110,6 +110,25 @@ class Photo {
         
     }
     
+    func loadImages(spot: Spot, completion: @escaping (Bool)-> ()) {
+        guard spot.documentID != "" else {
+            print ("Error: there is no vlid documentID ")
+            return
+        }
+        let storage = Storage.storage()
+        let storageRef = storage.reference().child(spot.documentID).child(documentID)
+        storageRef.getData(maxSize: 25 * 1024 * 1024) { Data, error in
+            if let error = error {
+                print("Error: Error happened while reading data from storrageRef: \(error)")
+                return completion(false)
+            } else {
+                self.image = UIImage(data: Data!) ?? UIImage()
+                return completion(true)
+            }
+            
+        }
+    }
+    
     
 }
 

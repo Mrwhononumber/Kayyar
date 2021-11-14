@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6611900E272DF8FB006B94FA /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6611900D272DF8FA006B94FA /* Nunito-Regular.ttf */; };
+		6622A4C727412594001D8588 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6622A4C627412594001D8588 /* Photos.swift */; };
+		6622A4C92741296B001D8588 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6622A4C82741296B001D8588 /* MyCollectionViewCell.swift */; };
 		664FB1BA273D6A44001524BF /* SpotDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664FB1B9273D6A44001524BF /* SpotDetailViewController.swift */; };
 		665185E22737D34A00899019 /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665185E12737D34A00899019 /* ReviewTableViewCell.swift */; };
 		665185E427396F6800899019 /* UIViewController+getCurrentUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665185E327396F6800899019 /* UIViewController+getCurrentUsername.swift */; };
@@ -67,6 +69,8 @@
 
 /* Begin PBXFileReference section */
 		6611900D272DF8FA006B94FA /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		6622A4C627412594001D8588 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		6622A4C82741296B001D8588 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		664FB1B9273D6A44001524BF /* SpotDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotDetailViewController.swift; sourceTree = "<group>"; };
 		665185E12737D34A00899019 /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		665185E327396F6800899019 /* UIViewController+getCurrentUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+getCurrentUsername.swift"; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				665185E6273AC6AB00899019 /* Photo.swift */,
+				6622A4C627412594001D8588 /* Photos.swift */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				6683CC63271994870056ED55 /* ContentViewController.swift */,
 				66C9FB8327217E3A00A05FAA /* KayyarTableViewController.swift */,
 				664FB1B9273D6A44001524BF /* SpotDetailViewController.swift */,
+				6622A4C82741296B001D8588 /* MyCollectionViewCell.swift */,
 				669DC2CC2733FED200F5999E /* ReviewViewController.swift */,
 				6683CC67271C19200056ED55 /* MyFloatingPanelLayout.swift */,
 				66597820271822E000385F71 /* Main.storyboard */,
@@ -407,6 +413,7 @@
 				66C9FB862721814700A05FAA /* myTableViewCell.swift in Sources */,
 				6663884627286340008AE2D3 /* UIViewController+currentDate.swift in Sources */,
 				665185E427396F6800899019 /* UIViewController+getCurrentUsername.swift in Sources */,
+				6622A4C92741296B001D8588 /* MyCollectionViewCell.swift in Sources */,
 				669DC2D0273407A900F5999E /* Review.swift in Sources */,
 				669DC2D22734113800F5999E /* Reviews.swift in Sources */,
 				66C9FB8E2728190B00A05FAA /* UIViewController+alert.swift in Sources */,
@@ -417,6 +424,7 @@
 				66C9FB8A2724862B00A05FAA /* UIViewController+avtivityIndicator.swift in Sources */,
 				66C9FB8427217E3A00A05FAA /* KayyarTableViewController.swift in Sources */,
 				6659781B271822E000385F71 /* AppDelegate.swift in Sources */,
+				6622A4C727412594001D8588 /* Photos.swift in Sources */,
 				669DC2CD2733FED200F5999E /* ReviewViewController.swift in Sources */,
 				665185E22737D34A00899019 /* ReviewTableViewCell.swift in Sources */,
 				6659781D271822E000385F71 /* SceneDelegate.swift in Sources */,

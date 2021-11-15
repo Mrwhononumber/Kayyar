@@ -7,5 +7,5 @@ target 'mapKitPractice' do
 
   pod 'FloatingPanel'
   pod 'IQKeyboardManagerSwift'
-
+  pod 'SDWebImage', '~> 5.0'
 end

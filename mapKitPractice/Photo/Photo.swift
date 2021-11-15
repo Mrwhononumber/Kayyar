@@ -80,23 +80,38 @@ class Photo {
         }
         uploadTask.observe(.success) { (snapshot) in
                 print("Upload to Firestore is Successful!")
-            
            
-            // Save the Photos document in spot.documentID:
-            // Create the dictionary representing the data we want to save
-
-                        let dataToSave: [String:Any] = self.dictionary
-
-            let ref = db.collection("spots").document(spot.documentID).collection("photos").document(self.documentID)
-            ref.setData(dataToSave) { error in
+            // Grab the uploaded photo URl and save it to the Photo class photoURL property
+            storageRef.downloadURL { url, error in
                 guard error == nil else {
-                    print ("ERROR 👺👺👺: updating document \(error?.localizedDescription)")
+                    print("ERROR: error downloading the photo url \(error?.localizedDescription)")
                     return complition(false)
                 }
-                print(" Updated review document\(self.documentID)")
-                complition(true)
+                guard let url = url else {
+                    print("Error: the photo url was found nil even though we have no error!")
+                    return complition(false)
+                }
+                 self.photoURL = "\(url)"
+              
+                // Save the Photos document in spot.documentID:
+                // Create the dictionary representing the data we want to save
 
+                            let dataToSave: [String:Any] = self.dictionary
+
+                let ref = db.collection("spots").document(spot.documentID).collection("photos").document(self.documentID)
+                ref.setData(dataToSave) { error in
+                    guard error == nil else {
+                        print ("ERROR 👺👺👺: updating document \(String(describing: error?.localizedDescription))")
+                        return complition(false)
+                    }
+                    print(" Updated review document\(self.documentID)")
+                    complition(true)
+
+                }
             }
+            
+           
+          
             
             }
         

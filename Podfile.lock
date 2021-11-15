@@ -1,20 +1,26 @@
 PODS:
   - FloatingPanel (2.5.0)
   - IQKeyboardManagerSwift (6.5.6)
+  - SDWebImage (5.12.1):
+    - SDWebImage/Core (= 5.12.1)
+  - SDWebImage/Core (5.12.1)
 
 DEPENDENCIES:
   - FloatingPanel
   - IQKeyboardManagerSwift
+  - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - FloatingPanel
     - IQKeyboardManagerSwift
+    - SDWebImage
 
 SPEC CHECKSUMS:
   FloatingPanel: ddb1c8cbbacd164cfee651c449febe867a28e2cb
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
 
-PODFILE CHECKSUM: 7715f368c83ae59fa89d4514f893dd2738bdd2f6
+PODFILE CHECKSUM: 85013b8d107b98e2fe0b5f7b8c4350a84efea0c6
 
 COCOAPODS: 1.10.1

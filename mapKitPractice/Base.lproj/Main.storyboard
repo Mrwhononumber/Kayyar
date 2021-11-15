@@ -210,7 +210,7 @@
                                                 <constraint firstAttribute="height" constant="220" id="qvg-CZ-t24"/>
                                             </constraints>
                                         </mapView>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pEW-rt-Czu">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pEW-rt-Czu">
                                             <rect key="frame" x="0.0" y="295" width="414" height="120"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
@@ -603,7 +603,6 @@
                                         <state key="normal" title="Back"/>
                                         <connections>
                                             <action selector="BackButtonPressed:" destination="Yka-rP-c86" eventType="touchUpInside" id="aGa-RY-swU"/>
-                                            <action selector="backButtonPressed:" destination="Yka-rP-c86" eventType="touchUpInside" id="6A2-2J-Pu0"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="an9-dc-ANJ">
@@ -770,7 +769,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tR8-fe-WGI"/>
+        <segue reference="0M9-HZ-QIB"/>
         <segue reference="jOQ-xp-JqS"/>
     </inferredMetricsTieBreakers>
     <resources>

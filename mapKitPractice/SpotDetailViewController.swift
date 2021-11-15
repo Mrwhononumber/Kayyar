@@ -22,7 +22,7 @@ class SpotDetailViewController: UIViewController {
     var detailSpot: Spot!
     var reviews = Reviews()
     var photos = Photos()
-    var userName: String?
+   private var userName: String?
     
     
     
@@ -31,6 +31,7 @@ class SpotDetailViewController: UIViewController {
         
         updateUI()
         setupTableView()
+        setupMyCollectionView()
        
     }
     
@@ -38,7 +39,6 @@ class SpotDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         showMySpinner()
-        setupMyCollectionView()
         reviews.loadReviewData(spot: detailSpot) {
             self.reviewTableview.reloadData()
         }

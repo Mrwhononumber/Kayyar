@@ -23,15 +23,20 @@ class ReviewViewController: UIViewController {
     
     var spot: Spot!
     var theUsername: String?
- 
-    
+    var userUpVoted = false
+    var userDownVoted = false
+    var kayyarLevelNewValue: Double!
+    var review = Review()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        // Do any additional setup after loading the view.
+       setupUI()
+       InitKayyarLevelNewValue()
+      
     }
-   
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // update the value of the current username
@@ -39,10 +44,47 @@ class ReviewViewController: UIViewController {
             self.theUsername = username
         }
     }
+
+  
+    func InitKayyarLevelNewValue(){
+        kayyarLevelNewValue = spot.dangerLevel
+    }
+    
+    @IBAction func upVoteButtonPressed(_ sender: UIButton) {
+        if userUpVoted == false || kayyarLevelNewValue == spot.dangerLevel {
+            kayyarLevelNewValue = kayyarLevelNewValue + 1
+            
+            reviewKayyarLevelLabel.text = String(kayyarLevelNewValue)
+            userUpVoted = true
+            userDownVoted = false
+        } else {
+            
+            return
+        }
+    }
+    
+    
+    
+    @IBAction func downVotePressed(_ sender: UIButton) {
+        if userDownVoted == false || kayyarLevelNewValue == spot.dangerLevel {
+            kayyarLevelNewValue -= 1
+            reviewKayyarLevelLabel.text = String(kayyarLevelNewValue)
+            userDownVoted = true
+            userUpVoted = false
+            
+        } else {
+            
+            return
+        }
+        
+    }
+    
     
     func setupUI() {
         reviewAdressLabel.text = spot.address
         reviewDateLabel.text = getCurrentDateTime()
+        reviewKayyarLevelLabel.text = String(spot.dangerLevel)
+        
         
     }
     
@@ -52,12 +94,12 @@ class ReviewViewController: UIViewController {
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
        
        
-            var review = Review()
+            
           
             review.reviewDate = self.getCurrentDateTime()
             review.userReview = self.userReview.text
             review.reviewUsername = theUsername ?? "No username"
-            
+            review.kayyarLevel = Int(kayyarLevelNewValue)
             review.saveReviewData(spot: self.spot) { (success) in
                 if success {
                     // Go back programatically
@@ -66,11 +108,8 @@ class ReviewViewController: UIViewController {
                     print ("Error saving the review")
                 }
             }
-           
-            
-       
-      
-        
+     
+    
         
     }
     

@@ -279,6 +279,12 @@
                                                 <segue destination="8tf-ai-cek" kind="show" identifier="toReviewDetail" id="S0r-P2-cT9"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jl-5c-Znt">
+                                            <rect key="frame" x="15" y="454.5" width="34" height="26.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -288,6 +294,7 @@
                                         <constraint firstItem="Aug-m0-fPk" firstAttribute="top" secondItem="pEW-rt-Czu" secondAttribute="bottom" constant="30" id="7D7-uC-43G"/>
                                         <constraint firstItem="8ir-2u-MPu" firstAttribute="top" secondItem="6Hf-xi-z7F" secondAttribute="bottom" constant="5" id="C8H-TW-5c4"/>
                                         <constraint firstItem="6Hf-xi-z7F" firstAttribute="leading" secondItem="qyh-al-5ZM" secondAttribute="leading" constant="15" id="LCi-z1-Og8"/>
+                                        <constraint firstAttribute="bottom" secondItem="4Jl-5c-Znt" secondAttribute="bottom" constant="19" id="Ofn-QE-fga"/>
                                         <constraint firstAttribute="trailing" secondItem="wM6-qu-lGx" secondAttribute="trailing" constant="15" id="UW7-ba-G24"/>
                                         <constraint firstAttribute="trailing" secondItem="6Hf-xi-z7F" secondAttribute="trailing" constant="15" id="Wwt-CP-TgE"/>
                                         <constraint firstAttribute="trailing" secondItem="8ir-2u-MPu" secondAttribute="trailing" id="X3f-u4-DGn"/>
@@ -295,6 +302,7 @@
                                         <constraint firstItem="8ir-2u-MPu" firstAttribute="leading" secondItem="qyh-al-5ZM" secondAttribute="leading" id="bv4-eQ-BN1"/>
                                         <constraint firstItem="wM6-qu-lGx" firstAttribute="top" secondItem="pEW-rt-Czu" secondAttribute="bottom" constant="30" id="ltc-cb-Ca6"/>
                                         <constraint firstItem="wM6-qu-lGx" firstAttribute="leading" secondItem="Aug-m0-fPk" secondAttribute="trailing" constant="15" id="oHr-jJ-a18"/>
+                                        <constraint firstItem="4Jl-5c-Znt" firstAttribute="leading" secondItem="qyh-al-5ZM" secondAttribute="leading" constant="15" id="sbA-4H-zdz"/>
                                         <constraint firstItem="pEW-rt-Czu" firstAttribute="top" secondItem="8ir-2u-MPu" secondAttribute="bottom" constant="10" id="wf0-IJ-VpA"/>
                                     </constraints>
                                 </view>
@@ -356,6 +364,7 @@
                         <outlet property="detailMapView" destination="8ir-2u-MPu" id="nnx-m7-AU1"/>
                         <outlet property="myCollectionView" destination="pEW-rt-Czu" id="lKf-jJ-gN4"/>
                         <outlet property="reviewTableview" destination="b8W-e0-KBh" id="8o2-Er-23S"/>
+                        <outlet property="spotKayyarLevelLabel" destination="4Jl-5c-Znt" id="Deo-ST-bm7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0h-iM-u2h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

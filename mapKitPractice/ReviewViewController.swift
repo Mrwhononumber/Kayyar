@@ -93,17 +93,17 @@ class ReviewViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
        
-       
-            
-          
             review.reviewDate = self.getCurrentDateTime()
             review.userReview = self.userReview.text
             review.reviewUsername = theUsername ?? "No username"
             review.kayyarLevel = Int(kayyarLevelNewValue)
             review.saveReviewData(spot: self.spot) { (success) in
                 if success {
+                    self.spot.updateSpotDangerLevel(kayyarLevelNewValue: self.kayyarLevelNewValue) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                     // Go back programatically
-                    self.navigationController?.popViewController(animated: true)
+                    
                 } else {
                     print ("Error saving the review")
                 }

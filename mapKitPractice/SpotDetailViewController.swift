@@ -16,6 +16,7 @@ class SpotDetailViewController: UIViewController {
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var detailMapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var spotKayyarLevelLabel: UILabel!
     
     
    
@@ -29,7 +30,6 @@ class SpotDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateUI()
         setupTableView()
         setupMyCollectionView()
        
@@ -38,6 +38,7 @@ class SpotDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        updateUI()
         showMySpinner()
         reviews.loadReviewData(spot: detailSpot) {
             self.reviewTableview.reloadData()
@@ -70,7 +71,7 @@ class SpotDetailViewController: UIViewController {
     
     func updateUI(){
         addressLabel.text = detailSpot.address
-        
+        spotKayyarLevelLabel.text = String(detailSpot.dangerLevel)
         setupDetailMaViewMap()
         self.title = detailSpot.city
     }

@@ -99,9 +99,9 @@ class ReviewViewController: UIViewController {
             review.kayyarLevel = Int(kayyarLevelNewValue)
             review.saveReviewData(spot: self.spot) { (success) in
                 if success {
-                    self.spot.updateSpotDangerLevel(kayyarLevelNewValue: self.kayyarLevelNewValue) {
+                    
                         self.navigationController?.popViewController(animated: true)
-                    }
+                    
                     // Go back programatically
                     
                 } else {

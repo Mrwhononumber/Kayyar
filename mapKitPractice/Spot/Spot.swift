@@ -112,21 +112,35 @@ class Spot {
     
     }
     
-    func updateSpotDangerLevel(kayyarLevelNewValue: Double, completion: @escaping () -> ()) {
-        
+    func updateSpotDangerLevel(review: Review, completion: @escaping () -> ()) {
         let db = Firestore.firestore()
-        self.dangerLevel = kayyarLevelNewValue // update the dangerus level value
-        let dataToUpdate = self.dictionary  // get a reference to the spot dictionary after updating the value of the danger level
-        let spotRef = db.collection("spots").document(self.documentID) // get reference to the spot
-        // update the spot
-        spotRef.setData(dataToUpdate) { error in
-            guard error == nil else {
-                print ("Error happened while updating the spot danger level: \(error?.localizedDescription)")
-                return completion()
+//        let reviewRef = db.collection("spots").document(self.documentID).collection("Reviews").document(review.documentID)
+//        reviewRef.getDocument { snapShot, error in
+//            guard error == nil else {
+//                print ("💩💩💩 Error getting the review data while saving it to the spot\(error?.localizedDescription)")
+//                return completion()
+//            }
+//            let reviewDictionary = snapShot?.data()
+//            let kayyarLevel = reviewDictionary?["kayyarLevel"] as! Int? ?? 0
+     
+        
+        self.dangerLevel = Double (review.kayyarLevel) // update the dangerus level value
+            let dataToUpdate = self.dictionary  // get a reference to the spot dictionary after updating the value of the danger level
+            let spotRef = db.collection("spots").document(self.documentID) // get reference to the spot
+            // update the spot
+            spotRef.setData(dataToUpdate) { error in
+                guard error == nil else {
+                    print ("Error happened while updating the spot danger level: \(error?.localizedDescription)")
+                    return completion()
+            }
+                print("Danger level has been updated for\(self.address)")
+                completion()
+            }
         }
-            print("Danger level has been updated for\(self.address)")
-            completion()
-        }
+        
+        
+        
+        
         
         
     }
@@ -135,4 +149,4 @@ class Spot {
     
     
     
-}
+//}

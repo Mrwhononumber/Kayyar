@@ -69,7 +69,7 @@ class KayyarTableViewController: UIViewController {
         case 1: // Distance
             spots.spotArray.sort(by: {$0.spotLocation.distance(from: currentUserLocation) < $1.spotLocation.distance(from: currentUserLocation)})
         case 2: // Kayyar Level
-            print ("TODO")
+            spots.spotArray.sort(by: {$0.dangerLevel > $1.dangerLevel})
         default:
             print ("error occured, check segmented control for an error")
         }

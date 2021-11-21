@@ -7,11 +7,14 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class myTableViewCell: UITableViewCell {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var streetLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var tableViewMap: MKMapView!
+    @IBOutlet weak var kayyarLevelLabel: UILabel!
     
     var userCurrentLocation: CLLocation!
     var cellSpot: Spot! {
@@ -22,9 +25,11 @@ class myTableViewCell: UITableViewCell {
                 distanceLabel.text = "N/a"
                 return
             }
+            kayyarLevelLabel.text = String (cellSpot.dangerLevel)
             let distanceInMeters = cellSpot.spotLocation.distance(from: userCurrentLocation)
             let distanceInKiloMetre =  String(format:"%.1f",(distanceInMeters / 1000))
             distanceLabel.text = "\(distanceInKiloMetre) Km away"
+            setupTableViewMap()
         }
     }
     
@@ -35,6 +40,7 @@ class myTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        setupTableViewMap()
         // Initialization code
     }
 
@@ -43,5 +49,19 @@ class myTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    //MARK: - setup the map
+    
+    func setupTableViewMap(){
+        
+        let mySpotLocation = CLLocationCoordinate2D(latitude: cellSpot.latitude, longitude: cellSpot.longitude)
+        let myRegion = MKCoordinateRegion(center: mySpotLocation, latitudinalMeters: 60000, longitudinalMeters: 60000)
+        tableViewMap.setRegion(myRegion, animated: true)
+        tableViewMap.layer.cornerRadius = 5
+       
+     
+     
+    }
+    
 
 }

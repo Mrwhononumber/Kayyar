@@ -20,7 +20,7 @@ class MyCollectionViewCell: UICollectionViewCell {
             if let url = URL(string: photo.photoURL) {
                 self.collectionViewImage.sd_setImage(with: url)
                 self.collectionViewImage.sd_imageTransition = .fade
-               
+                
                 print("Error: the photoURL was found nil in the collectionView cell")
                 
             } else {

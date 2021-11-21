@@ -36,7 +36,16 @@ class CustomUI {
         button.layer.cornerRadius = 25.0
         button.tintColor = UIColor.white
     }
-    
+   
+    static func setupButtonsShadow(button:UIButton){
+        button.layer.cornerRadius = 5
+        button.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        button.layer.shadowOpacity = 1.0
+        button.layer.shadowRadius = 0.0
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = 4.0
+    }
     
     static func styleHollowButton(_ button:UIButton) {
         

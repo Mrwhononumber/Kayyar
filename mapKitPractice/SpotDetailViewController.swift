@@ -17,6 +17,9 @@ class SpotDetailViewController: UIViewController {
     @IBOutlet weak var detailMapView: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var spotKayyarLevelLabel: UILabel!
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var reviewButton: UIButton!
+    @IBOutlet weak var spotAuthorUsername: UILabel!
     
     
    
@@ -71,11 +74,16 @@ class SpotDetailViewController: UIViewController {
     
     func updateUI(){
         addressLabel.text = detailSpot.address
-        spotKayyarLevelLabel.text = String(detailSpot.dangerLevel)
+        spotKayyarLevelLabel.text = "KL: \(String(detailSpot.dangerLevel))"
+        spotAuthorUsername.text = "By @\(detailSpot.spotUsername)"
         setupDetailMaViewMap()
         self.title = detailSpot.city
+        CustomUI.setupButtonsShadow(button: cameraButton)
+        CustomUI.setupButtonsShadow(button: reviewButton)
+    
     }
     
+   
     
     
     

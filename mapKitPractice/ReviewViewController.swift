@@ -100,9 +100,12 @@ class ReviewViewController: UIViewController {
         
         userReview.layer.cornerRadius = 10
         publishReviewButton.layer.cornerRadius = 5
+        CustomUI.setupButtonsShadow(button: publishReviewButton)
         
     
     }
+    
+    
     
     
     

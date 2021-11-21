@@ -10,12 +10,16 @@ import Firebase
 
 class ReviewViewController: UIViewController {
     
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+ 
     
+    @IBOutlet weak var publishReviewButton: UIButton!
     @IBOutlet weak var reviewAdressLabel: UILabel!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var spotAuthorLabel: UILabel!
     
     @IBOutlet weak var reviewKayyarLevelLabel: UILabel!
     
+    @IBOutlet weak var reviewAuthorLabel: UILabel!
     @IBOutlet weak var userReview: UITextView!
     
     @IBOutlet weak var reviewDateLabel: UILabel!
@@ -30,7 +34,7 @@ class ReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       setupUI()
+       
        InitKayyarLevelNewValue()
       
     }
@@ -39,10 +43,15 @@ class ReviewViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         // update the value of the current username
         getCurrentUsername { username in
             self.theUsername = username
+            print("😇😇😇\(username)")
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        setupUI()
     }
 
   
@@ -81,46 +90,43 @@ class ReviewViewController: UIViewController {
     
     
     func setupUI() {
+        cityLabel.text = spot.city
         reviewAdressLabel.text = spot.address
+        spotAuthorLabel!.text = "By @\(spot.spotUsername)"
         reviewDateLabel.text = getCurrentDateTime()
         reviewKayyarLevelLabel.text = String(spot.dangerLevel)
+        reviewAuthorLabel!.text = "@\(theUsername ?? "")"
+        
+        
+        userReview.layer.cornerRadius = 10
+        publishReviewButton.layer.cornerRadius = 5
+        
+        
         
         
     }
     
-    
-    
-    
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
-       
-            review.reviewDate = self.getCurrentDateTime()
-            review.userReview = self.userReview.text
-            review.reviewUsername = theUsername ?? "No username"
-            review.kayyarLevel = Int(kayyarLevelNewValue)
-            review.saveReviewData(spot: self.spot) { (success) in
-                if success {
-                    
-                        self.navigationController?.popViewController(animated: true)
-                    
-                    // Go back programatically
-                    
-                } else {
-                    print ("Error saving the review")
-                }
-            }
-     
-    
-        
-    }
-    
-
     
     
  
     
-    @IBAction func deleteButtonPressed(_ sender: UIButton) {
+    @IBAction func publishReviewButtonPressed(_ sender: UIButton) {
         
-      
+        review.reviewDate = self.getCurrentDateTime()
+        review.userReview = self.userReview.text
+        review.reviewUsername = theUsername ?? "No username"
+        review.kayyarLevel = Int(kayyarLevelNewValue)
+        review.saveReviewData(spot: self.spot) { (success) in
+            if success {
+                
+                    self.dismiss(animated: true, completion: nil)
+                
+                // Go back programatically
+                
+            } else {
+                print ("Error saving the review")
+            }
+        }
         
     }
 

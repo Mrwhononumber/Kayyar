@@ -14,7 +14,8 @@ import FloatingPanel
 class ViewController: UIViewController {
 
     @IBOutlet weak var myMapView: MKMapView!
-  
+    @IBOutlet weak var spotsButton: UIButton!
+    
     var userLocation: CLLocation?
     
     
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
         setupMapView()
         checkLocationServices()
         setupFloatingPanel()
-        
+        setupSpotsButton()
     }
     
   
@@ -63,6 +64,14 @@ class ViewController: UIViewController {
         myMapView.delegate = self
     }
     
+    func setupSpotsButton(){
+        spotsButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        spotsButton.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        spotsButton.layer.shadowOpacity = 1.0
+        spotsButton.layer.shadowRadius = 0.0
+        spotsButton.layer.masksToBounds = false
+        spotsButton.layer.cornerRadius = 4.0
+    }
 
 
     func checkLocationServices(){

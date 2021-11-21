@@ -47,7 +47,7 @@ class ReviewViewController: UIViewController {
         // update the value of the current username
         getCurrentUsername { username in
             self.theUsername = username
-            print("😇😇😇\(username)")
+           
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -101,9 +101,7 @@ class ReviewViewController: UIViewController {
         userReview.layer.cornerRadius = 10
         publishReviewButton.layer.cornerRadius = 5
         
-        
-        
-        
+    
     }
     
     

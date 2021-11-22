@@ -1,7 +1,7 @@
 
 # Kayyar
 
-Kayyar is a an app that use information provided by users to show dangerous areas or spots so people specially travellers can avoid it
+Kayyar use information provided by users to show dangerous areas or spots so people specially travellers can avoid it
 
 ## Demo
 

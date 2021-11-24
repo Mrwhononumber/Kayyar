@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreLocation
+import Firebase
 
 class KayyarTableViewController: UIViewController {
     
@@ -53,6 +54,48 @@ class KayyarTableViewController: UIViewController {
         removeMySpenner()
         
     }
+    
+    
+    //MARK: - SignOut
+    
+    @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
+     showSignOutAlert()
+        
+    }
+    
+    func showSignOutAlert(){
+        let alert = UIAlertController(title: nil, message: "Are you sure you'd like to sign out?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "sign out", style: .destructive, handler: { action in
+            // pereform the signing out
+            self.signOutUser()
+        }))
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+        // present the alert
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func signOutUser(){
+        let firebaseAuth = Auth.auth()
+    do {
+        // sign out the user
+      try firebaseAuth.signOut()
+       // Navigate to the initial viewcontroller
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let homeViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! HomeViewController
+        homeViewController.modalPresentationStyle = .fullScreen
+        self.present(homeViewController, animated:true, completion:nil)
+
+        
+    } catch let signOutError as NSError {
+      print("Error signing out: %@", signOutError)
+    }
+        
+    }
+    
+    
+    
+    
     
     //MARK: - Segmented Control Implementation
     

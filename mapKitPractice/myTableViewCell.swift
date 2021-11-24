@@ -25,7 +25,7 @@ class myTableViewCell: UITableViewCell {
                 distanceLabel.text = "N/a"
                 return
             }
-            kayyarLevelLabel.text = String (cellSpot.dangerLevel)
+            kayyarLevelLabel.text = String (format:"%.0f",cellSpot.dangerLevel)
             let distanceInMeters = cellSpot.spotLocation.distance(from: userCurrentLocation)
             let distanceInKiloMetre =  String(format:"%.1f",(distanceInMeters / 1000))
             distanceLabel.text = "\(distanceInKiloMetre) Km away"
@@ -40,7 +40,7 @@ class myTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        setupTableViewMap()
+
         // Initialization code
     }
 

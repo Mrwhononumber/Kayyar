@@ -10,6 +10,7 @@ import MapKit
 
 
 
+
 class SpotDetailViewController: UIViewController {
    
     @IBOutlet weak var reviewTableview: UITableView!
@@ -83,9 +84,7 @@ class SpotDetailViewController: UIViewController {
     
     }
     
-   
-    
-    
+
     
     //MARK: - DetailView Map setup
     

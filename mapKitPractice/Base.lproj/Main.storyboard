@@ -178,6 +178,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Kayyar Spots" id="DpE-kF-Mxo">
                         <barButtonItem key="backBarButtonItem" title=" " id="1f4-88-wA6"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="kMX-dJ-S2s">
+                            <color key="tintColor" red="0.99916261429999997" green="0.17425110939999999" blue="0.3347000182" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="signOutButtonPressed:" destination="Vsp-y2-XXa" id="1cZ-uy-1dC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mySegmentedControl" destination="jv6-S4-hau" id="Vb9-n2-9tE"/>
@@ -337,12 +343,23 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="6PO-IK-pVf">
                                                     <rect key="frame" x="12" y="5" width="390" height="56.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEf-K0-ldG">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="firstBaseline" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="h4D-58-Si8">
                                                             <rect key="frame" x="0.0" y="0.0" width="390" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                            <color key="textColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEf-K0-ldG">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                                    <color key="textColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="au3-we-aA9">
+                                                                    <rect key="frame" x="193" y="5" width="197" height="11"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the label of the  place whwere al the stuff goes to the ground because I'll never be sad again" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHW-PT-3II">
                                                             <rect key="frame" x="0.0" y="23" width="390" height="33.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -361,6 +378,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="reviewBodyLabel" destination="CHW-PT-3II" id="4Ia-YW-IGv"/>
+                                            <outlet property="reviewDateLabel" destination="au3-we-aA9" id="OLx-kF-lYD"/>
                                             <outlet property="reviewTitleLabel" destination="MEf-K0-ldG" id="CBn-c1-Gva"/>
                                         </connections>
                                     </tableViewCell>

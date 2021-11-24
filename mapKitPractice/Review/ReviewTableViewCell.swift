@@ -11,6 +11,7 @@ class ReviewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var reviewTitleLabel: UILabel!
     
+    @IBOutlet weak var reviewDateLabel: UILabel!
     @IBOutlet weak var reviewBodyLabel: UILabel!
     
     var review: Review! {
@@ -18,6 +19,7 @@ class ReviewTableViewCell: UITableViewCell {
             // set the treviewtitle to the username
             reviewBodyLabel.text = review.userReview
             reviewTitleLabel.text = review.reviewUsername
+            reviewDateLabel.text = review.reviewDate
         }
         
         

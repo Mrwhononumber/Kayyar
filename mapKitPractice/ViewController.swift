@@ -12,6 +12,12 @@ import FloatingPanel
 
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var myFloatingView: UIView!
+    @IBOutlet weak var newAddress: UILabel!
+    
+    @IBOutlet weak var newAddressDetail: UILabel!
+    
 
     @IBOutlet weak var myMapView: MKMapView!
     @IBOutlet weak var spotsButton: UIButton!
@@ -38,9 +44,16 @@ class ViewController: UIViewController {
         
         setupMapView()
         checkLocationServices()
-        setupFloatingPanel()
+//        setupFloatingPanel()
         setupSpotsButton()
+        setupGesture()
+        setupMyfloatingView()
     }
+    
+    
+    @IBAction func confirmSpotButtonPressed(_ sender: UIButton) {
+    }
+    
     
   
     override func viewWillAppear(_ animated: Bool) {
@@ -216,11 +229,13 @@ extension ViewController: MKMapViewDelegate {
             }
             let streetNumber = placemark.subThoroughfare ?? ""
             let streetName = placemark.thoroughfare ?? ""
+            let city = placemark.locality ?? ""
+            let name = placemark.name ?? ""
 
             DispatchQueue.main.async {
                 
-                self.myAdress = "\(streetNumber) \(streetName)"
-                self.myPlacemark = placemark
+                self.newAddress!.text = "\(streetNumber) \(streetName)"
+                self.newAddressDetail!.text = "\(name)-\(city)"
                 
                 NotificationCenter.default.post(name: NSNotification.Name("userPlacemarkNotification"), object: self.myPlacemark)
                 
@@ -272,6 +287,30 @@ extension ViewController: FloatingPanelControllerDelegate {
 
                
     }
+    
+    
+}
+
+//MARK: - my custom floating panel
+
+extension ViewController {
+    
+    func setupGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func animateMyFloatingView(){
+        UIView.animate(withDuration: 0.2) {
+            self.myFloatingView.transform = CGAffineTransform(translationX: 0, y: -140)
+        }
+    }
+    
+    func setupMyfloatingView(){
+        myFloatingView.layer.cornerRadius = 20
+    }
+    
+    
     
     
 }

@@ -176,7 +176,7 @@ extension SpotDetailViewController: UIImagePickerControllerDelegate, UINavigatio
         // save the myImage to FireStore
         var photo = Photo()
         photo.photoUsername = userName ?? ""
-        photo.photoDate = getCurrentDateTime()
+        photo.photoDate = currentDateAndTimeString()
         photo.image = myImage ?? UIImage()
         photo.savePhotoData(spot: detailSpot) { success in
             if success {

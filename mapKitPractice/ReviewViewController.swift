@@ -93,7 +93,7 @@ class ReviewViewController: UIViewController {
         cityLabel.text = spot.city
         reviewAdressLabel.text = spot.address
         spotAuthorLabel!.text = "By @\(spot.spotUsername)"
-        reviewDateLabel.text = getCurrentDateTime()
+        reviewDateLabel.text = currentDateAndTimeString()
         reviewKayyarLevelLabel.text = String(spot.dangerLevel)
         reviewAuthorLabel!.text = "@\(theUsername ?? "")"
         
@@ -113,7 +113,7 @@ class ReviewViewController: UIViewController {
     
     @IBAction func publishReviewButtonPressed(_ sender: UIButton) {
         
-        review.reviewDate = self.getCurrentDateTime()
+        review.reviewDate = self.currentDateAndTimeString()
         review.userReview = self.userReview.text
         review.reviewUsername = theUsername ?? "No username"
         review.kayyarLevel = Int(kayyarLevelNewValue)

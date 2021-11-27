@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var newAddress: UILabel!
     
     @IBOutlet weak var newAddressDetail: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
     
 
     @IBOutlet weak var myMapView: MKMapView!
@@ -38,6 +39,7 @@ class ViewController: UIViewController {
  
  
     
+    //MARK: - ViewController Life Cicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,13 +48,13 @@ class ViewController: UIViewController {
         checkLocationServices()
 //        setupFloatingPanel()
         setupSpotsButton()
-        setupGesture()
+
         setupMyfloatingView()
+        AddGestureRecognizer()
     }
     
     
-    @IBAction func confirmSpotButtonPressed(_ sender: UIButton) {
-    }
+  
     
     
   
@@ -69,10 +71,31 @@ class ViewController: UIViewController {
         removeMySpenner()
     }
     
+    //MARK: - Buttons Interactions
+    
+    
+    @IBAction func confirmSpotButtonPressed(_ sender: UIButton) {
+        
+        guard newAddress.text != "" else {
+            
+            myOneButtonAlert(title: "Try again 🤪 ", message: "Please make sure to choose a valid address")
+        
+            
+            return
+        }
+        
+      showSpotConfirmationAlert()
+    }
+    
+    
+    
+    
     func customizeNavigationController(){
         navigationController?.navigationBar.isHidden = true
     }
    
+ 
+    
     func setupMapView(){
         myMapView.delegate = self
     }
@@ -227,10 +250,11 @@ extension ViewController: MKMapViewDelegate {
                 // To Do: show alert informing the user
                 return
             }
-            let streetNumber = placemark.subThoroughfare ?? ""
-            let streetName = placemark.thoroughfare ?? ""
-            let city = placemark.locality ?? ""
-            let name = placemark.name ?? ""
+            self.myPlacemark = placemark
+            let streetNumber = self.myPlacemark?.subThoroughfare ?? ""
+            let streetName = self.myPlacemark?.thoroughfare ?? ""
+            let city = self.myPlacemark?.locality ?? ""
+            let name = self.myPlacemark?.name ?? ""
 
             DispatchQueue.main.async {
                 
@@ -252,7 +276,7 @@ extension ViewController: MKMapViewDelegate {
     
 }
 
-//MARK: - Floating Panel integration
+//MARK: - Floating Panel integration - TODO: ( DELETE )
 
 extension ViewController: FloatingPanelControllerDelegate {
     
@@ -295,10 +319,23 @@ extension ViewController: FloatingPanelControllerDelegate {
 
 extension ViewController {
     
-    func setupGesture(){
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
-        self.view.addGestureRecognizer(tapGesture)
+    
+    func AddGestureRecognizer(){
+        
+
+            let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
+            swipeGesture.direction = [.up, .down, .left, .right]
+        
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
+        
+            view.addGestureRecognizer(swipeGesture)
+            view.addGestureRecognizer(tapGesture)
+        
+        
     }
+    
+    
+    
     
     @objc func animateMyFloatingView(){
         UIView.animate(withDuration: 0.2) {
@@ -307,9 +344,65 @@ extension ViewController {
     }
     
     func setupMyfloatingView(){
-        myFloatingView.layer.cornerRadius = 20
+        
+        myFloatingView.layer.cornerRadius = 30
+        myFloatingView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.95)
+        myFloatingView.isOpaque = false
+        confirmButton.layer.cornerRadius = 20
+        
     }
     
+    //MARK: - spot confirmation Alert
+    
+   func showSpotConfirmationAlert() {
+  
+    
+    let confirmationAlert = UIAlertController(title: "Almost there 🙌🏼", message: "please tell us briefly why you choose this spot?", preferredStyle: .alert)
+    confirmationAlert.addTextField { textField in
+        textField.placeholder = "Enter your message here"
+        textField.returnKeyType = .done
+        
+    }
+    
+    confirmationAlert.addAction(UIAlertAction(title: "Publish", style: .default, handler: { handler  in
+        // Read values from text field
+        guard let textFields = confirmationAlert.textFields else {return}
+        let messageField = textFields[0]
+        guard let userMessage = messageField.text, userMessage.isEmpty == false else {return}
+        // Create the new spot && Navigate to next VC
+        self.createNewSpot(message: userMessage)
+        
+       
+    }))
+    confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+    present(confirmationAlert, animated: true, completion: nil)
+    
+    }
+    
+    
+    func createNewSpot(message: String){
+       var spot = Spot()
+        spot.address = newAddress.text!
+        spot.kayyarMessage = message
+        spot.city = myPlacemark?.locality ?? ""
+        spot.latitude = (myPlacemark!.location?.coordinate.latitude) ?? 0.0
+        spot.longitude = (myPlacemark!.location?.coordinate.longitude) ?? 0.0
+        spot.submitionDateString = currentDateAndTimeString()
+        
+        // Save the spot to Firebase && Navigate to next VC
+        spot.saveData { success in
+            if success {
+                self.performSegue(withIdentifier: "VCToTV", sender: self)
+                print("saved the spot to firestore successfuly!")
+                
+                print(self.spots.spotArray.count)
+        } else {
+            print { ("something happened while sabing the spot to firestore")}
+        }
+        
+    }
+                
+    }
     
     
     

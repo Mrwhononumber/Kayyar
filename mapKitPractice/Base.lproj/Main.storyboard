@@ -422,6 +422,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Bj9-lG-zpL">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ubs-oh-kXH">
                                 <rect key="frame" x="334" y="100" width="50" height="50"/>
@@ -543,6 +544,7 @@
         <!--Home View Controller-->
         <scene sceneID="p5L-aR-1qw">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KxF-Ew-RMo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="InitialScreen" id="vlS-rf-SVA" customClass="HomeViewController" customModule="mapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P00-3s-Z7r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -588,13 +590,13 @@
                         <outlet property="signUpButton" destination="wYa-Ne-av3" id="HcV-MT-ZWl"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KxF-Ew-RMo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1923" y="239"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="9qg-3s-5pb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C0J-Ws-j2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="h1f-px-lca" customClass="LoginViewController" customModule="mapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZLq-M7-eZR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -669,13 +671,13 @@
                         <segue destination="pwN-O1-wTB" kind="presentation" identifier="loginToHome" modalPresentationStyle="fullScreen" id="tR8-fe-WGI"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C0J-Ws-j2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1019" y="648"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="6Bh-cz-19L">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6J5-d8-RXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Yka-rP-c86" customClass="SignUpViewController" customModule="mapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pBV-qp-ign">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -759,7 +761,6 @@
                         <segue destination="pwN-O1-wTB" kind="presentation" identifier="signupToHome" modalPresentationStyle="fullScreen" id="0M9-HZ-QIB"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6J5-d8-RXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1019" y="-104"/>
         </scene>
@@ -926,7 +927,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0M9-HZ-QIB"/>
+        <segue reference="tR8-fe-WGI"/>
         <segue reference="Buj-Tb-NwL"/>
     </inferredMetricsTieBreakers>
     <resources>

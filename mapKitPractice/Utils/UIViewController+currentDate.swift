@@ -9,7 +9,7 @@ import UIKit
 
 extension UIViewController {
     
-    func currentDateAndTimeString() -> String {
+    func getCurrentDateAndTimeString() -> String {
         
         // Get the current date and time
         let currentDateTime = Date()

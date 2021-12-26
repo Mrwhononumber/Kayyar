@@ -7,94 +7,68 @@
 
 import UIKit
 import MapKit
-import FloatingPanel
-
-
 
 class ViewController: UIViewController {
     
+    //MARK: - Properties
+    
     @IBOutlet weak var myFloatingView: UIView!
     @IBOutlet weak var newAddress: UILabel!
-    
     @IBOutlet weak var newAddressDetail: UILabel!
     @IBOutlet weak var confirmButton: UIButton!
-    
-
     @IBOutlet weak var myMapView: MKMapView!
     @IBOutlet weak var spotsButton: UIButton!
-    
     var userLocation: CLLocation?
-    
-    
-    var myAdress:String = ""
     var spots = Spots()
     var myPlacemark: CLPlacemark?
-    
-    
-  
-    
     let locationManager = CLLocationManager()
     let regionInMeter: Double = 650
     var previousLocation: CLLocation?
  
  
     
-    //MARK: - ViewController Life Cicle
+    //MARK: - VC LifeCicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupMapView()
         checkLocationServices()
-//        setupFloatingPanel()
-        setupSpotsButton()
-
-        setupMyfloatingView()
+        setupUIElements()
         AddGestureRecognizer()
     }
     
-    
-  
-    
-    
-  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
         customizeNavigationController()
         showMySpinner()
     }
   
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-     
         removeMySpenner()
     }
     
     //MARK: - Buttons Interactions
     
-    
     @IBAction func confirmSpotButtonPressed(_ sender: UIButton) {
         
         guard newAddress.text != "" else {
-            
-            myOneButtonAlert(title: "Try again 🤪 ", message: "Please make sure to choose a valid address")
-        
-            
+        myOneButtonAlert(title: "Unvalid address ", message: "Please make sure to choose a valid address")
             return
         }
-        
       showSpotConfirmationAlert()
     }
     
+    //MARK: - Helper functions
     
-    
+    func setupUIElements() {
+         setupSpotsButton()
+         setupMyfloatingView()
+    }
     
     func customizeNavigationController(){
         navigationController?.navigationBar.isHidden = true
     }
-   
- 
     
     func setupMapView(){
         myMapView.delegate = self
@@ -119,6 +93,7 @@ class ViewController: UIViewController {
            
         } else {
             // show alert letting the user know they need to turn this on
+            myOneButtonAlert(title: "couldn't find your location", message: "make sure to turn on your location services")
         }
     }
     
@@ -128,22 +103,15 @@ class ViewController: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 //        locationManager.distanceFilter = 1
-        
     }
-    
- 
     
     func centerViewOnUserLocaion() {
         
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeter, longitudinalMeters: regionInMeter)
             myMapView.setRegion(region, animated: true)
-            
         }
-        
     }
-    
-    
     
     
     func checkLocationAuthorization() {
@@ -153,12 +121,14 @@ class ViewController: UIViewController {
           startTrackingUserLocation()
         case .denied:
             // Show alert showing the user how to turn on location permission
+            myOneButtonAlert(title: "cannot access your location", message: "Go to Settings -> Location")
+
              break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
             // show alert letting user know what's up
-            break
+            myOneButtonAlert(title: "cannot access your location", message: "Access to your locarion is restricted")
         case .authorizedAlways:
             break
         default:
@@ -166,15 +136,12 @@ class ViewController: UIViewController {
         }
     }
     
-  
     func startTrackingUserLocation() {
         myMapView.showsUserLocation = true
         centerViewOnUserLocaion()
         locationManager.startUpdatingLocation()
         previousLocation = getCentreLocation(for: myMapView)
     }
-    
-    
     
     func getCentreLocation(for mapview: MKMapView) -> CLLocation {
         //  Get the centre coordinates of the map
@@ -187,36 +154,11 @@ class ViewController: UIViewController {
     
 }
 
-
-
-
-
-
 extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-//          userLocation = locations.last
-//
-//        print ("current location in view controller is \(userLocation)")
-      
-//            NotificationCenter.default.post(name: Notification.Name("userCurrentLocationNotification"), object: userLocation)
-        
-       
-        // share the users current location
-     
-        
-        
-        
-//        // Get current (last) coordinates of the user
-//        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        // Create the region surrounding the user
-//        let region = MKCoordinateRegion.init(center: center, latitudinalMeters: regionInMeter, longitudinalMeters: regionInMeter)
-//        // Update the map view
-//        myMapView.setRegion(region, animated: true)
-        
     }
-    
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
@@ -243,11 +185,12 @@ extension ViewController: MKMapViewDelegate {
         geoCoder.reverseGeocodeLocation(centre) { [weak self](placemarks, error) in
             guard let self = self else { return }
             
-            if let error = error {
-                // To Do: show aler letting the user know that there is an error
+            if error != nil {
+                self.myOneButtonAlert(title: "Error", message: "Error happened while retriving location. please try again.")
             }
             guard let placemark = placemarks?.first else {
-                // To Do: show alert informing the user
+               
+                self.myOneButtonAlert(title: "Error", message: "Error happened while retriving location. please try again.")
                 return
             }
             self.myPlacemark = placemark
@@ -257,17 +200,11 @@ extension ViewController: MKMapViewDelegate {
             let name = self.myPlacemark?.name ?? ""
 
             DispatchQueue.main.async {
-                
                 self.newAddress!.text = "\(streetNumber) \(streetName)"
                 self.newAddressDetail!.text = "\(name)-\(city)"
-                
+                // Notification to be used by whomever needs access to the user's chosen location
+                // Replacing the notificationCenter with a closure to be considered
                 NotificationCenter.default.post(name: NSNotification.Name("userPlacemarkNotification"), object: self.myPlacemark)
-                
-
-                
-               
-                
-                
             }
             
         }
@@ -276,62 +213,18 @@ extension ViewController: MKMapViewDelegate {
     
 }
 
-//MARK: - Floating Panel integration - TODO: ( DELETE )
 
-extension ViewController: FloatingPanelControllerDelegate {
-    
-    func setupFloatingPanel (){
-        
-        // initialize a fp object
-        let fpc = FloatingPanelController(delegate: self)
-
-        fpc.layout = MyFloatingPanelLayout()
-        fpc.delegate = self
-        
-        // inistantiate the content VC
-        guard let contentVC = storyboard?.instantiateViewController(identifier: "fpc_content") as? ContentViewController else {return}
-       
-    //        contentVC.adressLabel.text = myAdress
-        
-        // add the content VC to the fp VC
-        fpc.set(contentViewController: contentVC)
-        
-        
-        // set fpc as a child to the viewcontroller (self)
-        fpc.addPanel(toParent: self)
-        
-        
-        
-        let apperarance = SurfaceAppearance()
-        apperarance.cornerRadius = 40
-        apperarance.borderColor = .blue
-        apperarance.backgroundColor = .black
-        
-        fpc.surfaceView.appearance = apperarance
-
-               
-    }
-    
-    
-}
-
-//MARK: - my custom floating panel
+//MARK: - My Custom floating panel
 
 extension ViewController {
-    
-    
-    func AddGestureRecognizer(){
-        
 
+    func AddGestureRecognizer(){
             let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
             swipeGesture.direction = [.up, .down, .left, .right]
         
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
-        
             view.addGestureRecognizer(swipeGesture)
             view.addGestureRecognizer(tapGesture)
-        
-        
     }
     
     
@@ -344,24 +237,19 @@ extension ViewController {
     }
     
     func setupMyfloatingView(){
-        
         myFloatingView.layer.cornerRadius = 30
         myFloatingView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.95)
         myFloatingView.isOpaque = false
         confirmButton.layer.cornerRadius = 20
-        
     }
     
-    //MARK: - spot confirmation Alert
+    //MARK: - Spot Confirmation Alert
     
    func showSpotConfirmationAlert() {
-  
-    
     let confirmationAlert = UIAlertController(title: "Almost there 🙌🏼", message: "please tell us briefly why you choose this spot?", preferredStyle: .alert)
-    confirmationAlert.addTextField { textField in
+        confirmationAlert.addTextField { textField in
         textField.placeholder = "Enter your message here"
         textField.returnKeyType = .done
-        
     }
     
     confirmationAlert.addAction(UIAlertAction(title: "Publish", style: .default, handler: { handler  in
@@ -371,23 +259,20 @@ extension ViewController {
         guard let userMessage = messageField.text, userMessage.isEmpty == false else {return}
         // Create the new spot && Navigate to next VC
         self.createNewSpot(message: userMessage)
-        
-       
     }))
     confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
     present(confirmationAlert, animated: true, completion: nil)
-    
     }
     
     
     func createNewSpot(message: String){
-       var spot = Spot()
+       let spot = Spot()
         spot.address = newAddress.text!
         spot.kayyarMessage = message
         spot.city = myPlacemark?.locality ?? ""
         spot.latitude = (myPlacemark!.location?.coordinate.latitude) ?? 0.0
         spot.longitude = (myPlacemark!.location?.coordinate.longitude) ?? 0.0
-        spot.submitionDateString = currentDateAndTimeString()
+        spot.submitionDateString = getCurrentDateAndTimeString()
         
         // Save the spot to Firebase && Navigate to next VC
         spot.saveData { success in

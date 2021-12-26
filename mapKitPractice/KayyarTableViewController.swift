@@ -12,14 +12,12 @@ import Firebase
 class KayyarTableViewController: UIViewController {
     
     
-    
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var mySegmentedControl: UISegmentedControl!
     
     var spots: Spots!
     var currentUserLocation: CLLocation!
     let locationManager = CLLocationManager()
-    var viewController = ViewController()
     
     
     override func viewDidLoad() {
@@ -29,7 +27,7 @@ class KayyarTableViewController: UIViewController {
         spots = Spots()
         myTableView.delegate = self
         myTableView.dataSource = self
-        
+     
         
     }
     
@@ -45,7 +43,7 @@ class KayyarTableViewController: UIViewController {
             self.myTableView.reloadData()
             print("😅\(self.spots.spotArray.count)")
         }
-        
+    
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -99,15 +97,17 @@ class KayyarTableViewController: UIViewController {
     
     //MARK: - Segmented Control Implementation
     
+    @IBAction func mySegmentedControlPressed(_ sender: UISegmentedControl) {
+        sortBasedOnSegmentPressed()
+        
+    }
+    
     func sortBasedOnSegmentPressed(){
         
         switch mySegmentedControl.selectedSegmentIndex {
         case 0: // Recent
         
             spots.spotArray.sort(by: {$0.submitionDateObject.compare($1.submitionDateObject) == .orderedDescending})
-           
-//            spots.spotArray.sort{$0.submitionDateString.compare($1.submitionDateString, options: .numeric) == .orderedDescending}
-//            print("sort func got triggered")
             
         case 1: // Distance
             spots.spotArray.sort(by: {$0.spotLocation.distance(from: currentUserLocation) < $1.spotLocation.distance(from: currentUserLocation)})
@@ -121,10 +121,7 @@ class KayyarTableViewController: UIViewController {
         
     }
     
-    @IBAction func mySegmentedControlPressed(_ sender: UISegmentedControl) {
-        sortBasedOnSegmentPressed()
-        
-    }
+
     
     
     
@@ -173,9 +170,6 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
 
 extension KayyarTableViewController: CLLocationManagerDelegate {
     
-    
-    
-    
     func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled(){
             SetupLocationMAnager()
@@ -183,6 +177,7 @@ extension KayyarTableViewController: CLLocationManagerDelegate {
             // initiate tracking
         } else {
             // alert: please enable location sevices
+            myOneButtonAlert(title: "cannot access your location", message: "Go to Settings -> Location")
         }
     }
     
@@ -200,12 +195,12 @@ extension KayyarTableViewController: CLLocationManagerDelegate {
         
         case .denied:
             // Show alert showing the user how to turn on location permission
-            break
+            myOneButtonAlert(title: "cannot access your location", message: "Go to Settings -> Location")
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
             // show alert letting user know what's up
-            break
+            myOneButtonAlert(title: "cannot access your location", message: "Access to your locarion is restricted")
         case .authorizedAlways:
             break
         default:
@@ -217,14 +212,12 @@ extension KayyarTableViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentUserLocation = locations.last
-        
-//        print ("current user location in tableview is \(currentUserLocation)")
-        
+                
     }
     
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        
+        checkLocationServices()
     }
     
 }

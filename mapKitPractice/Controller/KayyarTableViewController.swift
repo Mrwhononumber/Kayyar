@@ -130,7 +130,7 @@ class KayyarTableViewController: UIViewController {
         if CLLocationManager.locationServicesEnabled() {
             spots.spotArray.sort(by: {$0.spotLocation.distance(from: currentUserLocation) < $1.spotLocation.distance(from: currentUserLocation)})
         } else {
-            myOneButtonAlert(title: "Location service is not enabled", message: "turn on location services to use this feature!")
+            myOneButtonAlert(title: "Location service is not enabled", message: "Turn on location service to use this feature")
             return
         }
     }

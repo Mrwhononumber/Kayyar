@@ -133,7 +133,7 @@ extension SpotDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-//MARK: - ImagePicekr
+//MARK: - ImagePicker
 
 extension SpotDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

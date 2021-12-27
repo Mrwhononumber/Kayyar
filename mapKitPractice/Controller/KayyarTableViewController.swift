@@ -20,7 +20,7 @@ class KayyarTableViewController: UIViewController {
     var currentUserLocation: CLLocation!
     let locationManager = CLLocationManager()
     
-    //MARK: - VC LifeCycle
+    //MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +33,7 @@ class KayyarTableViewController: UIViewController {
         super.viewWillAppear(animated)
         checkLocationServices()
         showActivityIndicator()
-        spots.loadData {
-            self.sortBasedOnSegmentPressed()
-            self.myTableView.reloadData()
-            print("😅\(self.spots.spotArray.count)")
-        }
+        fetchSpots()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,14 +45,22 @@ class KayyarTableViewController: UIViewController {
         super.viewWillDisappear(true)
         locationManager.stopUpdatingLocation()
     }
+    
     //MARK: - Helper Functions
     
    private func setupUI(){
         navigationController?.navigationBar.isHidden = false
     }
     
+    private func fetchSpots(){
+        spots.loadData { [weak self] in
+            guard let self = self else {return}
+            self.sortBasedOnSegmentPressed()
+            self.myTableView.reloadData()
+        }
+    }
     
-    //MARK: - SignOut
+    //MARK: - SignOut Method
     
     @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
         showSignOutAlert()
@@ -64,7 +68,8 @@ class KayyarTableViewController: UIViewController {
     
     func showSignOutAlert(){
         let alert = UIAlertController(title: nil, message: "Are you sure you'd like to sign out?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "sign out", style: .destructive, handler: { action in
+        alert.addAction(UIAlertAction(title: "sign out", style: .destructive, handler: {[weak self] action in
+            guard let self = self else {return}
             // pereform the signing out
             self.signOutUser()
         }))
@@ -82,7 +87,7 @@ class KayyarTableViewController: UIViewController {
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let homeViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! HomeViewController
             homeViewController.modalPresentationStyle = .fullScreen
-            self.present(homeViewController, animated:true, completion:nil)
+            present(homeViewController, animated:true, completion:nil)
             
             
         } catch let signOutError as NSError {
@@ -97,10 +102,9 @@ class KayyarTableViewController: UIViewController {
         sortBasedOnSegmentPressed()
     }
     
-    
     func sortBasedOnSegmentPressed(){
         switch mySegmentedControl.selectedSegmentIndex {
-  
+            
         case 0: // Recent
             SortBasedOnDate()
         case 1: // Distance
@@ -136,6 +140,11 @@ class KayyarTableViewController: UIViewController {
 
 extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
     
+    func setupTableView(){
+        myTableView.delegate = self
+        myTableView.dataSource = self
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return spots.spotArray.count
     }
@@ -161,34 +170,30 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
         }
     }
     
-    func setupTableView(){
-        myTableView.delegate = self
-        myTableView.dataSource = self
-    }
 }
 
 //MARK: - Current user location
 
 extension KayyarTableViewController: CLLocationManagerDelegate {
     
-    func checkLocationServices(){
+   private func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled(){
+            // initiate tracking
             SetupLocationMAnager()
             checkLocationAuthorization()
-            // initiate tracking
         } else {
-            // alert: please enable location sevices
             myOneButtonAlert(title: "cannot access your location", message: "Go to Settings -> Location")
         }
     }
     
-    func SetupLocationMAnager(){
+   private func SetupLocationMAnager(){
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    func checkLocationAuthorization() {
+   private func checkLocationAuthorization() {
         switch locationManager.authorizationStatus {
+      
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
             // Do Map Stuff

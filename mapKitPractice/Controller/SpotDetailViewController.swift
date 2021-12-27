@@ -30,7 +30,7 @@ class SpotDetailViewController: UIViewController {
     private var userName: String?
     
     
-    //MARK: - VC LifeCycle
+    //MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -195,7 +195,6 @@ extension SpotDetailViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
 }
 
 //MARK: - CollectionView DataSource and Delegate

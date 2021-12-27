@@ -24,10 +24,10 @@ class ViewController: UIViewController {
     let locationManager = CLLocationManager()
     let regionInMeter: Double = 650
     var previousLocation: CLLocation?
- 
- 
     
-    //MARK: - VC LifeCicle
+    
+    
+    //MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         customizeNavigationController()
         showActivityIndicator()
     }
-  
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         removeActivityIndicator()
@@ -57,17 +57,17 @@ class ViewController: UIViewController {
     @IBAction func confirmSpotButtonPressed(_ sender: UIButton) {
         
         guard newAddress.text != "" else {
-        myOneButtonAlert(title: "Unvalid address ", message: "Please make sure to choose a valid address")
+            myOneButtonAlert(title: "Unvalid address ", message: "Please make sure to choose a valid address")
             return
         }
-      showSpotConfirmationAlert()
+        showSpotConfirmationAlert()
     }
     
     //MARK: - Helper functions
     
     func setupUIElements() {
-         setupSpotsButton()
-         setupMyfloatingView()
+        setupSpotsButton()
+        setupMyfloatingView()
     }
     
     func customizeNavigationController(){
@@ -86,27 +86,25 @@ class ViewController: UIViewController {
         spotsButton.layer.masksToBounds = false
         spotsButton.layer.cornerRadius = 4.0
     }
-
-
+    
+    
     func checkLocationServices(){
         
         if CLLocationManager.locationServicesEnabled() {
             // setup location manager
             setupLocationManager()
             checkLocationAuthorization()
-           
+            
         } else {
             // show alert letting the user know they need to turn this on
             myOneButtonAlert(title: "couldn't find your location", message: "make sure to turn on your location services")
         }
     }
     
- 
-    
     func setupLocationManager () {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-//        locationManager.distanceFilter = 1
+        //        locationManager.distanceFilter = 1
     }
     
     func centerViewOnUserLocaion() {
@@ -122,12 +120,11 @@ class ViewController: UIViewController {
         switch locationManager.authorizationStatus {
         case .authorizedWhenInUse:
             // Do Map Stuff
-          startTrackingUserLocation()
+            startTrackingUserLocation()
         case .denied:
             // Show alert showing the user how to turn on location permission
             myOneButtonAlert(title: "cannot access your location", message: "Go to Settings -> Location")
-
-             break
+            break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
@@ -168,9 +165,6 @@ extension ViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
     }
-    
- 
-    
 }
 
 //MARK: - MapView Delegate
@@ -178,26 +172,19 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        
         let centre = getCentreLocation(for: myMapView)
         let geoCoder = CLGeocoder()
-        
         guard let previousLocation = previousLocation else { return }
-        
-        
         // check if the map has been moved more than 50 meters to proceed with the geoCoder request
         guard centre.distance(from: previousLocation) > 50 else {return}
         // update previous location to the current centre location
         self.previousLocation = centre
-        
         geoCoder.reverseGeocodeLocation(centre) { [weak self](placemarks, error) in
             guard let self = self else { return }
-            
             if error != nil {
                 self.myOneButtonAlert(title: "Error", message: "Error happened while retriving location. please try again.")
             }
             guard let placemark = placemarks?.first else {
-               
                 self.myOneButtonAlert(title: "Error", message: "Error happened while retriving location. please try again.")
                 return
             }
@@ -206,7 +193,7 @@ extension ViewController: MKMapViewDelegate {
             let streetName = self.myPlacemark?.thoroughfare ?? ""
             let city = self.myPlacemark?.locality ?? ""
             let name = self.myPlacemark?.name ?? ""
-
+            
             DispatchQueue.main.async {
                 self.newAddress!.text = "\(streetNumber) \(streetName)"
                 self.newAddressDetail!.text = "\(name)-\(city)"
@@ -225,21 +212,19 @@ extension ViewController: MKMapViewDelegate {
 //MARK: - My Custom floating panel
 
 extension ViewController {
-
+    
     func AddGestureRecognizer(){
-            let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
-            swipeGesture.direction = [.up, .down, .left, .right]
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
+        swipeGesture.direction = [.up, .down, .left, .right]
         
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
-            view.addGestureRecognizer(swipeGesture)
-            view.addGestureRecognizer(tapGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
+        view.addGestureRecognizer(swipeGesture)
+        view.addGestureRecognizer(tapGesture)
     }
-    
-    
-    
-    
+
     @objc func animateMyFloatingView(){
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.2) {[weak self] in
+            guard let self = self else {return}
             self.myFloatingView.transform = CGAffineTransform(translationX: 0, y: -140)
         }
     }
@@ -253,52 +238,48 @@ extension ViewController {
     
     //MARK: - Spot Confirmation Alert
     
-   func showSpotConfirmationAlert() {
-    let confirmationAlert = UIAlertController(title: "Almost there 🙌🏼", message: "please tell us briefly why you choose this spot?", preferredStyle: .alert)
+    func showSpotConfirmationAlert() {
+        let confirmationAlert = UIAlertController(title: "Almost there 🙌🏼", message: "please tell us briefly why you choose this spot?", preferredStyle: .alert)
         confirmationAlert.addTextField { textField in
-        textField.placeholder = "Enter your message here"
-        textField.returnKeyType = .done
+            textField.placeholder = "Enter your message here"
+            textField.returnKeyType = .done
+        }
+        
+        confirmationAlert.addAction(UIAlertAction(title: "Publish", style: .default, handler: {[weak self] handler in
+            guard let self = self else {return}
+            // Read values from text field
+            guard let textFields = confirmationAlert.textFields else {return}
+            let messageField = textFields[0]
+            guard let userMessage = messageField.text, userMessage.isEmpty == false else {return}
+            // Create the new spot && Navigate to next VC
+            self.createNewSpot(message: userMessage)
+        }))
+        confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(confirmationAlert, animated: true, completion: nil)
     }
-    
-    confirmationAlert.addAction(UIAlertAction(title: "Publish", style: .default, handler: { handler  in
-        // Read values from text field
-        guard let textFields = confirmationAlert.textFields else {return}
-        let messageField = textFields[0]
-        guard let userMessage = messageField.text, userMessage.isEmpty == false else {return}
-        // Create the new spot && Navigate to next VC
-        self.createNewSpot(message: userMessage)
-    }))
-    confirmationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-    present(confirmationAlert, animated: true, completion: nil)
-    }
-    
     
     func createNewSpot(message: String){
-       let spot = Spot()
+        let spot = Spot()
         spot.address = newAddress.text!
         spot.kayyarMessage = message
         spot.city = myPlacemark?.locality ?? ""
         spot.latitude = (myPlacemark!.location?.coordinate.latitude) ?? 0.0
         spot.longitude = (myPlacemark!.location?.coordinate.longitude) ?? 0.0
         spot.submitionDateString = getCurrentDateAndTimeString()
-        
         // Save the spot to Firebase && Navigate to next VC
-        spot.saveData { success in
+        spot.saveData {[weak self] success in
+            guard let self = self else {return}
             if success {
                 self.performSegue(withIdentifier: "VCToTV", sender: self)
                 print("saved the spot to firestore successfuly!")
                 
                 print(self.spots.spotArray.count)
-        } else {
-            print { ("something happened while sabing the spot to firestore")}
+            } else {
+                print { ("something happened while sabing the spot to firestore")}
+            }
         }
         
     }
-                
-    }
-    
-    
-    
 }
 
 

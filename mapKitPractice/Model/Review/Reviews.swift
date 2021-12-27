@@ -23,7 +23,7 @@ class Reviews {
             
             // Check if there is an error
             guard error == nil else {
-                print("error adding snapshot listner \(error)")
+                print("error adding snapshot listner \(String(describing: error))")
                 return completed()
                 
             }

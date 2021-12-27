@@ -12,7 +12,9 @@ import MapKit
 
 
 class SpotDetailViewController: UIViewController {
-   
+    
+    //MARK: - Properties
+    
     @IBOutlet weak var reviewTableview: UITableView!
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var detailMapView: MKMapView!
@@ -22,85 +24,87 @@ class SpotDetailViewController: UIViewController {
     @IBOutlet weak var reviewButton: UIButton!
     @IBOutlet weak var spotAuthorUsername: UILabel!
     
-    
-   
     var detailSpot: Spot!
-    var reviews = Reviews()
-    var photos = Photos()
-   private var userName: String?
+    let reviews = Reviews()
+    let photos = Photos()
+    private var userName: String?
     
     
+    //MARK: - VC LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupTableView()
         setupMyCollectionView()
-    
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
-        showMySpinner()
-        reviews.loadReviewData(spot: detailSpot) {
-            self.reviewTableview.reloadData()
-        }
-        photos.loadPhotoData(spot: detailSpot) {
-            self.myCollectionView.reloadData()
-        }
-        
-        getCurrentUsername{name in
-            self.userName = name
-            
-        }
-       
+        showActivityIndicator()
+        fetchReviews()
+        fetchPhotos()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        removeMySpenner()
+        removeActivityIndicator()
     }
+    
+    //MARK: - Buttons Actions
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
-        
-        
         showImagePickerAlert()
-        
     }
     
-   
+    //MARK: - Helper Methods
     
-    
-    
-    func updateUI(){
+    private func updateUI(){
         addressLabel.text = detailSpot.address
         spotKayyarLevelLabel.text = "KL: \(String(detailSpot.dangerLevel))"
         spotAuthorUsername.text = "By @\(detailSpot.spotUsername)"
         setupDetailMaViewMap()
-        self.title = detailSpot.city
+        title = detailSpot.city
         CustomUI.setupButtonsShadow(button: cameraButton)
         CustomUI.setupButtonsShadow(button: reviewButton)
-    
+        updateUsername()
     }
     
-
+    private func fetchReviews() {
+        reviews.loadReviewData(spot: detailSpot) { [weak self] in
+            guard let self = self else {return}
+            self.reviewTableview.reloadData()
+        }
+    }
+    
+    private func fetchPhotos(){
+        photos.loadPhotoData(spot: detailSpot) { [weak self] in
+            guard let self = self else {return}
+            self.myCollectionView.reloadData()
+        }
+    }
+    
+    private func updateUsername(){
+        getCurrentUsername{ [weak self] name in
+            guard let self = self else {return}
+            self.userName = name
+        }
+    }
     
     //MARK: - DetailView Map setup
     
-    func setupDetailMaViewMap(){
+    private func setupDetailMaViewMap(){
         
         let mySpotLocation = CLLocationCoordinate2D(latitude: detailSpot.latitude, longitude: detailSpot.longitude)
         let myRegion = MKCoordinateRegion(center: mySpotLocation, latitudinalMeters: 650, longitudinalMeters: 650)
         detailMapView.setRegion(myRegion, animated: true)
-        
         // Add Pin
         let pin = MKPointAnnotation()
         pin.coordinate = mySpotLocation
         pin.title = detailSpot.kayyarMessage
         pin.subtitle = detailSpot.address
         detailMapView.addAnnotation(pin)
-
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -108,14 +112,14 @@ class SpotDetailViewController: UIViewController {
         destination.spot = detailSpot
     }
     
-  
+    
 }
 
-//MARK: - TableView
+//MARK: - TableView Datasource and Delegate
 
 extension SpotDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func setupTableView(){
+    private func setupTableView(){
         reviewTableview.delegate = self
         reviewTableview.dataSource = self
     }
@@ -127,7 +131,6 @@ extension SpotDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = reviewTableview.dequeueReusableCell(withIdentifier: "ReviewCell") as! ReviewTableViewCell
         cell.review = reviews.reviewArray[indexPath.row]
-        
         return cell
     }
     
@@ -137,13 +140,15 @@ extension SpotDetailViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension SpotDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func showImagePickerAlert(){
+    private func showImagePickerAlert(){
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [weak self] action in
+            guard let self = self else {return}
             // setup image picker using camera
             self.setupImagePicker(type: .camera)
         }))
-        alert.addAction(UIAlertAction(title: "Photo library", style: .default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Photo library", style: .default, handler: { [weak self] action in
+            guard let self = self else {return}
             // setup image picker using library
             self.setupImagePicker(type: .photoLibrary)
         }))
@@ -152,45 +157,39 @@ extension SpotDetailViewController: UIImagePickerControllerDelegate, UINavigatio
         
     }
     
-    func setupImagePicker(type: UIImagePickerController.SourceType){
+    private func setupImagePicker(type: UIImagePickerController.SourceType){
         let picker = UIImagePickerController()
         picker.sourceType = type
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true, completion: nil)
-        
-        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-       
+        
         var myImage: UIImage?
-        
         // pass the taken picture to myImage to be uploaded to Firestore
-        
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             myImage = editedImage
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             myImage = originalImage
         }
         // save the myImage to FireStore
-        var photo = Photo()
+        let photo = Photo()
         photo.photoUsername = userName ?? ""
         photo.photoDate = getCurrentDateAndTimeString()
         photo.image = myImage ?? UIImage()
-        photo.savePhotoData(spot: detailSpot) { success in
+        photo.savePhotoData(spot: detailSpot) { [weak self] success in
+            guard let self = self else {return}
             if success {
-                print ("success wohoooo")
+                print ("success")
             } else {
+                self.myOneButtonAlert(title: "Error", message: "Error happened while saving the picture, please try again")
                 print ("check whats going on with the savephoto method at the call site")
             }
         }
-        
-        
         // dismiss the imagePicker
         dismiss(animated: true, completion: nil)
-        
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -199,19 +198,14 @@ extension SpotDetailViewController: UIImagePickerControllerDelegate, UINavigatio
     
 }
 
-//MARK: - CollectionView
-
-
-
+//MARK: - CollectionView DataSource and Delegate
 
 extension SpotDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func setupMyCollectionView(){
+    private func setupMyCollectionView(){
         myCollectionView.delegate = self
         myCollectionView.dataSource = self
     }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if photos.photoArray.count > 0 {
@@ -219,7 +213,6 @@ extension SpotDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         } else {
             return 0
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -228,17 +221,8 @@ extension SpotDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         if photos.photoArray.count > 0 {
             cell.photo = photos.photoArray[indexPath.row]
         }
-       
-        
         return cell
     }
-    
-    
-    
-    
-    
-    
-    
     
 }
 

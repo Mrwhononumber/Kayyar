@@ -11,7 +11,7 @@ fileprivate var myActivityIndicatiorView: UIView?
 
 extension UIViewController {
      
-    func showMySpinner() {
+    func showActivityIndicator() {
         myActivityIndicatiorView = UIView(frame: self.view.bounds)
         myActivityIndicatiorView?.backgroundColor = UIColor.init(red: 0.25, green: 0.5, blue: 0.5, alpha: 0.5)
         
@@ -24,7 +24,7 @@ extension UIViewController {
         
     }
     
-    func removeMySpenner() {
+    func removeActivityIndicator() {
         myActivityIndicatiorView?.removeFromSuperview()
         myActivityIndicatiorView = nil
     }

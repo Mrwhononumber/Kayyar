@@ -15,6 +15,7 @@ class KayyarTableViewController: UIViewController {
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var mySegmentedControl: UISegmentedControl!
+    
     var spots: Spots!
     var currentUserLocation: CLLocation!
     let locationManager = CLLocationManager()
@@ -31,18 +32,17 @@ class KayyarTableViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkLocationServices()
-        self.showMySpinner()
+        showActivityIndicator()
         spots.loadData {
             self.sortBasedOnSegmentPressed()
             self.myTableView.reloadData()
             print("😅\(self.spots.spotArray.count)")
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        removeMySpenner()
+        removeActivityIndicator()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,10 +51,10 @@ class KayyarTableViewController: UIViewController {
     }
     //MARK: - Helper Functions
     
-    func setupUI(){
+   private func setupUI(){
         navigationController?.navigationBar.isHidden = false
-
     }
+    
     
     //MARK: - SignOut
     
@@ -71,7 +71,6 @@ class KayyarTableViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
         // present the alert
         present(alert, animated: true, completion: nil)
-        
     }
     
     func signOutUser(){
@@ -90,24 +89,18 @@ class KayyarTableViewController: UIViewController {
             myOneButtonAlert(title: "Error", message: "Error happened while signing you out, please try again")
             print("Error signing out: %@", signOutError)
         }
-        
     }
-    
-    
-    
-    
     
     //MARK: - Segmented Control Implementation
     
     @IBAction func mySegmentedControlPressed(_ sender: UISegmentedControl) {
         sortBasedOnSegmentPressed()
-        
     }
     
     
     func sortBasedOnSegmentPressed(){
-        
         switch mySegmentedControl.selectedSegmentIndex {
+  
         case 0: // Recent
             SortBasedOnDate()
         case 1: // Distance
@@ -119,7 +112,6 @@ class KayyarTableViewController: UIViewController {
             print ("error occured, check segmented control for an error")
         }
         myTableView.reloadData()
-        
     }
     
     private func SortBasedOnDate() {
@@ -137,21 +129,14 @@ class KayyarTableViewController: UIViewController {
     
     private func sortBasedOnKayyarLevel(){
         spots.spotArray.sort(by: {$0.dangerLevel > $1.dangerLevel})
-        
     }
-    
-    
-    
-    
 }
 
 //MARK: - TableView Datasource and Delegate Methods
 
 extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return spots.spotArray.count
     }
     
@@ -174,16 +159,12 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
             let selectedIndexPath = myTableView.indexPathForSelectedRow!
             destination.detailSpot = spots.spotArray[selectedIndexPath.row]
         }
-        
-        
     }
     
     func setupTableView(){
         myTableView.delegate = self
         myTableView.dataSource = self
     }
-    
-    
 }
 
 //MARK: - Current user location
@@ -206,7 +187,6 @@ extension KayyarTableViewController: CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    
     func checkLocationAuthorization() {
         switch locationManager.authorizationStatus {
         case .authorizedWhenInUse:
@@ -227,15 +207,11 @@ extension KayyarTableViewController: CLLocationManagerDelegate {
         }
     }
     
-    
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentUserLocation = locations.last
     }
     
-    
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationServices()
     }
-    
 }

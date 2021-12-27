@@ -47,6 +47,10 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         removeMySpenner()
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        locationManager.stopUpdatingLocation()
+    }
     
     //MARK: - Buttons Interactions
     
@@ -153,11 +157,12 @@ class ViewController: UIViewController {
     
     
 }
+//MARK: - LocationManager Delegate Functions
 
 extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-             
+        
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -167,6 +172,8 @@ extension ViewController: CLLocationManagerDelegate {
  
     
 }
+
+//MARK: - MapView Delegate
 
 extension ViewController: MKMapViewDelegate {
     

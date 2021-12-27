@@ -36,7 +36,7 @@ class SpotDetailViewController: UIViewController {
         
         setupTableView()
         setupMyCollectionView()
-       
+    
     }
     
     
@@ -55,7 +55,7 @@ class SpotDetailViewController: UIViewController {
             self.userName = name
             
         }
-      
+       
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

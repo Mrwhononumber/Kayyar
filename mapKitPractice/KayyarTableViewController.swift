@@ -11,31 +11,25 @@ import Firebase
 
 class KayyarTableViewController: UIViewController {
     
+    //MARK: - Properties
     
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var mySegmentedControl: UISegmentedControl!
-    
     var spots: Spots!
     var currentUserLocation: CLLocation!
     let locationManager = CLLocationManager()
     
+    //MARK: - VC LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.isHidden = false
+        setupUI()
         spots = Spots()
-        myTableView.delegate = self
-        myTableView.dataSource = self
-     
-        
+        setupTableView()
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         checkLocationServices()
         self.showMySpinner()
         spots.loadData {
@@ -43,22 +37,29 @@ class KayyarTableViewController: UIViewController {
             self.myTableView.reloadData()
             print("😅\(self.spots.spotArray.count)")
         }
-    
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         removeMySpenner()
-        
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        locationManager.stopUpdatingLocation()
+    }
+    //MARK: - Helper Functions
+    
+    func setupUI(){
+        navigationController?.navigationBar.isHidden = false
+
+    }
     
     //MARK: - SignOut
     
     @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
-     showSignOutAlert()
-        
+        showSignOutAlert()
     }
     
     func showSignOutAlert(){
@@ -75,19 +76,20 @@ class KayyarTableViewController: UIViewController {
     
     func signOutUser(){
         let firebaseAuth = Auth.auth()
-    do {
-        // sign out the user
-      try firebaseAuth.signOut()
-       // Navigate to the initial viewcontroller
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let homeViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! HomeViewController
-        homeViewController.modalPresentationStyle = .fullScreen
-        self.present(homeViewController, animated:true, completion:nil)
-
-        
-    } catch let signOutError as NSError {
-      print("Error signing out: %@", signOutError)
-    }
+        do {
+            // sign out the user
+            try firebaseAuth.signOut()
+            // Navigate to the initial viewcontroller
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let homeViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! HomeViewController
+            homeViewController.modalPresentationStyle = .fullScreen
+            self.present(homeViewController, animated:true, completion:nil)
+            
+            
+        } catch let signOutError as NSError {
+            myOneButtonAlert(title: "Error", message: "Error happened while signing you out, please try again")
+            print("Error signing out: %@", signOutError)
+        }
         
     }
     
@@ -102,26 +104,41 @@ class KayyarTableViewController: UIViewController {
         
     }
     
+    
     func sortBasedOnSegmentPressed(){
         
         switch mySegmentedControl.selectedSegmentIndex {
         case 0: // Recent
-        
-            spots.spotArray.sort(by: {$0.submitionDateObject.compare($1.submitionDateObject) == .orderedDescending})
-            
+            SortBasedOnDate()
         case 1: // Distance
-            spots.spotArray.sort(by: {$0.spotLocation.distance(from: currentUserLocation) < $1.spotLocation.distance(from: currentUserLocation)})
+            sortBasedOnDistance()
         case 2: // Kayyar Level
-            spots.spotArray.sort(by: {$0.dangerLevel > $1.dangerLevel})
+            sortBasedOnKayyarLevel()
         default:
+            myOneButtonAlert(title: "Error", message: "Unexpected error just happened, please try again")
             print ("error occured, check segmented control for an error")
         }
         myTableView.reloadData()
         
-        
     }
     
-
+    private func SortBasedOnDate() {
+        spots.spotArray.sort(by: {$0.submitionDateObject.compare($1.submitionDateObject) == .orderedDescending})
+    }
+    
+    private func sortBasedOnDistance(){
+        if CLLocationManager.locationServicesEnabled() {
+            spots.spotArray.sort(by: {$0.spotLocation.distance(from: currentUserLocation) < $1.spotLocation.distance(from: currentUserLocation)})
+        } else {
+            myOneButtonAlert(title: "Location service is not enabled", message: "turn on location services to use this feature!")
+            return
+        }
+    }
+    
+    private func sortBasedOnKayyarLevel(){
+        spots.spotArray.sort(by: {$0.dangerLevel > $1.dangerLevel})
+        
+    }
     
     
     
@@ -144,8 +161,6 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
             cell.userCurrentLocation = currentUserLocation
         }
         cell.cellSpot = spots.spotArray[indexPath.row]
-        
-        
         return cell
     }
     
@@ -161,6 +176,11 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
         }
         
         
+    }
+    
+    func setupTableView(){
+        myTableView.delegate = self
+        myTableView.dataSource = self
     }
     
     
@@ -191,8 +211,7 @@ extension KayyarTableViewController: CLLocationManagerDelegate {
         switch locationManager.authorizationStatus {
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
-        // Do Map Stuff
-        
+            // Do Map Stuff
         case .denied:
             // Show alert showing the user how to turn on location permission
             myOneButtonAlert(title: "cannot access your location", message: "Go to Settings -> Location")
@@ -212,7 +231,6 @@ extension KayyarTableViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentUserLocation = locations.last
-                
     }
     
     

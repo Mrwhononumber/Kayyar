@@ -79,7 +79,7 @@ var  myPlacemarks: CLPlacemark?
                 let streetNumber = myPlacemark.subThoroughfare ?? ""
                 let streetName = myPlacemark.thoroughfare ?? ""
                 self.adressLabel.text = "\(streetNumber) \(streetName)"
-                print(self.adressLabel.text)
+                print(self.adressLabel.text as Any)
                 print("first notification got triggered")
                 
             }

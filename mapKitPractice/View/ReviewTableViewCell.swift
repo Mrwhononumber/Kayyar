@@ -8,26 +8,19 @@
 import UIKit
 
 class ReviewTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var reviewTitleLabel: UILabel!
     
+    //MARK: - Properties
+    
+    @IBOutlet weak var reviewTitleLabel: UILabel!
     @IBOutlet weak var reviewDateLabel: UILabel!
     @IBOutlet weak var reviewBodyLabel: UILabel!
     
     var review: Review! {
         didSet{
-            // set the treviewtitle to the username
+            // set the treviewTitle to the username
             reviewBodyLabel.text = review.userReview
             reviewTitleLabel.text = review.reviewUsername
             reviewDateLabel.text = review.reviewDate
         }
-        
-        
-        
-        
     }
-    
-    
-    
-
 }

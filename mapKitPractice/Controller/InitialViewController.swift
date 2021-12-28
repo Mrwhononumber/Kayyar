@@ -7,26 +7,24 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class InitialViewController: UIViewController {
+    
+    //MARK: - Properties
 
     @IBOutlet weak var signUpButton: UIButton!
-    
     @IBOutlet weak var loginButton: UIButton!
     
+    //MARK: - View Controller Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupElements()
     }
     
-    //MARK: - Setup UI Elements
+    //MARK: - Helper Functions
     
-    func setupElements() {
+   private func setupElements() {
         CustomUI.styleFilledButton(signUpButton)
         CustomUI.styleHollowButton(loginButton)
     }
-
-   
-
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vlS-rf-SVA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vlS-rf-SVA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -81,7 +82,7 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="689"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="122" id="59S-qS-RY1" customClass="myTableViewCell" customModule="mapKitPractice" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="122"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="122"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="59S-qS-RY1" id="d1K-Ke-r19">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="122"/>
@@ -333,7 +334,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" id="Ze6-RF-hRy" customClass="ReviewTableViewCell" customModule="mapKitPractice" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="524.5" width="414" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="544.5" width="414" height="66.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ze6-RF-hRy" id="svP-Qy-PmS">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="66.5"/>
@@ -541,11 +542,10 @@
             </objects>
             <point key="canvasLocation" x="1298.5507246376812" y="237.72321428571428"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Initial View Controller-->
         <scene sceneID="p5L-aR-1qw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KxF-Ew-RMo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="InitialScreen" id="vlS-rf-SVA" customClass="HomeViewController" customModule="mapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialScreen" id="vlS-rf-SVA" customClass="InitialViewController" customModule="mapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P00-3s-Z7r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -590,13 +590,13 @@
                         <outlet property="signUpButton" destination="wYa-Ne-av3" id="HcV-MT-ZWl"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KxF-Ew-RMo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1923" y="239"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="9qg-3s-5pb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C0J-Ws-j2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="h1f-px-lca" customClass="LoginViewController" customModule="mapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZLq-M7-eZR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -671,13 +671,13 @@
                         <segue destination="pwN-O1-wTB" kind="presentation" identifier="loginToHome" modalPresentationStyle="fullScreen" id="tR8-fe-WGI"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C0J-Ws-j2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1019" y="648"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="6Bh-cz-19L">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6J5-d8-RXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Yka-rP-c86" customClass="SignUpViewController" customModule="mapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pBV-qp-ign">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -761,6 +761,7 @@
                         <segue destination="pwN-O1-wTB" kind="presentation" identifier="signupToHome" modalPresentationStyle="fullScreen" id="0M9-HZ-QIB"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6J5-d8-RXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1019" y="-104"/>
         </scene>
@@ -927,7 +928,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tR8-fe-WGI"/>
+        <segue reference="0M9-HZ-QIB"/>
         <segue reference="Buj-Tb-NwL"/>
     </inferredMetricsTieBreakers>
     <resources>

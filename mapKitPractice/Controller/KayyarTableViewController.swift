@@ -85,7 +85,7 @@ class KayyarTableViewController: UIViewController {
             try firebaseAuth.signOut()
             // Navigate to the initial viewcontroller
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let homeViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! HomeViewController
+            let homeViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! InitialViewController
             homeViewController.modalPresentationStyle = .fullScreen
             present(homeViewController, animated:true, completion:nil)
             

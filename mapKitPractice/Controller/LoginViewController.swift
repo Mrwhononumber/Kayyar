@@ -10,26 +10,26 @@ import Firebase
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
-
+    
+    //MARK: - Properties
+    
     @IBOutlet weak var emailTextLabel: UITextField!
     @IBOutlet weak var passwordTextLabel: UITextField!
     @IBOutlet weak var errorTextLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
+    //MARK: - View Controller Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       setupElements()
+        setupElements()
     }
     
-
+    //MARK: - Buttons Actions
+    
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        
-        
         // validate the fileds
-        
         let error = validateFields()
         if error != nil {
             showError(error!)
@@ -47,32 +47,27 @@ class LoginViewController: UIViewController {
                     // transition to HomeScreen
                     self.performSegue(withIdentifier: "loginToHome", sender: self)
                 }
-                
             }
-            
-            
-           
-            
         }
-        
-        
-        
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! HomeViewController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "InitialScreen") as! InitialViewController
         nextViewController.modalPresentationStyle = .fullScreen
         nextViewController.modalTransitionStyle = .flipHorizontal
         self.present(nextViewController, animated:true, completion:nil)
     }
     
- 
+    //MARK: - Helper Functions
     
-  
- 
-    //MARK: - Fields Validation
+    private func setupElements(){
+        CustomUI.styleTextField(emailTextLabel)
+        CustomUI.styleTextField(passwordTextLabel)
+        CustomUI.styleFilledButton(loginButton)
+        CustomUI.styleHollowButton(backButton)
+    }
     
     func validateFields()-> String? {
         // Check if all fields are filled in
@@ -81,24 +76,10 @@ class LoginViewController: UIViewController {
             return "Please fill all fields"
         }
         return nil
-        
     }
     
-    
-  
     func showError(_ message:String) {
         errorTextLabel.text = message
     }
     
-    //MARK: - Setup UI Elements
-    
-    func setupElements(){
-        CustomUI.styleTextField(emailTextLabel)
-        CustomUI.styleTextField(passwordTextLabel)
-        CustomUI.styleFilledButton(loginButton)
-        CustomUI.styleHollowButton(backButton)
-    }
-    
-    
-
 }

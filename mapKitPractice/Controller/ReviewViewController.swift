@@ -10,69 +10,53 @@ import Firebase
 
 class ReviewViewController: UIViewController {
     
- 
+    //MARK: - Properties
     
     @IBOutlet weak var publishReviewButton: UIButton!
     @IBOutlet weak var reviewAdressLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var spotAuthorLabel: UILabel!
-    
     @IBOutlet weak var reviewKayyarLevelLabel: UILabel!
-    
     @IBOutlet weak var reviewAuthorLabel: UILabel!
     @IBOutlet weak var userReview: UITextView!
-    
     @IBOutlet weak var reviewDateLabel: UILabel!
-  
     
     var spot: Spot!
     var theUsername: String?
     var userUpVoted = false
     var userDownVoted = false
     var kayyarLevelNewValue: Double!
-    var review = Review()
+    let review = Review()
+    
+    //MARK: - View Controller Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-       InitKayyarLevelNewValue()
-      
+        showKeyboard()
+        initKayyarLevelNewValue()
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // update the value of the current username
-        getCurrentUsername { username in
-            self.theUsername = username
-           
-        }
+        fetchUsername()
     }
     override func viewDidAppear(_ animated: Bool) {
         setupUI()
     }
-
-  
-    func InitKayyarLevelNewValue(){
-        kayyarLevelNewValue = spot.dangerLevel
-    }
+    
+    //MARK: - Buttons Actions
     
     @IBAction func upVoteButtonPressed(_ sender: UIButton) {
         if userUpVoted == false || kayyarLevelNewValue == spot.dangerLevel {
             kayyarLevelNewValue = kayyarLevelNewValue + 1
-            
             reviewKayyarLevelLabel.text = String(kayyarLevelNewValue)
             userUpVoted = true
             userDownVoted = false
         } else {
-            
             return
         }
     }
-    
-    
     
     @IBAction func downVotePressed(_ sender: UIButton) {
         if userDownVoted == false || kayyarLevelNewValue == spot.dangerLevel {
@@ -80,14 +64,33 @@ class ReviewViewController: UIViewController {
             reviewKayyarLevelLabel.text = String(kayyarLevelNewValue)
             userDownVoted = true
             userUpVoted = false
-            
         } else {
-            
             return
         }
-        
     }
     
+    @IBAction func publishReviewButtonPressed(_ sender: UIButton) {
+        guard userReview.text != "" else {
+            myOneButtonAlert(title: "Enter a review", message: "Please make sure to write a review")
+            return
+        }
+        review.reviewDate = getCurrentDateAndTimeString()
+        review.userReview = userReview.text
+        review.reviewUsername = theUsername ?? "No username"
+        review.kayyarLevel = Int(kayyarLevelNewValue)
+        review.saveReviewData(spot: spot) { [weak self] success in
+            guard let self = self else {return}
+            if success {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.myOneButtonAlert(title: "Error", message: "Error happened while saving your review, please try again")
+                print ("Error saving the review")
+                return
+            }
+        }
+    }
+    
+    //MARK: - Helper Functions
     
     func setupUI() {
         cityLabel.text = spot.city
@@ -96,47 +99,22 @@ class ReviewViewController: UIViewController {
         reviewDateLabel.text = getCurrentDateAndTimeString()
         reviewKayyarLevelLabel.text = String(spot.dangerLevel)
         reviewAuthorLabel!.text = "@\(theUsername ?? "")"
-        
-        
         userReview.layer.cornerRadius = 10
         publishReviewButton.layer.cornerRadius = 5
         CustomUI.setupButtonsShadow(button: publishReviewButton)
-        
-    
     }
     
+    private func initKayyarLevelNewValue(){
+        kayyarLevelNewValue = spot.dangerLevel
+    }
     
-    
-    
-    
- 
-    
-    @IBAction func publishReviewButtonPressed(_ sender: UIButton) {
-        
-        review.reviewDate = self.getCurrentDateAndTimeString()
-        review.userReview = self.userReview.text
-        review.reviewUsername = theUsername ?? "No username"
-        review.kayyarLevel = Int(kayyarLevelNewValue)
-        review.saveReviewData(spot: self.spot) { (success) in
-            if success {
-                
-                    self.dismiss(animated: true, completion: nil)
-                
-                // Go back programatically
-                
-            } else {
-                print ("Error saving the review")
-            }
+    private func fetchUsername(){
+        getCurrentUsername { [weak self] username in
+            guard let self = self else {return}
+            self.theUsername = username
         }
-        
     }
-
- 
-  
-    
-    
-    
-    
-    
-
+    private func showKeyboard(){
+        userReview.becomeFirstResponder()
+    }
 }

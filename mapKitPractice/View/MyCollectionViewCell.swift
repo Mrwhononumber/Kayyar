@@ -19,12 +19,13 @@ class MyCollectionViewCell: UICollectionViewCell {
         didSet{
             // Load the images using SDWebImage
             if let url = URL(string: photo.photoURL) {
-                self.collectionViewImage.sd_setImage(with: url)
-                self.collectionViewImage.sd_imageTransition = .fade
+                collectionViewImage.sd_setImage(with: url)
+                collectionViewImage.sd_imageTransition = .fade
                 print("Error: the photoURL was found nil in the collectionView cell") // <-- why this is here?
             } else {
                 // use the old loadImages function (for legacy images)
-                photo.loadImages(spot: spot) { completion in
+                photo.loadImages(spot: spot) { [weak self] completion in
+                    guard let self = self else {return}
                     if completion {
                         // save the photo data so it would be transitioned to the url based image loading system
                         self.photo.savePhotoData(spot: self.spot) { success in

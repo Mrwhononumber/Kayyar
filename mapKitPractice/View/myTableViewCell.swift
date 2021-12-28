@@ -50,7 +50,7 @@ class MyTableViewCell: UITableViewCell {
     
     //MARK: - Helper Functions
     
-    func setupTableViewMap(){
+   private func setupTableViewMap(){
         let mySpotLocation = CLLocationCoordinate2D(latitude: cellSpot.latitude, longitude: cellSpot.longitude)
         let myRegion = MKCoordinateRegion(center: mySpotLocation, latitudinalMeters: 60000, longitudinalMeters: 60000)
         tableViewMap.setRegion(myRegion, animated: true)

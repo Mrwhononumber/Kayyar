@@ -9,7 +9,10 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class myTableViewCell: UITableViewCell {
+class MyTableViewCell: UITableViewCell {
+    
+    //MARK: - Properties
+    
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var streetLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -33,35 +36,24 @@ class myTableViewCell: UITableViewCell {
         }
     }
     
-   
-    
-    
-    
+    //MARK: - Init
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
-    //MARK: - setup the map
+    //MARK: - Helper Functions
     
     func setupTableViewMap(){
-        
         let mySpotLocation = CLLocationCoordinate2D(latitude: cellSpot.latitude, longitude: cellSpot.longitude)
         let myRegion = MKCoordinateRegion(center: mySpotLocation, latitudinalMeters: 60000, longitudinalMeters: 60000)
         tableViewMap.setRegion(myRegion, animated: true)
         tableViewMap.layer.cornerRadius = 5
-       
-     
-     
     }
-    
-
 }

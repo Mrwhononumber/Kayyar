@@ -39,7 +39,7 @@ class ReviewViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // update the value of the current username
-        fetchUsername()
+        updateUsername()
     }
     override func viewDidAppear(_ animated: Bool) {
         setupUI()
@@ -108,7 +108,7 @@ class ReviewViewController: UIViewController {
         kayyarLevelNewValue = spot.dangerLevel
     }
     
-    private func fetchUsername(){
+    private func updateUsername(){
         getCurrentUsername { [weak self] username in
             guard let self = self else {return}
             self.theUsername = username

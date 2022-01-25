@@ -245,9 +245,9 @@
 		667B90C5277A159B0016F24D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				665185E5273AC68A00899019 /* Photo */,
 				6683CC82271D68B60056ED55 /* Spot */,
 				669DC2CE2734077500F5999E /* Review */,
+				665185E5273AC68A00899019 /* Photo */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,8 +255,8 @@
 		6683CC82271D68B60056ED55 /* Spot */ = {
 			isa = PBXGroup;
 			children = (
-				66C9FB872721DAD000A05FAA /* Spots.swift */,
 				6683CC83271D68CA0056ED55 /* Spot.swift */,
+				66C9FB872721DAD000A05FAA /* Spots.swift */,
 			);
 			path = Spot;
 			sourceTree = "<group>";

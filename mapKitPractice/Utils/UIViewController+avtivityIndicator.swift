@@ -28,8 +28,7 @@ extension UIViewController {
         myActivityIndicatiorView?.removeFromSuperview()
         myActivityIndicatiorView = nil
     }
-    
-    
+
     
     
     

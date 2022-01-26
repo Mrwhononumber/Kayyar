@@ -18,6 +18,7 @@ class MapViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var myMapView: MKMapView!
     @IBOutlet weak var spotsButton: UIButton!
+    @IBOutlet weak var floatingPanelTitle: UILabel!
     var userLocation: CLLocation?
     var spots = Spots()
     var myPlacemark: CLPlacemark?
@@ -227,6 +228,8 @@ extension MapViewController {
             guard let self = self else {return}
             self.myFloatingView.transform = CGAffineTransform(translationX: 0, y: -140)
         }
+        changeMyFloatingPanelTitle()
+       
     }
     
     func setupMyfloatingView(){
@@ -234,6 +237,10 @@ extension MapViewController {
         myFloatingView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.95)
         myFloatingView.isOpaque = false
         confirmButton.layer.cornerRadius = 20
+    }
+    
+    func changeMyFloatingPanelTitle(){
+        floatingPanelTitle.text = "My spot is .."
     }
     
     //MARK: - Spot Confirmation Alert

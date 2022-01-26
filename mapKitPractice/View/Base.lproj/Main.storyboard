@@ -530,6 +530,7 @@
                     <navigationItem key="navigationItem" id="6R4-bi-tg6"/>
                     <connections>
                         <outlet property="confirmButton" destination="lj1-wh-Wur" id="ayC-O3-5gR"/>
+                        <outlet property="floatingPanelTitle" destination="fHr-Sn-ceR" id="g06-mu-thM"/>
                         <outlet property="myFloatingView" destination="eXV-jp-NaO" id="NOi-an-Nug"/>
                         <outlet property="myMapView" destination="Bj9-lG-zpL" id="C6E-bM-lUH"/>
                         <outlet property="newAddress" destination="wdf-wG-JoO" id="T8l-MO-6YX"/>

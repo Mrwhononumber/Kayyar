@@ -1,8 +1,6 @@
 # Kayyar - Share the dangerous spots around you! 
 Simple iOS application in Swift demonstrating the usage of Multible technologies and frameworks
 
-<img src="https://github.com/Mrwhononumber/Images/blob/a37a870726b4159f6e5e9d474008c5c220300006/Images/PokedexDarkModeSE.gif" width="200">
-
 <img src="https://github.com/Mrwhononumber/Images/blob/b1c0bf7d44355244621cabf48377a9ca8b7bfddb/Kayyar/Simulator%20Screen%20Shot%20-%20iPhone%2011%20-%202022-01-26%20at%2016.41.45.png" width="200">
 
 

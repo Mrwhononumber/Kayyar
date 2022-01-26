@@ -7,11 +7,11 @@ Simple iOS application in Swift demonstrating the usage of Multible technologies
 
 # Application Features
 
-* Easily choose the spot you'd like to share on the map
+* Easily choose the spot you'd like to share using the map
 
 * View the spots shared by other users
 
-* Sort the spots  based on (Proximity - Date - Score)
+* Sort the spots based on (Proximity - Date - Score)
 
 * Rate the score of each spot
 
@@ -39,4 +39,4 @@ Simple iOS application in Swift demonstrating the usage of Multible technologies
 
 * Create a location manager singleton class to have one unified access point to the user's location
 
-* Redesign the viewcontroller responsible for adding newcomment/rating 
+* Redesign the viewcontroller responsible for adding new comment/rating 

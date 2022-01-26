@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  mapKitPractice
 //
 //  Created by Basem El kady on 10/14/21.
@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -156,7 +156,7 @@ class ViewController: UIViewController {
 }
 //MARK: - LocationManager Delegate Functions
 
-extension ViewController: CLLocationManagerDelegate {
+extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -169,7 +169,7 @@ extension ViewController: CLLocationManagerDelegate {
 
 //MARK: - MapView Delegate
 
-extension ViewController: MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let centre = getCentreLocation(for: myMapView)
@@ -211,7 +211,7 @@ extension ViewController: MKMapViewDelegate {
 
 //MARK: - My Custom floating panel
 
-extension ViewController {
+extension MapViewController {
     
     func AddGestureRecognizer(){
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(animateMyFloatingView))
@@ -250,7 +250,9 @@ extension ViewController {
             // Read values from text field
             guard let textFields = confirmationAlert.textFields else {return}
             let messageField = textFields[0]
-            guard let userMessage = messageField.text, userMessage.isEmpty == false else {return}
+            guard let userMessage = messageField.text, userMessage.isEmpty == false else {
+                self.myOneButtonAlert(title: "Unvalid message", message: "Please enter a valid message")
+                return}
             // Create the new spot && Navigate to next VC
             self.createNewSpot(message: userMessage)
         }))
@@ -266,19 +268,19 @@ extension ViewController {
         spot.latitude = (myPlacemark!.location?.coordinate.latitude) ?? 0.0
         spot.longitude = (myPlacemark!.location?.coordinate.longitude) ?? 0.0
         spot.submitionDateString = getCurrentDateAndTimeString()
-        // Save the spot to Firebase && Navigate to next VC
+        // Save the spot to Firebase
         spot.saveData {[weak self] success in
             guard let self = self else {return}
             if success {
-                self.performSegue(withIdentifier: "VCToTV", sender: self)
+                self.myOneButtonAlert(title: "Thanks!", message: "You've shared the spot succesfully")
+                // TBD:- ask the user if he wants to navigate to the spots (SpotsViewController)
                 print("saved the spot to firestore successfuly!")
-                
                 print(self.spots.spotArray.count)
             } else {
-                print { ("something happened while sabing the spot to firestore")}
+                self.myOneButtonAlert(title: "Opps!", message: "Something went wrong, please try again.")
+                print { ("something happened while saving the spot to firestore")}
             }
         }
-        
     }
 }
 

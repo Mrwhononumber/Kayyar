@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 import Firebase
 
-class KayyarTableViewController: UIViewController {
+class SpotTableViewController: UIViewController {
     
     //MARK: - Properties
     
@@ -59,7 +59,7 @@ class KayyarTableViewController: UIViewController {
             self.myTableView.reloadData()
         }
     }
-    
+     
     //MARK: - SignOut Method
     
     @IBAction func signOutButtonPressed(_ sender: UIBarButtonItem) {
@@ -138,7 +138,7 @@ class KayyarTableViewController: UIViewController {
 
 //MARK: - TableView Datasource and Delegate Methods
 
-extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
+extension SpotTableViewController: UITableViewDelegate,UITableViewDataSource{
     
     func setupTableView(){
         myTableView.delegate = self
@@ -174,7 +174,7 @@ extension KayyarTableViewController: UITableViewDelegate,UITableViewDataSource{
 
 //MARK: - Current user location
 
-extension KayyarTableViewController: CLLocationManagerDelegate {
+extension SpotTableViewController: CLLocationManagerDelegate {
     
    private func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled(){

@@ -61,7 +61,7 @@ class SpotDetailViewController: UIViewController {
     
     private func updateUI(){
         addressLabel.text = detailSpot.address
-        spotKayyarLevelLabel.text = "KL: \(String(detailSpot.dangerLevel))"
+        spotKayyarLevelLabel.text = "Kayyar: \(String(detailSpot.dangerLevel))"
         spotAuthorUsername.text = "By @\(detailSpot.spotUsername)"
         setupDetailMaViewMap()
         title = detailSpot.city

@@ -898,7 +898,7 @@
                     <navigationItem key="navigationItem" id="v3H-1F-S0s">
                         <barButtonItem key="rightBarButtonItem" title="Publish" id="EGW-tt-81o">
                             <connections>
-                                <action selector="AddCommentPressed:" destination="8tf-ai-cek" id="AFu-B7-LID"/>
+                                <action selector="PublishButtonPressed:" destination="8tf-ai-cek" id="Dg1-lz-6gW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

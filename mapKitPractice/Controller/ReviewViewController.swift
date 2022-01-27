@@ -12,7 +12,6 @@ class ReviewViewController: UIViewController {
     
     //MARK: - Properties
     
-    @IBOutlet weak var publishReviewButton: UIButton!
     @IBOutlet weak var reviewAdressLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var spotAuthorLabel: UILabel!
@@ -69,7 +68,8 @@ class ReviewViewController: UIViewController {
         }
     }
     
-    @IBAction func publishReviewButtonPressed(_ sender: UIButton) {
+
+    @IBAction func PublishButtonPressed(_ sender: UIBarButtonItem) {
         guard userReview.text != "" else {
             myOneButtonAlert(title: "Enter a review", message: "Please make sure to write a review")
             return
@@ -81,7 +81,7 @@ class ReviewViewController: UIViewController {
         review.saveReviewData(spot: spot) { [weak self] success in
             guard let self = self else {return}
             if success {
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             } else {
                 self.myOneButtonAlert(title: "Error", message: "Error happened while saving your review, please try again")
                 print ("Error saving the review")
@@ -100,8 +100,7 @@ class ReviewViewController: UIViewController {
         reviewKayyarLevelLabel.text = String(spot.dangerLevel)
         reviewAuthorLabel!.text = "@\(theUsername ?? "")"
         userReview.layer.cornerRadius = 10
-        publishReviewButton.layer.cornerRadius = 5
-        CustomUI.setupButtonsShadow(button: publishReviewButton)
+
     }
     
     private func initKayyarLevelNewValue(){

@@ -39,4 +39,6 @@ Simple iOS application in Swift demonstrating the usage of multible technologies
 
 * Create a location manager singleton class to have one unified access point to the user's location
 
-* Redesign the viewcontroller responsible for adding new comment/rating 
+* Redesign the View Controller responsible for adding new comment/rating 
+
+* Redesign the spot details View Cntroller

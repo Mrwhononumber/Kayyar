@@ -10,16 +10,18 @@ import Firebase
 
 class Spots {
     
+    //MARK: - Properties
     var spotArray: [Spot] = []
     var db: Firestore!
+    
+    //MARK: - Init
     
     init(){
         db = Firestore.firestore()
     }
     
-
-
-
+//MARK: - Helper Functions
+    
 func loadData(completed: @escaping () -> ()) {
    // add listener that listen and notify you if anychange happened to "spots" collection
     db.collection("spots").addSnapshotListener { (querySnapshot, error) in

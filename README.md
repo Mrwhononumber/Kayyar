@@ -13,7 +13,7 @@ Simple iOS application in Swift, experimenting with MapKit, Firebase, and more .
 
 * Sort the spots based on (Proximity - Date - Score)
 
-* Rate the score of each spot
+* Up/Down vote the score of each spot
 
 * Add comments to the the spots
 

@@ -28,7 +28,7 @@ Simple iOS application in Swift, experimenting with MapKit, Firebase, and more .
 
 * Firebase is used for user authentication
 
-* getting the user's choosen address has been done using mapKit and reverse geocoding
+* Getting the user's choosen address has been done using MapKit and reverse geocoding
 
 * Database has been implemented using firestore
 
@@ -37,7 +37,7 @@ Simple iOS application in Swift, experimenting with MapKit, Firebase, and more .
 
 # Improvements in progress 
 
-* Create a location manager singleton class to have one unified access point to the user's location
+* Create a location manager singleton class to have a global access point to the user's location
 
 * Redesign the View Controller responsible for adding new comment/rating 
 

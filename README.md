@@ -32,7 +32,7 @@ Simple iOS application in Swift, experimenting with MapKit, Firebase, and more .
 
 * Database has been implemented using firestore
 
-* Images downloading and caching happen via SDWebImage
+* Images downloading and caching via SDWebImage
 
 
 # Improvements in progress 

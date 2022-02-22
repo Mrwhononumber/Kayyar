@@ -1,5 +1,5 @@
 # Kayyar - Share the dangerous spots around you! 
-Simple iOS application in Swift, experimenting with Mapkit, Firebase, and more ..
+Simple iOS application in Swift, experimenting with MapKit, Firebase, and more ..
 
 <img src="https://github.com/Mrwhononumber/Images/blob/81c4c70f45dfe08304415d197c418e25467716ae/Kayyar/123iphone.png" width="200">
 

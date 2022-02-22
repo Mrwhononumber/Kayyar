@@ -26,8 +26,6 @@ class MapViewController: UIViewController {
     let regionInMeter: Double = 650
     var previousLocation: CLLocation?
     
-    
-    
     //MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {

@@ -7,7 +7,6 @@
 
 import UIKit
 import Firebase
-import IQKeyboardManagerSwift
 import SDWebImage
 
 @main
@@ -19,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
-        IQKeyboardManager.shared.enable = true
         return true
     }
 

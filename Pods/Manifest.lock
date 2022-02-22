@@ -1,22 +1,18 @@
 PODS:
-  - IQKeyboardManagerSwift (6.5.6)
   - SDWebImage (5.12.1):
     - SDWebImage/Core (= 5.12.1)
   - SDWebImage/Core (5.12.1)
 
 DEPENDENCIES:
-  - IQKeyboardManagerSwift
   - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
-    - IQKeyboardManagerSwift
     - SDWebImage
 
 SPEC CHECKSUMS:
-  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   SDWebImage: 4dc3e42d9ec0c1028b960a33ac6b637bb432207b
 
-PODFILE CHECKSUM: fc5a1540a0ccdc0dacc7d80f09f5869083fe8092
+PODFILE CHECKSUM: c0fe6892cb47774dc7c68da558a914bf8f5b5970
 
 COCOAPODS: 1.10.1

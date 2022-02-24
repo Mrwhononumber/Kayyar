@@ -67,15 +67,15 @@ class Spot {
         let numberOfReviews = dictionary["numberOfReviews"] as! Int? ?? 0
         let postingUserID = dictionary["postingUserID"] as! String? ?? ""
         let submitionDate = dictionary["submitionDate"] as! String? ?? ""
-
+        
         self.init(city: city, address: address, latitude: latitude, longitude: longitude, kayyarMessage: kayyarMessage, dangerLevel: dangerLevel, spotUsername: spotUsername, numberOfReviews: numberOfReviews, postingUserID: postingUserID, submitionDate: submitionDate, documentID: "")
     }
     
     //MARK: - Helper Functions
-
+    
     func saveData(complition: @escaping (Bool) -> ()) {
         
-    
+        
         let db = Firestore.firestore()
         // check if we have a postingUserID for safety
         guard let postingUserID = Auth.auth().currentUser?.uid else
@@ -96,8 +96,8 @@ class Spot {
                         return complition(false)
                     }
                     self.documentID = ref!.documentID
-                    print(" 🤣 🤣 🤣 Added document\(self.documentID)")
-                        complition(true)
+                    print("Added document\(self.documentID)")
+                    complition(true)
                 }
                 // in this case the documet has been saved before so we need to update it
             } else {
@@ -112,7 +112,7 @@ class Spot {
                         self.spotUsername = user
                         
                     }
-                   
+                    
                 }
             }
         }
@@ -121,27 +121,27 @@ class Spot {
     
     func updateSpotDangerLevel(review: Review, completion: @escaping () -> ()) {
         let db = Firestore.firestore()
-        self.dangerLevel = Double (review.kayyarLevel) // update the dangerus level value
-            let dataToUpdate = self.dictionary  // get a reference to the spot dictionary after updating the value of the danger level
-            let spotRef = db.collection("spots").document(self.documentID) // get reference to the spot
-            // update the spot
-            spotRef.setData(dataToUpdate) { error in
-                guard error == nil else {
-                    print ("Error happened while updating the spot danger level: \(error?.localizedDescription ?? "")")
-                    return completion()
+        self.dangerLevel = Double (review.kayyarLevel) // update the danger level value
+        let dataToUpdate = self.dictionary  // get a reference to the spot dictionary after updating the value of the danger level
+        let spotRef = db.collection("spots").document(self.documentID) // get reference to the spot
+        // update the spot
+        spotRef.setData(dataToUpdate) { error in
+            guard error == nil else {
+                print ("Error happened while updating the spot danger level: \(error?.localizedDescription ?? "")")
+                return completion()
             }
-                print("Danger level has been updated for\(self.address)")
-                completion()
-            }
+            print("Danger level has been updated for\(self.address)")
+            completion()
         }
-        
-        
-        
-        
-    func getCurrentUsername(completion: @escaping ( (String) -> Void ) ) {
+    }
     
+    
+    
+    
+    func getCurrentUsername(completion: @escaping ( (String) -> Void ) ) {
+        
         let db = Firestore.firestore()
-       
+        
         let CurrentUserID = Auth.auth().currentUser?.uid
         let usersCollection = db.collection("users")
         usersCollection.getDocuments(completion: { snapshot, error in
@@ -149,29 +149,25 @@ class Spot {
                 print(err.localizedDescription)
                 return
             }
-
+            
             guard let documents = snapshot?.documents else { return }
-
+            
             for doc in documents {
-
+                
                 let uid = doc.get("uid") as? String ?? "No uid"
                 let username = doc.get("username") as? String ?? "No Name"
-
+                
                 if CurrentUserID == uid {
-//                    print (username)
                     completion(username)
                     break
                 }
             }
         })
+    }
+}
 
-        
-    }
-        
-    }
-    
-    
-    
-    
-    
+
+
+
+
 

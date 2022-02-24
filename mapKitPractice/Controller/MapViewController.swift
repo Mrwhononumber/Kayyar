@@ -200,11 +200,8 @@ extension MapViewController: MKMapViewDelegate {
                 // Replacing the notificationCenter with a closure to be considered
                 NotificationCenter.default.post(name: NSNotification.Name("userPlacemarkNotification"), object: self.myPlacemark)
             }
-            
         }
-        
     }
-    
 }
 
 
@@ -220,14 +217,14 @@ extension MapViewController {
         view.addGestureRecognizer(swipeGesture)
         view.addGestureRecognizer(tapGesture)
     }
-
+    
     @objc func animateMyFloatingView(){
         UIView.animate(withDuration: 0.2) {[weak self] in
             guard let self = self else {return}
             self.myFloatingView.transform = CGAffineTransform(translationX: 0, y: -140)
         }
         changeMyFloatingPanelTitle()
-       
+        
     }
     
     func setupMyfloatingView(){

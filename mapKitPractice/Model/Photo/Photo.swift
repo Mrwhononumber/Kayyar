@@ -30,18 +30,18 @@ class Photo {
         self.photoDate = photoDate
         self.photoURL = photoURL
         self.documentID = documentID
-    
+        
     }
     
     convenience init () {
         
         let photoUserID = Auth.auth().currentUser?.uid ?? ""
         self.init (image: UIImage(), description: "", photoUserID: photoUserID, photoUsername: "", photoDate: "", photoURL: "", documentID: "")
-    
+        
     }
     convenience init(dictionary: [String: Any]){
         
-       
+        
         let description = dictionary["description"] as! String? ?? ""
         let photoUserID = dictionary["photoUserID"] as! String? ?? ""
         let photoUsername = dictionary["photoUsername"] as! String? ?? ""
@@ -55,7 +55,7 @@ class Photo {
     func savePhotoData(spot: Spot, complition: @escaping (Bool) -> ()) {
         let db = Firestore.firestore()
         let storage = Storage.storage()
-    // Convert photo.image to a Data type so it can be saved in Firebase Storage
+        // Convert photo.image to a Data type so it can be saved in Firebase Storage
         guard let photoData = self.image.jpegData(compressionQuality: 0.5) else {
             print ("Error: couldn't compress the photo.image to Data")
             return
@@ -79,8 +79,8 @@ class Photo {
             }
         }
         uploadTask.observe(.success) { (snapshot) in
-                print("Upload to Firestore is Successful!")
-           
+            print("Upload to Firestore is Successful!")
+            
             // Grab the uploaded photo URl and save it to the Photo class photoURL property
             storageRef.downloadURL { url, error in
                 guard error == nil else {
@@ -91,36 +91,32 @@ class Photo {
                     print("Error: the photo url was found nil even though we have no error!")
                     return complition(false)
                 }
-                 self.photoURL = "\(url)"
-              
+                self.photoURL = "\(url)"
+                
                 // Save the Photos document in spot.documentID:
                 // Create the dictionary representing the data we want to save
-
-                            let dataToSave: [String:Any] = self.dictionary
-
+                
+                let dataToSave: [String:Any] = self.dictionary
+                
                 let ref = db.collection("spots").document(spot.documentID).collection("photos").document(self.documentID)
                 ref.setData(dataToSave) { error in
                     guard error == nil else {
-                        print ("ERROR 👺👺👺: updating document \(String(describing: error?.localizedDescription))")
+                        print ("ERROR: updating document \(String(describing: error?.localizedDescription))")
                         return complition(false)
                     }
                     print(" Updated review document\(self.documentID)")
                     complition(true)
-
                 }
             }
             
-           
-          
-            
-            }
+        }
         
         uploadTask.observe(.failure) { (snapshot) in
             if let error = snapshot.error {
                 print("Error upload task for file\(self.documentID) failed , in spot\(spot.documentID), with error \(error.localizedDescription)")
                 complition(false)
-        }
-        
+            }
+            
         }
         
     }
@@ -143,8 +139,6 @@ class Photo {
             
         }
     }
-    
-    
 }
 
 

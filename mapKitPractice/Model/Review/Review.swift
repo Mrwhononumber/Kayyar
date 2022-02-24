@@ -61,11 +61,11 @@ class Review {
                     return complition(false)
                 }
                 self.documentID = ref!.documentID
-                print(" 🤣 🤣 🤣 Added review document\(self.documentID) to spot\(spot.address)")
+                print("Added review document\(self.documentID) to spot\(spot.address)")
                 spot.updateSpotDangerLevel(review: self) {
                     complition(true)
                 }
-               
+                
             }
             // in this case the documet has been saved before so we need to update it using setData
         } else {
@@ -79,19 +79,7 @@ class Review {
                 spot.updateSpotDangerLevel(review: self) {
                     complition(true)
                 }
-              
             }
         }
-        
-    
-        
-        
-        
     }
-    
-
-    
-    
-
-    
 }

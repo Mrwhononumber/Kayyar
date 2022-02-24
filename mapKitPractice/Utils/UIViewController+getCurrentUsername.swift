@@ -32,7 +32,6 @@ extension UIViewController {
                 let username = doc.get("username") as? String ?? "No Name"
 
                 if CurrentUserID == uid {
-//                    print (username)
                     completion(username)
                     break
                 }

@@ -35,7 +35,7 @@ Simple iOS application in Swift, experimenting with MapKit, Firebase, and more .
 * Images downloading and caching via SDWebImage
 
 
-# Improvements in progress 
+# To Do 
 
 * Create a location manager singleton class to have a global access point to the user's location
 
